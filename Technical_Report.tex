@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt, titlepage, twocolumn]{article}
+\documentclass[a4paper,12pt, titlepage]{article}
 %\usepackage{color}
 %\definecolor{light-gray}{gray}{0.95}
 
@@ -23,6 +23,42 @@
 
 \tableofcontents
 
+
+\section{Introduction}
+
+\section{Background}
+Orbiscom Ireland, acquired by Mastercard in 2009, develop a product called InControl. The acquisition allowed Mastercard to incorporate InControl into their Value Added Services, a range of products that tie in closely with their core business, the processing of electronic payments. Until 2010 Mastercard Ireland was still primarily concerned with the development of InControl. A division of Mastercard Labs was setup within Mastercard Ireland in 2011. As Mastercard continues to grow, more and more departments are being given a presence within Ireland. This report documents the activities and projects undertaken while working for InControl. Since their acquisition Orbiscom have become completely integrated into Mastercard and have ceased operating as Orbiscom entirely. InControl has been split into two different products. InControl Direct exists to support Orbiscoms original customers as is managed and maintained entirely within the InControl department. The second product, InControl is an adapted version of the original product. Where InControl Direct is deployed to and hosted by banks, InControl is hosted on BankNet, Mastercards global payments network. In order to explain the services offered by the InControl platform, it is useful to explain how the credit card payment process works.
+
+\subsection{The four party model}
+The credit card payment scheme employed by Mastercard involves four separate parties, for this reason it is referred to as the four party model. There are alternate models in use, but Mastercard employs the four party model as it allows the issuing of payment cards to be handled by separate financial institutions. This leaves less overhead for Mastercard and also insures interoperability between the various financial institutions. The credit card holder typically initiates the payment and is represented by a credit card issuing bank, or an issuer. The merchant involved in the payment is represented by an acquiring bank, or an acquirer. Each successful payment goes through three stages; Authorization, Clearing and Settlement.
+\begin{itemize}
+\item Authorization: The card-holder submits their payment card details to the merchant. The merchants bank, the acquirer, sends a request to Mastercard to identify the card-holders issuing bank. Once this has been determined and the card has been verified the payment is forwarded, by Mastercard, to the issuing bank. It is worth noting that this is the stage in the process where the InControl service is applied if needed. The card-holders bank approves the purchase and blocks the funds in the card-holders account. No money has been transfered from the card-holders account, the money has merely become unusable by the card-holder. The issuing bank forwards the approval to Mastercard, who forwards it to the acquirer who in turn forwards it to the merchant. The payment has now been approved. 
+\item Clearing: Sometime after the payment has been authorized, usually at the end of the week, the merchant submits all of their authorized payments to clearing. This is a batch process that occurs at certain set times. After a payment has been cleared the funds have effectively been transfered.
+\item Settlement: Come back too, concerns the actual transfer of funds.
+\end{itemize}
+To facilitate this, a fee is applied to each transfer. Interchange is typically charged by the issuer to the acquirer. This is also where Mastercard makes money from each payment. The rate of interchange varies from bank to bank and can even be different depending on the nature of the purchase. In order to sustain credit card usage and adoption the services offered by Mastercard must outweigh this additional fee. This report will make no attempts to the discuss politics surrounding this fee and will simply assume the following. (REMOVE: sometimes I love academia ) The interchange fee is to some extent ultimately payed by the merchant. This means that they lose an amount on every purchase made with a payment card as opposed to cash. In order for merchants to continue to accept card payments there must be sufficient consumer pressure for acceptance by the merchants. This is done by incentivising consumers with additional benefits not available through cash payment. Some of these incentives are part of Mastercards core network and come as benefits of using an electronic system such as added security, access to credit and accountability. Mastercards Value Added Services range is a set of products designed to add additional benefits for consumers.
+\cite{Something about 4 party, also check I have it the right way around http://tinyurl.com/7bbdq4
+ }
+
+\subsection{InControl}
+The InControl platform allows card-holders to create virtual payment cards. The virtual cards are linked back to the original real card and account and can be used exactly like a normal payment card.
+
+
+
+MasterCard operates Banknet, a global telecommunications network linking all MasterCard card issuers, acquirers and data processing centers into a single financial network. The operations hub is located in St. Louis, Missouri. Banknet uses the ISO 8583 protocol.
+
+\section{Existing System}
+
+
+\section{Development Process}
+
+\section{SMART}
+
+\section{Conclusion}
+
+\section{References}
+
+\section{Appendices}
 
 
 \end{document}
