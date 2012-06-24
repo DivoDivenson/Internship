@@ -1,0 +1,28 @@
+\documentclass[a4paper,12pt, titlepage, twocolumn]{article}
+%\usepackage{color}
+%\definecolor{light-gray}{gray}{0.95}
+
+\usepackage{xcolor}
+\usepackage{alltt}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+
+\definecolor{light-gray}{gray}{0.95}
+% Compensate for fbox sep:
+\newcommand\Hi[2][light-gray]{%
+  \hspace*{-\fboxsep}%
+  \colorbox{#1}{#2}%
+  \hspace*{-\fboxsep}%
+}
+
+\title{Technical Report}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+
+
+\end{document}
