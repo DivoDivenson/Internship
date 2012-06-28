@@ -6,7 +6,36 @@
 \usepackage{alltt}
 \usepackage{url}
 \usepackage{tikz}
+\usepackage{ulem}
 \usetikzlibrary{trees}
+
+% Command for inserting a todo item
+%http://midtiby.blogspot.ie/2007/09/todo-notes-in-latex.html
+\newcommand{\todo}[1]{%
+% Add to todo list
+\addcontentsline{tdo}{todo}{\protect{#1}}%
+%
+\begin{tikzpicture}[remember picture, baseline=-0.75ex]%
+\node [coordinate] (inText) {};
+\end{tikzpicture}%
+%
+% Make the margin par
+\marginpar{%
+\begin{tikzpicture}[remember picture]%
+\definecolor{orange}{rgb}{1,0.5,0}
+\draw node[draw=black, fill=orange, text width = 3cm] (inNote)
+{#1};%
+\end{tikzpicture}%
+}%
+%
+\begin{tikzpicture}[remember picture, overlay]%
+\draw[draw = orange, thick]
+([yshift=-0.2cm] inText)
+-| ([xshift=-0.2cm] inNote.west)
+-| (inNote.west);
+\end{tikzpicture}%
+%
+}%
 
 \definecolor{light-gray}{gray}{0.95}
 % Compensate for fbox sep:
@@ -29,14 +58,16 @@
 \section{Background}
 Orbiscom Ireland, acquired by Mastercard in 2009, develop a product called InControl. The acquisition allowed Mastercard to incorporate InControl into their Value Added Services, a range of products that tie in closely with their core business, the processing of electronic payments. Until 2010 Mastercard Ireland was still primarily concerned with the development of InControl. A division of Mastercard Labs was setup within Mastercard Ireland in 2011. As Mastercard continues to grow, more and more departments are being given a presence within Ireland. This report documents the activities and projects undertaken while working for InControl. Since their acquisition Orbiscom have become completely integrated into Mastercard and have ceased operating as Orbiscom entirely. InControl has been split into two different products. InControl Direct exists to support Orbiscoms original customers as is managed and maintained entirely within the InControl department. The second product, InControl is an adapted version of the original product. Where InControl Direct is deployed to and hosted by banks, InControl is hosted on BankNet, Mastercards global payments network. In order to explain the services offered by the InControl platform, it is useful to explain how the credit card payment process works.
 
-\subsection{The four party model}
+InControl and Orbiscom are used somewhat interchangeably in the rest of the document. Orbiscom is a keyword used throughout the code base. All of the packages still begin with com.orbiscom \todo{make italic}
+
+\subsection{The Four Party Model}
 The credit card payment scheme employed by Mastercard involves four separate parties, for this reason it is referred to as the four party model. There are alternate models in use, but Mastercard employs the four party model as it allows the issuing of payment cards to be handled by separate financial institutions. This leaves less overhead for Mastercard and also insures interoperability between the various financial institutions. The credit card holder typically initiates the payment and is represented by a credit card issuing bank, or an issuer. The merchant involved in the payment is represented by an acquiring bank, or an acquirer. Each successful payment goes through three stages; Authorization, Clearing and Settlement.
 \begin{itemize}
 \item Authorization: The card-holder submits their payment card details to the merchant. The merchants bank, the acquirer, sends a request to Mastercard to identify the card-holders issuing bank. Once this has been determined and the card has been verified the payment is forwarded, by Mastercard, to the issuing bank. It is worth noting that this is the stage in the process where the InControl service is applied if needed. The card-holders bank approves the purchase and blocks the funds in the card-holders account. No money has been transfered from the card-holders account, the money has merely become unusable by the card-holder. The issuing bank forwards the approval to Mastercard, who forwards it to the acquirer who in turn forwards it to the merchant. The payment has now been approved. 
 \item Clearing: Sometime after the payment has been authorized, usually at the end of the week, the merchant submits all of their authorized payments to clearing. This is a batch process that occurs at certain set times. After a payment has been cleared the funds have effectively been transfered.
 \item Settlement: Come back too, concerns the actual transfer of funds.
 \end{itemize}
-To facilitate this, a fee is applied to each transfer. Interchange is typically charged by the issuer to the acquirer. This is also where Mastercard makes money from each payment. The rate of interchange varies from bank to bank and can even be different depending on the nature of the purchase. In order to sustain credit card usage and adoption the services offered by Mastercard must outweigh this additional fee. This report will make no attempts to the discuss politics surrounding this fee and will simply assume the following. (REMOVE: sometimes I love academia ) The interchange fee is to some extent ultimately payed by the merchant. This means that they lose an amount on every purchase made with a payment card as opposed to cash. In order for merchants to continue to accept card payments there must be sufficient consumer pressure for acceptance by the merchants. This is done by incentivising consumers with additional benefits not available through cash payment. Some of these incentives are part of Mastercards core network and come as benefits of using an electronic system such as added security, access to credit and accountability. Mastercards Value Added Services range is a set of products designed to add additional benefits for consumers.
+To facilitate this, a fee is applied to each transfer. Interchange is typically charged by the issuer to the acquirer. This is also where Mastercard makes money from each payment. The rate of interchange varies from bank to bank and can even be different depending on the nature of the purchase. In order to sustain credit card usage and adoption the services offered by Mastercard must outweigh this additional fee. This report will make no attempts to the discuss politics surrounding this fee and will simply assume the following. \todo{REMOVE: sometimes I love academia} The interchange fee is to some extent ultimately payed by the merchant. This means that they lose an amount on every purchase made with a payment card as opposed to cash. In order for merchants to continue to accept card payments there must be sufficient consumer pressure for acceptance by the merchants. This is done by incentivising consumers with additional benefits not available through cash payment. Some of these incentives are part of Mastercards core network and come as benefits of using an electronic system such as added security, access to credit and accountability. Mastercards Value Added Services range is a set of products designed to add additional benefits for consumers.
 \cite{Something about 4 party, also check I have it the right way around http://tinyurl.com/7bbdq4
  }
 
@@ -49,16 +80,15 @@ The original InControl Software platform was designed as a generic server framew
 
 MasterCard operates Banknet, a global telecommunications network linking all MasterCard card issuers, acquirers and data processing centers into a single financial network. The operations hub is located in St. Louis, Missouri. Banknet uses the ISO 8583 protocol. The network is peer-to-peer mesh network with a set of endpoints. At no time during my internship did I have any involvement with any aspect of Banknet, but it does have one very notable effect on development within the company, the release cycles. Banknet is the core of Mastercards business. One of the most important aspects of an electronic payments service is reliability. If Mastercard is unable to serve it's customers in anyway it would mean a huge blow for their brand, a brand they have invested a substantial amount of money in. Banknet must be reliable. This is achieved in part with an extremely conservative attitude towards updating the software that controls the network. The servers can only be restarted twice a year. This takes a considerable amount of effort. Each node must be updated and "fliped" across the entire network. The network cannot be taken down completely during this time and their are many possible issues that are taken into account, hence the twice yearly cycle. There are a further two periods each year where the network can be updated without restarting the core services. All of this means Mastercard uses a quarterly release cycle, with fixed deadlines. Due to the inflexibility of the release cycle, great care is given to selecting new functionality to be included in each quarters release. These factors, a rigid deadline, fixed requirements and a very strong reliance of reliability in the end product are traits commonly associated with the waterfall design process, and this is the design process employed by Mastercard.
 
-The waterfall design methodology arguably fits well with the requirements surrounding Mastercards core network. Other services, such as InControl are not subject to the same requirements but are non the less hampered (REMOVE) by the employment of waterfall. During my time at Mastercard a switch an agile design process was beginning to get underway within InControl.\cite{I had a source here but it seems it was lost}
+The waterfall design methodology arguably fits well with the requirements surrounding Mastercards core network. Other services, such as InControl are not subject to the same requirements but are non the less hampered \todo{REMOVE} by the employment of waterfall. During my time at Mastercard a switch an agile design process was beginning to get underway within InControl.\cite{I had a source here but it seems it was lost}
 
 \section{Existing System}
 
 The InControl platform is very complex. It was not developed as a single service but rather as a generic server framework to host various payment services. The platform is component based based and hosts a number of generic services and product specific services. The role of InControl has changed over time, with the emphasis now placed the virtual card service as Mastercard have no interest in hosting their competitors products.
 
-\subsection{Overview}
+\subsection{Components Overview}
 The following is a brief overview of the components within the InControl system. At present, the system consists of 21 separate components containing about 768,732 lines of code between them.\cite{SLOC} This is just the core InControl product, there are many other auxiliary projects in the subversion repository. A detailed look at each components is carried out in subsequent sections.
 
-\subsubsection{Component Types}
 The InControl platform is comprised of seven major types of component.
 \begin{itemize}
 \item Client applications:
@@ -66,12 +96,165 @@ Client applications include any client interacting with an InControl server. The
 \item Web Server Environment:
 The web server environment acts as a gateway to the InControl Dynamic servers for the external client applications. The InControl Payment platform typically requires that a web-server is available. The web server environment may include web servers or application servers, or a mix of both. The main functions of the web server environment is as follows:
 \begin{itemize}
-\item Provide the content files for InControl client applications, eg, configuration files, web assets. The client content can be hosted on any plain old web-server.
-\item Host the InControl servlets. The main function of the servlets to to preform message format conversion to enable InControl servers to process messages from the client applications and the reverse. InControl Direct uses Athena, Mastercard InControl uses (GET NAME) as each operate within different networks. This is a clear benefit of a modular design, only one component had to be switched out then the platform was moved to a different network (LOL NO). An application server providing the appropriate servlet environment is required. The Athena supports a number of servers including WebSphere and Tomcat, allowing it to be easily integrated with existing infrastructure. If there is no existing infrastructure it can be run inside the InControl Apollo framework. 
-\item Host InControl sessions and authentication manager. The session and authentication manager allows for integration with existing an customer authentication API. Athena can also provide servlets for session management and authentication.
+\item Provide the content files for InControl client applications, e.g. configuration files, web assets. The client content can be hosted on any plain old web-server.
+\item Host the InControl servlets. The main function of the servlets to to preform message format conversion to enable InControl servers to process messages from the client applications and the reverse. InControl Direct uses \todo{Athena, wrong usage}, Mastercard InControl uses \todo{GET NAME} as each operate within different networks. This is a clear benefit of a modular design, only one component had to be switched out then the platform was moved to a different network \todo{LOL NO}. An application server providing the appropriate servlet environment is required. The \todo{Athena, wrong usage} supports a number of servers including WebSphere and Tomcat, allowing it to be easily integrated with existing infrastructure. If there is no existing infrastructure it can be run inside the InControl Apollo framework. 
+\item Host InControl sessions and authentication manager. The session and authentication manager allows for integration with existing an customer authentication API. \todo{Athena, wrong usage} can also provide servlets for session management and authentication.
 \end{itemize}
-\item InControl Servers
+\item InControl Servers:
+The InControl servers provide the processing core for the InControl payment platform. A generic server framework is provided for hosting the generic servers, e.g. maintenance and the payment products services, e.g. Virtual Card Number services. The generic InControl server architecture is based on a dynamic server framework. The InControl servers reside on Banknet, while the InControl Direct servers typically reside on a customers, e.g. An Bank, internal network. The services provided by the platform can include Online Services, Batch Services or Scheduled Services.
+\begin{itemize}
+\item Online Services: The platform can be used to provide a number of online services including registration, session and authentication, authorization services and client support services.
+\item Batch Services; Batch services read a file as input and apply changes to the server data based on the contents of each record. They can also be run as command line utilities. The platform provides card settlement, registration and maintenance as batch services.
+\item Scheduled Services: These are programs that can be configured to run periodically in order to preform housekeeping tasks. They can be configured to run inside one of the installed InControl services or to run as standalone processes.
 \end{itemize}
+\item InControl Database: At the core of the system is a relational database shared by all components. The system uses an Oracle database because \todo{FIND OUT}. The database provides both data storage and configuration information to every component within the system. \todo{YOU COULD PROBABLY EXPAND THIS A LOT}
+\item Customer Service System: The customer service system is web application made available to the clients customer service representatives for dealing with customer service issues in relation to the InControl Platform. The Customer Service System \todo{What did marketing call it this week} consists of two components. A web server used by the client and a backend server used to query the InControl systems database.
+\item APIs: APIs are available to either access functionality of the system, ex. the registration API, or to provide functionality to the system, ex. the user authentication and session management for the platform.
+\item Administration Programs: The InControl Platform comes with a number of administration programs that are used to preform or initiate housekeeping tasks. These programs can be run from the command line. Examples of such programs are the archiving process and the Server Status Controller.
+\end{itemize}
+
+\subsection{Web Server Environment} \todo{This is very likely all wrong, come back to later}
+The web server environment provides the link between the external client applications and the InControl Servers, the core of the InControl Platform. Typically web servers and, optionally, application servers are used to provide the appropriate web server environment.
+
+The web server environment typically hosts the Orbiscom servlets. The Session and Authentication Manager can also be hosted within this environment but is typically looked after by the customer in the case of InControl Direct, or by Mastercard in the case of InControl.
+
+\subsubsection{Content Hosting}
+A web server is required to provide the content files fro Orbiscom client applications. These files are served dynamically each time the client connects to the URL. Any plain old webserver can be used \todo{Possibly BS}
+
+\subsubsection{InControl Servlets} 
+The Web Server / Application Server typically hosts the InControl servlets. Athena is the servlet system used to support the InControl Platform \todo{THIS IS WRONG}
+
+
+
+\subsection{InControl Server}
+This section describes the InControl server architecture, incorporating the generic server framework. The InControl server architecture is described in the following areas:
+\begin{itemize}
+\item Generic Server Framework
+\item InControl Services Overview
+\item Configuration and Installation
+\item Communications Security
+\item Operational Requirements
+\end{itemize}
+
+\subsubsection{Generic Server Framework}
+The Generic Server Framework is based on a dynamic server framework. Apollo and Atlas provide the generic server framework.
+\begin{itemize}
+\item Apollo provides the generic, dynamic, extensible framework for clients and servers.
+\item Atlas provides the InControl HTTP and XML dispatchers.
+\end{itemize}
+These two components are at the core of the InControl platform. Everything is built on top of them. Together they create a full generic server framework with capacity to manage authentication, thread synchronization, component configuration, database connection and connector pooling, security and session management. As they have such an important role, the deserver a detailed analysis. \todo{INSERT DETAILED SOURCE LEVEL ANALYSIS}
+
+The InControl Servers are UNIX based and implemented entirely in Java. They are designed to be platform independent and will run on any platform that supports an appropriate release of the JVM, at present InControl targets JVM 1.6.
+\todo{REDO DIAGRAM}
+InControl servers can be configured to listen on one or more communications interfaces for incoming connections. Each listener can be configured to process one communications protocol. The platform supports HTTPS, HTTP, raw TCP/IP, MQ Series and X.25.
+
+Each listener can be configured to pass on requests to different types of content handlers. The most common form of content handler is the InControl XML content handler, which process messages that are in a format specified in the InControl Message Document. \todo{GET THAT DOC. Also, I presume this format is now the mastercard format, is it translated into Orbiscom format or what?}
+
+Other message handlers can process various authorization card scheme formats, for example Visa and Europay handlers.
+
+InControl Servers can be configured to dynamically update various configuration items upon receipt of a signal from a Platform Administration Utility.
+
+The following is a list describing the behavior of a InControl server.
+\begin{itemize}
+\item Connection: At boot-up a number of dynamic servers are created to process jobs. Each Server creates a number of connectors. These connector classes allow the server to either listen for requests or connect to external services. The classes, which implement the actual connector protocol, e.g. TCP/IP, are specified in the Dynamic Server configuration. This allows the connectors to be swapped out easily, The connector specification contains the name of the implementing class and a port number. There may also be a number of optional parameters defined depending on the protocol. As the Connectors are implementations of a Connector interface, there are no mandatory parameter. As such, all of the parameters are in fact optional, but omissions will result in exceptions being thrown. These are caught and a default value is returned if specified. This would appear to be a bad way of returning a default value as exception handling is being used for control flow. \todo{Get input on this}
+\begin{verbatim}
+    <Connector
+        Class="com.orbiscom.apollo.net.TCPServerConnectorFactory"
+        Port="12400"
+        TcpNoDelay="true" 
+        ReadTimeout="3"/>
+\end{verbatim}
+\item Transport: A protocol handler specifies the Network Transport Protocol that is implemented on the connectors, e.g. HTTP. The protocol handler can specify many content handlers. The handler specification contains the name of the implementing class and a number of handlers. The handlers are indexed by a request type. The handler specification body can be as simple as just the name of the implementing class or much more complex. An example is provided below. The first handler specification contains a number elements. The ones of note are the implementing class and the HandlerSet. The handler set contains links to more configuration files. These files contain the mapping from requests to the handlers to service them. Different versions of the InControl protocol may require different handler sets. Great care has been taken to ensure that each new release is backward compatible with the previous version, but if needed separate handlers can be used.
+\todo{FORMAT THIS CORRECTLY, need a proper, line wrapping way of doing code}
+\begin{verbatim}
+<ProtocolHandler
+		Class="com.orbiscom.apollo.net.HTTPProtocolHandlerFactory"
+		MonitorHandlerTimes="true">
+
+		<Handler
+			RequestType="/pulse">
+
+			<Task
+				Class="com.orbiscom.atlas.xml.Dispatcher"
+				RequireAuthentication="true"
+				LogAuthenticationErrors="true"
+				UseEncryption="true" >
+
+				<DocumentBuilderFactory>
+					<Property Name="NamespaceAware" Value="true" />
+				</DocumentBuilderFactory>
+
+				<OilContext
+					MessageTimeZone="UTC">
+				</OilContext>
+
+				<MessageContext>
+					<Variable Name="DataExtract.Source" Value="RetailXMLAPI" />
+				</MessageContext>
+
+			<HandlerSet>
+				<VersionedHandlerSet Version="12.4" xlink:href = "metahandlers" />
+				<VersionedHandlerSet Version="12.4" xlink:href = "pulsehandlers" />
+				<VersionedHandlerSet Version="12.3" xlink:href = "pulse12q3handlers" />
+				<VersionedHandlerSet Version="12.4" xlink:href = "flexhandlers" />
+			     <VersionedHandlerSet Version="12.4" xlink:href = "ipchandlers" />
+				<VersionedHandlerSet Version="12.4" xlink:href = "evcnhandlers" />
+                <VersionedHandlerSet Version="12.4" xlink:href = "sbchandlers" />
+            </HandlerSet>
+
+        </Task>
+    </Handler>
+
+    <Handler
+        RequestType="/schema">
+        <Task
+            Class="com.orbiscom.atlas.util.SchemaServlet">
+        </Task>
+    </Handler>
+
+</ProtocolHandler>
+\end{verbatim}
+An entry in a handler set follows. The example provided is a particularly complected specification to illustrate the widest possible range of functionality. A simple hander consists of a request type name and handler class. In the example entry a constraint and various preprocessors are specified. The constraint classes are built into the server framework and check certain conditions are met before further processing is done. In this case, the supplied PAN (Personal account number or the number embossed on a credit card) is checked to make sure it is the correct length. The preprocessor takes the supplied PAN and maps it to a unique ID, which is then used to index the account in subsistent operations. Each preprocessor falls through to the next so the order is important.
+An additional task is also run in this instance. The event is written to an audit file for logging purposes. (The audit file is a separate database supplied by Mastercard called the data-warehouse. The idea is to offload logging from the main system \todo{Confirm} )
+\todo{formatting again}
+\begin{verbatim}
+
+    <Handler
+        RequestType="GetVCNListRequest">
+        <Task
+            Class="com.orbiscom.pulse.oil.GetVCNListXMLHandler">
+
+            <Constraints>
+                <Attribute Name="Pan" Constraint="PanConstraint" />
+            </Constraints>
+
+            <OilProcessors>
+                <OilProcessor Class="com.orbiscom.pulse.oil.mapper.PanMapperProcessor" />
+                <OilProcessor Class="com.orbiscom.pulse.oil.obo.CheckThirdPartyAccessProcessor" />
+                <OilProcessor Class="com.orbiscom.pulse.oil.GetVCNListHandler" />
+            </OilProcessors>
+        </Task>
+
+        <Task
+            Class="com.orbiscom.atlas.mastercard.audit.AuditLogger"
+            EventType="com.mastercard.common.jal.events.EventType.ACCESS_CARDHOLDER_DATA"
+            AuditMessage="Get VCN List" >
+        </Task>
+        
+        <ErrorTask
+            Class="com.orbiscom.atlas.mastercard.audit.AuditLogger"
+            EventType="com.mastercard.common.jal.events.EventType.ACCESS_CARDHOLDER_DATA"
+            AuditMessage="A request to Get VCN List failed" >
+        </ErrorTask>
+    </Handler>
+
+\end{verbatim}
+\end{itemize}
+
+\cite{Orbiscom Payments Platform Technical Architecture}
+\cite{http://wiki.orbiscom.com/index.phpPlatform_Documentation}
+\cite{Cite more things so it doesn't looked as much like pasta}
+
 
 \section{Development Process}
 
