@@ -52,10 +52,48 @@
 
 \tableofcontents
 
+\todo{Titles are subject too (and probably should in a lot of cases) change}
 
 \section{Introduction}
 
-\section{Background}
+\subsection{Motivation}
+What is the internship; motivation and description
+
+As part of my undergraduate studies \todo{ugh, craaaaaaaaaap and probably the wrong tense} I have elected to participate in the internship program run by the School of Computer Science and Statistics in Trinity College Dublin \todo{Rewrite that abomination}. The main motivation for this is the personal belief that education is made meaningful by application \todo{Too much?}, that the context of a professional working environment would help to cement the knowledge gained in university. It should also draw attention to area of weakness that need to be improved upon.
+Additionally, a professional working environment has a substantially different focus to that of a university. While both depend on the individual to self educate to achieve a certain goal, the motivation for this, how they go about it, and what goals are set differ substantially. My hope was that an internship would remove the play-pen walls and make me accountable for what I achieved or failed to achieve. University has a focus on collaboration, but in the majority of cases assessment is carried out on and individual basis. When working on a team, an individuals efforts directly impact the work done by others and as such there is greater accountability for ones actions. I have experienced all of this during a previous, shorter internship and seen the benefit in my attitude towards work and study as well as my overall personal development.
+
+DESCRITPTION WHAT?
+
+\todo{Rewrite that awful shite above} 
+
+\subsection{Goals}
+? Beyond get working ASAP
+
+Upon arriving at Mastercard I was introduced to some of the team and my mentor, Peter Groarke \todo{Spell that}. We immediately set to work and a brief road map was laid out. No formal goals were decided but Peter and the others walked me through a series of steps:
+\begin{itemize}
+\item Set up a working development environment.
+\item Become familiar with software development life cycle at Mastercard and supporting infrastructure.
+\item Contribute functioning code.
+\end{itemize}
+The main objective was to put me to work as soon as possible. This was my own personal objective and, happily, seemed to be inline with the objective of my mentor. As far as I am aware, there was no overall plan for the entire internship at the beginning. An assessment of my skill level was needed before that could be considered.
+
+The first task assigned to me was to interface SMART with Cronos. SMART, Something Mastercard Authorization Rules Tool \todo{Get acronym} is an inhouse system testing tool used to send mock requests to the Retail API server. Cronos is another server used for retrieving certain system information. My own personal goal was to learn new and interesting programming concepts and technologies. \todo{MOAR}
+\todo{Seem wrong for a tech report}
+
+\subsection{Approach (State of the art)}
+Slightly reflective, what was my approach to the internship. Set goals with mentor, spent time learning system, learning new skills, development. Repeat steps 2 to 4. In reality is more development and learn as I go.
+
+As stated, my initial goal was to start contributing as quickly as possible. This meant checking working code into subversion. The first step was to setup a working development environment. 
+The majority of the first week was spent trying to install and configure a working GNU/Linux environment. The vast majority of the development work done in InControl targets Unix platforms. Linux is also my personal preference of operating system. The InControl department maintains a script used to automatically configure a new development environment. The idea was to simply setup a working Linux install and run the script. The first distribution I tried was one I had used for years. However, the updated version was considerably unstable when I attempted to deploy it. It took three days for me to identify the problem as the distribution, not the inhouse environment setup script. I switched distribution and had a working environment within hours. The next step was to become somewhat familiar with the InControl Platform. This consisted of reading any documentation I could get my hands on, experimenting with the system itself and looking through the system database, the core of the InControl platform.
+InControl have a substantial but somewhat poorly indexed wiki which become my main source of documentation, other than the developers. Aside from the InControl platform I also tried to understand how credit card transactions were routed and processed. This was necessary to give the InControl platform context.
+A large portion of my first few weeks was spent learning how 
+
+\subsection{Overview of contents}
+
+
+\section{Internship in Context}
+SDL goes here. Derive requirements of testing from literature; blackbox functionality testing. Derive rest of requirements from actual company requirements. Describe existing system, enough detail to give context (Already gone way beyond that, SHOE HORN IT).
+
 Orbiscom Ireland, acquired by Mastercard in 2009, develop a product called InControl. The acquisition allowed Mastercard to incorporate InControl into their Value Added Services, a range of products that tie in closely with their core business, the processing of electronic payments. Until 2010 Mastercard Ireland was still primarily concerned with the development of InControl. A division of Mastercard Labs was setup within Mastercard Ireland in 2011. As Mastercard continues to grow, more and more departments are being given a presence within Ireland. This report documents the activities and projects undertaken while working for InControl. Since their acquisition Orbiscom have become completely integrated into Mastercard and have ceased operating as Orbiscom entirely. InControl has been split into two different products. InControl Direct exists to support Orbiscoms original customers as is managed and maintained entirely within the InControl department. The second product, InControl is an adapted version of the original product. Where InControl Direct is deployed to and hosted by banks, InControl is hosted on BankNet, Mastercards global payments network. In order to explain the services offered by the InControl platform, it is useful to explain how the credit card payment process works.
 
 InControl and Orbiscom are used somewhat interchangeably in the rest of the document. Orbiscom is a keyword used throughout the code base. All of the packages still begin with com.orbiscom \todo{make italic}
@@ -211,6 +249,7 @@ The following is a list describing the behavior of a InControl server.
 
 </ProtocolHandler>
 \end{verbatim}
+\label{handlerset}
 An entry in a handler set follows. The example provided is a particularly complected specification to illustrate the widest possible range of functionality. A simple hander consists of a request type name and handler class. In the example entry a constraint and various preprocessors are specified. The constraint classes are built into the server framework and check certain conditions are met before further processing is done. In this case, the supplied PAN (Personal account number or the number embossed on a credit card) is checked to make sure it is the correct length. The preprocessor takes the supplied PAN and maps it to a unique ID, which is then used to index the account in subsistent operations. Each preprocessor falls through to the next so the order is important.
 
 \todo{formatting again}
@@ -348,8 +387,21 @@ An example XML request is shown, populated with mock data.
 
 \subsection{Virtual Card Authorization}
 
+
+\cite{Orbiscom Payments Platform Technical Architecture}
+\cite{http://wiki.orbiscom.com/index.phpPlatform_Documentation}
+\cite{Cite more things so it doesn't looked as much like pasta, and spread them thought the text}
+\cite{Also cite source code all over the place}
+\cite{Stored procedure for dummys}
+
+\section{SMART}
+Objectives. Describe SMART. Describe what was done (BUGS!). How were bugs tested / found?. Don't forget the impacted work on Cronos / Pulse. OIL goes here I guess.
+
+Something Mastercard Authorization Rules Tool \todo{Get acronym} is an in-house platform testing tool used to send mock data to the Retail API Server. The bulk of platform testing preformed within InControl is done manually. SMART is used to somewhat simplify this process by providing a GUI application to generate mock requests for a wide range of possible usage scenarios. SMART began as a small application to generate account level services / spend \todo{which one?} rule sets and submit them to the Retail API Server. Over time it grew into a testing platform in it's own right, capable of exploiting the vast majority of functionality offered by the Retail API Server and thus the InControl Platform.
+
 \subsection{OIL}
-Orbiscom Interface Language is an in house Interface Definition Language. It is used to specify how various components communicate with each other. It can be used to specify basic data objects, request definitions and their behavior. It is a fully fledged language with its own compiler. The compiler generates program code \todo{How is not just a code generator?} that can then be compiled. At the moment, Java and Flex \todo{Correct?} can be generated using OIL.
+Orbiscom Interface Language is an in house Interface Definition Language. It is used to specify how various components communicate with each other. It can be used to specify basic data objects, request definitions and their behavior. I used OIL extensively throughout the internship. There was some existing documentation that was helpful, but the bulk to the knowledge I acquired was from asking questions and reading the OIL grammar file. The OIL grammar file is a standard Backus–Naur Form grammar and was quite easy to read because BNF grammars were covered extensively in the Discrete Mathematics and Compiler Design courses taken in second and third year respectively. There were some difficulties surrounding the implementation of the OIL compiler. Functionality described in the grammar was not implemented in the compiler. The most prominent being the inability to set default values for request parameters. \todo{Draw more attention to the fact I found this?}
+OIL is a fully fledged language with its own compiler. The compiler generates program code \todo{How is not just a code generator?} that can then be compiled. At the moment, Java and Flex \todo{Correct?} can be generated using OIL.
 OIL is used throughout the InControl Platform. Virtualy every component uses it in some respect. Even the components that do not use OIL directly, e.g. do not call the OIL generated code, use OIL indirectly as all of the XML messages are generated by OIL classes.
 During my time at MasterCard I too used OIL extensively. If a new request is needed it must be created using OIL. There are several steps involved, beginning with creating the database code to service the request. The stored database procedure is invoked by and OIL request handler. This handler must be written manually. I wrote a script to automate this process somewhat. The handler is invoked by an OIL generated handler, which is configured to run when a specific request comes in. This request is again an OIL generated type. The steps to add a new request to a component called Cronos follows
 \subsubsection{Create the stored procedure}
@@ -430,20 +482,17 @@ The OIL procedure file maps the values returned by the stored procedure to the m
         }
     } 
 \end{verbatim}
+One important thing to note here is that the type definitions declared in the OIL definition file must be imported into the OIL procedures file. Another more subtle issue is the presence of duplicate column names in a result set. The values will always be taken from the first column in the result set. The easiest way I found to fix this was to modify the stored procedure to rename the conflicting columns in the result set. Oracle makes this very easy, the column name need only be appended with the desired name, i.e. \textit{ table\_name.column\_name "desired\_name" }
 
-\cite{Orbiscom Payments Platform Technical Architecture}
-\cite{http://wiki.orbiscom.com/index.phpPlatform_Documentation}
-\cite{Cite more things so it doesn't looked as much like pasta, and spread them thought the text}
-\cite{Also cite source code all over the place}
+The OIL compiler is then ran against the files which outputs several classes per request.  The final step is to write a handler. The handler is executed by the server on receiving a particular request, mapped in the config files as outlined on page \pageref{handlerset}
+
 \cite{Stored procedure for dummys}
+\cite{http://wiki.orbiscom.com/index.php/OIL}
 
-
-\section{Development Process}
-
-\section{SMART}
-
+\section{Web Admin Console}
+Objectives. Describe Web Admin Console. Describe what was done (BUGS!). How were bugs tested / found?. Don't forget the impacted work on Cronos.
 \section{Conclusion}
-
+Technical Conclusion. Goals. BCS goals.
 \section{References}
 
 \section{Appendices}
