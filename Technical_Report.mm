@@ -92,7 +92,7 @@
 </node>
 <node COLOR="#111111" CREATED="1342371763352" ID="ID_1290825032" MODIFIED="1342375858793" TEXT="Describe exisiting system">
 <edge COLOR="#111111" WIDTH="thin"/>
-<node CREATED="1342373523862" ID="ID_198579873" MODIFIED="1342375858794">
+<node CREATED="1342373523862" ID="ID_198579873" MODIFIED="1342378742408">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -105,7 +105,7 @@
       The rapid sign up if the new issuers and the need to
     </p>
     <p>
-      automate exisiting manual or smei-maunal tasks
+      automate exisiting manual or semi-maunal tasks
     </p>
   </body>
 </html>
@@ -144,12 +144,14 @@
 <icon BUILTIN="full-4"/>
 <node COLOR="#111111" CREATED="1342371878815" ID="ID_1066911691" MODIFIED="1342375858800" TEXT="Objectives">
 <edge COLOR="#111111" WIDTH="thin"/>
+<node CREATED="1342377189582" ID="ID_864219014" MODIFIED="1342377194610" TEXT="I took ownership"/>
 </node>
 <node COLOR="#111111" CREATED="1342371886440" ID="ID_548050359" MODIFIED="1342375858801" TEXT="Describe smart">
 <edge COLOR="#111111" WIDTH="thin"/>
 <node COLOR="#111111" CREATED="1342372266236" ID="ID_664773256" MODIFIED="1342375858801" TEXT="How it communicates is described in exisitng system section">
 <edge COLOR="#111111" WIDTH="thin"/>
 </node>
+<node CREATED="1342377032086" ID="ID_251441861" MODIFIED="1342377058153" TEXT="Window into platform, lots of missclassified errors"/>
 </node>
 <node COLOR="#111111" CREATED="1342371892396" ID="ID_1857923824" MODIFIED="1342375858801" TEXT="Describe what was done BUGS">
 <edge COLOR="#111111" WIDTH="thin"/>
