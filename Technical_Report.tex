@@ -416,9 +416,10 @@ In order to accomplish this I had to learn how to interface with the existing In
 \end{itemize}
 The main problem encountered while trying to initially use SMART was configuration. As previously described \todo{Previously describe it!}, most developers have slightly different ways of doing things. I was unaware of a running instance of the Retail API server because the developer I asked never worked on it, and their workflow usually involved running any needed components locally. An instance of the Retail API Server was setup on my local machine. Terra automated this process to a large extent but some configuration information still had to be specified manually. Once this was done some time was spent using SMART. 
 
-\todo{Explain code structure + diagram}
+\todo{Explain code structure + diagram. MVC etc}
+\cite{Something on MVC}
 
-
+Because Cronos was just another generic server component it was assumed that interfacing SMART with it would be relatively straightforward. The communication code for the Retail API Server had been used in SMART for years. To isolate the Cronos specific code, several sub packages were created within SMARTs MVC structure. \cite{Something about reusablity through modularity}
 \subsection{Maintenance}
 SMART is window into platform, lots of errors not my fault
 
