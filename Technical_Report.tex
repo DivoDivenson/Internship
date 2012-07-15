@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt, titlepage]{article}
+\documentclass[a4paper, 11pt, titlepage]{article}
 %\usepackage{color}
 %\definecolor{light-gray}{gray}{0.95}
 
@@ -397,9 +397,30 @@ An example XML request is shown, populated with mock data.
 \section{SMART}
 Objectives. Describe SMART. Describe what was done (BUGS!). How were bugs tested / found?. Don't forget the impacted work on Cronos / Pulse. OIL goes here I guess.
 
-Something Mastercard Authorization Rules Tool \todo{Get acronym} is an in-house platform testing tool used to send mock data to the Retail API Server. The bulk of platform testing preformed within InControl is done manually. SMART is used to somewhat simplify this process by providing a GUI application to generate mock requests for a wide range of possible use cases. SMART began as a small application to generate account level services / spend \todo{which one?} rule sets and submit them to the Retail API Server. Over time it grew into a testing platform in it's own right, capable of exploiting the vast majority of functionality offered by the Retail API Server and thus the InControl Platform. \todo{Some screen shots} SMART is used by InControl developers, the InControl Quality Assurance department and several other offshore departments involved in the development and testing of InControl. The vast majority of work preformed during the internship involved the development and maintenance of SMART. The work done can be split into two categories, integration of SMART with Cronos and maintenance.
+Something Mastercard Authorization Rules Tool \todo{Get acronym} is an in-house platform testing tool used to send mock data to the Retail API Server. The bulk of platform testing preformed within InControl is done manually. SMART is used to somewhat simplify this process by providing a GUI application to generate mock requests for a wide range of possible use cases. It began as a small application to generate account level services / spend \todo{which one?} rule sets and submit them to the Retail API Server. Over time it grew into a testing platform in it's own right, capable of exploiting the vast majority of functionality offered by the Retail API Server and thus the InControl Platform. SMART provides an interface into a reasonable slice of InControl platform functionality. The InControl platforms main function is to provide virtual card numbers and enforce rules associated with them. SMART allows for the creation of virtual and real card numbers, enabling InControl services on those cards and assigning various controls and services.
+
+\todo{Some screen shots} SMART is used by InControl developers, the InControl Quality Assurance department and several other offshore departments involved in the development and testing of InControl. The vast majority of work preformed during the internship involved the development and maintenance of SMART. The work done can be split into two categories, integration of SMART with Cronos and maintenance.
+
+\todo{Detail exact functions, dont forget sending raw XML to other components}
+
+\subsection{Cronos}
+Cronos is a dynamic InControl server. It provides functionality that is not exposed to an end user or issuer. It's purpose is to help automate some of the steps needed when adding a new issuer into the InControl system. Adding a new customer is not a trivial process. There are several significant database inserts required. These steps differ depending on the product the issuer intends to use. A large amount of the set up data is static and thus a large amount of the set up process can be automated. Cronos can also be used to retrieve certain information from the system. \todo{More background?}
+I was tasked with extending SMART to allow easy interaction with Cronos. There was no existing way of communicating with Cronos other than sending raw XML requests. The desire was to have SMART provide a GUI interface to create these requests and view the responses.
+In order to accomplish this I had to learn how to interface with the existing InControl components. The amount of time taken to do this was vastly underestimated as I had no comprehension of the code complexity of a commercially developed software platform. To complete the work successfully I broke the task into several subtasks; \todo{Should this go in the approach? Probably}
+\begin{itemize}
+\item Download, configure and use SMART.
+\item Become familiar with the structure of code SMART.
+\item Get basic communication with Cronos working.
+\item Create an interface for Cronos in SMART.
+\item Add support for all of the Cronos requests into SMART.
+\end{itemize}
+The main problem encountered while trying to initially use SMART was configuration. As previously described \todo{Previously describe it!}, most developers have slightly different ways of doing things. I was unaware of a running instance of the Retail API server because the developer I asked never worked on it, and their workflow usually involved running any needed components locally. An instance of the Retail API Server was setup on my local machine. Terra automated this process to a large extent but some configuration information still had to be specified manually. Once this was done some time was spent using SMART. 
+
+\todo{Explain code structure + diagram}
 
 
+\subsection{Maintenance}
+SMART is window into platform, lots of errors not my fault
 
 \subsection{OIL}
 Orbiscom Interface Language is an in house Interface Definition Language. It is used to specify how various components communicate with each other. It can be used to specify basic data objects, request definitions and their behavior. I used OIL extensively throughout the internship. There was some existing documentation that was helpful, but the bulk to the knowledge I acquired was from asking questions and reading the OIL grammar file. The OIL grammar file is a standard Backus–Naur Form grammar and was quite easy to read because BNF grammars were covered extensively in the Discrete Mathematics and Compiler Design courses taken in second and third year respectively. There were some difficulties surrounding the implementation of the OIL compiler. Functionality described in the grammar was not implemented in the compiler. The most prominent being the inability to set default values for request parameters. \todo{Draw more attention to the fact I found this?}
