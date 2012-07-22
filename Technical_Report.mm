@@ -34,8 +34,7 @@
       Development
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <edge COLOR="#111111" WIDTH="thin"/>
 </node>
 </node>
@@ -50,6 +49,8 @@
 <edge COLOR="#111111" WIDTH="thin"/>
 <node COLOR="#111111" CREATED="1342371774330" ID="ID_1617041107" MODIFIED="1342375858790" TEXT="QA, do a good bit on that">
 <edge COLOR="#111111" WIDTH="thin"/>
+<node CREATED="1342978777431" ID="ID_1554607542" MODIFIED="1342978816791" TEXT="Conforms to the processes defined in BCS SIGIST guidelines"/>
+<node CREATED="1342979364049" ID="ID_348749507" MODIFIED="1342979373313" TEXT="What methods are used?"/>
 </node>
 <node CREATED="1342376308046" ID="ID_1106584851" MODIFIED="1342376359894" TEXT="Everyone has different ways of going about&#xa;development and everyone has a slightly different environemnt">
 <node CREATED="1342376454785" ID="ID_1638611067" MODIFIED="1342376511388">
@@ -65,8 +66,7 @@
       ie, Low level tecnical vs user facing web app, do that as an example
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -86,8 +86,7 @@
       Derive the rest of the reuirements from actual comapny requirement
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <edge COLOR="#111111" WIDTH="thin"/>
 </node>
 <node COLOR="#111111" CREATED="1342371763352" ID="ID_1290825032" MODIFIED="1342375858793" TEXT="Describe exisiting system">
@@ -108,8 +107,7 @@
       automate exisiting manual or semi-maunal tasks
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node CREATED="1342373670865" ID="ID_1340853366" MODIFIED="1342375858798" TEXT="Define issuer!"/>
 <node CREATED="1342373964873" ID="ID_701083034" MODIFIED="1342375858798" TEXT="Binranges and all the lingo"/>
@@ -146,12 +144,13 @@
 <edge COLOR="#111111" WIDTH="thin"/>
 <node CREATED="1342377189582" ID="ID_864219014" MODIFIED="1342377194610" TEXT="I took ownership"/>
 </node>
-<node COLOR="#111111" CREATED="1342371886440" ID="ID_548050359" MODIFIED="1342375858801" TEXT="Describe smart">
+<node COLOR="#111111" CREATED="1342371886440" ID="ID_548050359" MODIFIED="1342980150184" TEXT="Describe smart">
 <edge COLOR="#111111" WIDTH="thin"/>
 <node COLOR="#111111" CREATED="1342372266236" ID="ID_664773256" MODIFIED="1342375858801" TEXT="How it communicates is described in exisitng system section">
 <edge COLOR="#111111" WIDTH="thin"/>
 </node>
 <node CREATED="1342377032086" ID="ID_251441861" MODIFIED="1342377058153" TEXT="Window into platform, lots of missclassified errors"/>
+<node CREATED="1342980151664" ID="ID_1521734254" MODIFIED="1342980163727" TEXT="BCS does not give standards for tools"/>
 </node>
 <node COLOR="#111111" CREATED="1342371892396" ID="ID_1857923824" MODIFIED="1342375858801" TEXT="Describe what was done BUGS">
 <edge COLOR="#111111" WIDTH="thin"/>
@@ -176,6 +175,9 @@
 </node>
 <node COLOR="#111111" CREATED="1342371886440" ID="ID_1190298495" MODIFIED="1342375858803" TEXT="Describe WebAdmin Console">
 <edge COLOR="#111111" WIDTH="thin"/>
+<node CREATED="1342978762729" ID="ID_220412508" MODIFIED="1342978768243" TEXT="Spring">
+<node CREATED="1342978769136" ID="ID_367317637" MODIFIED="1342978770926" TEXT="IOC"/>
+</node>
 </node>
 <node COLOR="#111111" CREATED="1342371892396" ID="ID_600876885" MODIFIED="1342375858804" TEXT="Describe what was done BUGS">
 <edge COLOR="#111111" WIDTH="thin"/>
