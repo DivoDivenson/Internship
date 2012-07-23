@@ -509,6 +509,60 @@ One important thing to note here is that the type definitions declared in the OI
 
 The OIL compiler is then ran against the files which outputs several classes per request.  The final step is to write a handler. The handler is executed by the server on receiving a particular request, mapped in the config files as outlined on page \pageref{handlerset}
 
+\subsection{OIL Handler}
+An appropriate handler class must be created in order to service the request. The handler must implement OilProcessor, specifically the OIL processor generated above \todo{Hierarchy tree here}. The purpose of the second, generated processor is to enforce parameter types. \todo{Get input}. For simple queries very little is needed. The request parameters are extracted form the incoming request object. The stored procedure is then called with these parameters. The output is put into the response object and sent back to the calling client.
+
+\begin{verbatim}
+package com.orbiscom.cronos.oil;
+
+import java.sql.Connection;
+
+import com.orbiscom.apollo.core.MessageProcessingException;
+import com.orbiscom.atlas.core.ErrorMessage;
+import com.orbiscom.atlas.core.MessageContext;
+import com.orbiscom.atlas.xml.ApplicationHandler;
+import com.orbiscom.cronos.oil.proc.GetIssuerListOutput;
+import com.orbiscom.cronos.oil.proc.GetIssuerListProc;
+import com.orbiscom.oil.db.ProcFactory;
+import com.orbiscom.oil.db.StoredProcedureException;
+
+
+public class GetIssuerListHandler
+	implements GetIssuerListProcessor
+{
+	private final GetIssuerListProc iProc;
+
+	public GetIssuerListHandler()
+		throws StoredProcedureException
+	{
+		iProc = ProcFactory.getProc(GetIssuerListProc.class);
+	}
+
+	public void process(MessageContext ctx, GetIssuerListRequest request, GetIssuerListResponse response)
+		throws MessageProcessingException
+	{
+		try
+		{
+			Connection conn = ctx.getIssuerDatabaseConnection(ApplicationHandler.APPLICATION_DB);
+
+			GetIssuerListOutput out = iProc.call(ctx, conn);
+
+			response.setIssuers(out.getIssuers());
+		}
+		catch (MessageProcessingException ex)
+		{
+			throw ex;
+		}
+		catch (Exception ex)
+		{
+			throw new ErrorMessage.GeneralError(ex);
+		}
+	}
+}
+\end{verbatim}
+Writing these handler is particularly tedious. However, as they are usually very similar the process can, and was, automated with a simple script.
+The handler must then be added to the servers handler configuration file as shown on page \pageref{handlerset}
+
 \cite{Stored procedure for dummys}
 \cite{http://wiki.orbiscom.com/index.php/OIL}
 
