@@ -394,11 +394,21 @@ An example XML request is shown, populated with mock data.
 \section{SMART}
 Objectives. Describe SMART. Describe what was done (BUGS!). How were bugs tested / found?. Don't forget the impacted work on Cronos / Pulse. OIL goes here I guess.
 
+\subsection{Description}
+
 Something Mastercard Authorization Rules Tool \todo{Get acronym} is an in-house platform testing tool used to send mock data to the Retail API Server. The bulk of platform testing preformed within InControl is done manually. SMART is used to somewhat simplify this process by providing a GUI application to generate mock requests for a wide range of possible use cases. It began as a small application to generate account level services / spend \todo{which one?} rule sets and submit them to the Retail API Server. Over time it grew into a testing platform in it's own right, capable of exploiting the vast majority of functionality offered by the Retail API Server and thus the InControl Platform. SMART provides an interface into a reasonable slice of InControl platform functionality. The InControl platforms main function is to provide virtual card numbers and enforce rules associated with them. SMART allows for the creation of virtual and real card numbers, enabling InControl services on those cards and assigning various controls and services.
 
 \todo{Some screen shots} SMART is used by InControl developers, the InControl Quality Assurance department and several other offshore departments involved in the development and testing of InControl. The vast majority of work preformed during the internship involved the development and maintenance of SMART. The work done can be split into two categories, integration of SMART with Cronos and maintenance.
 
 \todo{Detail exact functions, dont forget sending raw XML to other components}
+
+\subsection{Objectives}
+
+\subsection{Work done}
+
+\subsection{Testing}
+
+
 
 \subsection{Cronos}
 Cronos is a dynamic InControl server. It provides functionality that is not exposed to an end user or issuer. It's purpose is to help automate some of the steps needed when adding a new issuer into the InControl system. Adding a new customer is not a trivial process. There are several significant database inserts required. These steps differ depending on the product the issuer intends to use. A large amount of the set up data is static and thus a large amount of the set up process can be automated. Cronos can also be used to retrieve certain information from the system. \todo{More background?}
