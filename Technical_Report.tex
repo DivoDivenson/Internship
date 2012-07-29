@@ -7,6 +7,7 @@
 \usepackage{url}
 \usepackage{tikz}
 \usepackage{ulem}
+\usepackage{setspace}
 \usetikzlibrary{trees}
 
 % Command for inserting a todo item
@@ -48,6 +49,7 @@
 \title{Technical Report}
 
 \begin{document}
+\onehalfspacing
 \maketitle
 
 \tableofcontents
@@ -116,6 +118,11 @@ The original InControl Software platform was designed as a generic server framew
 MasterCard operates Banknet, a global telecommunications network linking all MasterCard card issuers, acquirers and data processing centers into a single financial network. The operations hub is located in St. Louis, Missouri. Banknet uses the ISO 8583 protocol. The network is peer-to-peer mesh network with a set of endpoints. At no time during my internship did I have any involvement with any aspect of Banknet, but it does have one very notable effect on development within the company, the release cycles. Banknet is the core of Mastercards business. One of the most important aspects of an electronic payments service is reliability. If Mastercard is unable to serve it's customers in anyway it would mean a huge blow for their brand, a brand they have invested a substantial amount of money in. Banknet must be reliable. This is achieved in part with an extremely conservative attitude towards updating the software that controls the network. The servers can only be restarted twice a year. This takes a considerable amount of effort. Each node must be updated and "fliped" across the entire network. The network cannot be taken down completely during this time and their are many possible issues that are taken into account, hence the twice yearly cycle. There are a further two periods each year where the network can be updated without restarting the core services. All of this means Mastercard uses a quarterly release cycle, with fixed deadlines. Due to the inflexibility of the release cycle, great care is given to selecting new functionality to be included in each quarters release. These factors, a rigid deadline, fixed requirements and a very strong reliance of reliability in the end product are traits commonly associated with the waterfall design process, and this is the design process employed by Mastercard.
 
 The waterfall design methodology arguably fits well with the requirements surrounding Mastercards core network. Other services, such as InControl are not subject to the same requirements but are non the less hampered \todo{Should probably remove} by the employment of waterfall. During my time at Mastercard a switch an agile design process was beginning to get underway within InControl.\cite{I had a source here but it seems it was lost}
+
+\subsection{Software development life-cycle}
+
+\subsubsection{Terra}
+\label{Terra}
 
 \section{Existing System}
 
@@ -394,24 +401,20 @@ An example XML request is shown, populated with mock data.
 \section{SMART}
 Objectives. Describe SMART. Describe what was done (BUGS!). How were bugs tested / found?. Don't forget the impacted work on Cronos / Pulse. OIL goes here I guess.
 
-\subsection{Description}
+\subsection{Overview}
 
 Something Mastercard Authorization Rules Tool \todo{Get acronym} is an in-house platform testing tool used to send mock data to the Retail API Server. The bulk of platform testing preformed within InControl is done manually. SMART is used to somewhat simplify this process by providing a GUI application to generate mock requests for a wide range of possible use cases. It began as a small application to generate account level services / spend \todo{which one?} rule sets and submit them to the Retail API Server. Over time it grew into a testing platform in it's own right, capable of exploiting the vast majority of functionality offered by the Retail API Server and thus the InControl Platform. SMART provides an interface into a reasonable slice of InControl platform functionality. The InControl platforms main function is to provide virtual card numbers and enforce rules associated with them. SMART allows for the creation of virtual and real card numbers, enabling InControl services on those cards and assigning various controls and services.
 
-\todo{Some screen shots} SMART is used by InControl developers, the InControl Quality Assurance department and several other offshore departments involved in the development and testing of InControl. The vast majority of work preformed during the internship involved the development and maintenance of SMART. The work done can be split into two categories, integration of SMART with Cronos and maintenance.
+\todo{Some screen shots}
 
-\todo{Detail exact functions, dont forget sending raw XML to other components}
 
 \subsection{Objectives}
-
-\subsection{Work done}
-
-\subsection{Testing}
+SMART is used by InControl developers, the InControl Quality Assurance department and several other offshore departments involved in the development and testing of InControl. The vast majority of work preformed during the internship involved the development and maintenance of SMART. The work done can be split into two categories, integration of SMART with Cronos and maintenance.
+SMART was my first task, so the initial goals were reasonably broad and changed as the work progressed. The first task, to integrate SMART with Cronos had two objectives. First, to have me produce some sort of meaningful contribution, and second to allow evaluation so future tasks could be planned with respect to my abilities. After this task was completed I was given official ownership of SMART and tasked with maintaining and updating it. 
 
 
-
-\subsection{Cronos}
-Cronos is a dynamic InControl server. It provides functionality that is not exposed to an end user or issuer. It's purpose is to help automate some of the steps needed when adding a new issuer into the InControl system. Adding a new customer is not a trivial process. There are several significant database inserts required. These steps differ depending on the product the issuer intends to use. A large amount of the set up data is static and thus a large amount of the set up process can be automated. Cronos can also be used to retrieve certain information from the system. \todo{More background?}
+\subsubsection{Cronos}
+Cronos is a dynamic InControl server. It provides functionality that is not exposed to an end user or issuer. It's purpose is to help automate some of the steps needed when adding a new issuer into the InControl system. Adding a new issuer is not a trivial process. There are several significant database inserts required. These steps differ depending on the product the issuer intends to use. A large amount of the set up data is static and thus a large amount of the set up process can be automated. Cronos can also be used to retrieve certain information from the system. \todo{More background?}
 I was tasked with extending SMART to allow easy interaction with Cronos. There was no existing way of communicating with Cronos other than sending raw XML requests. The desire was to have SMART provide a GUI interface to create these requests and view the responses.
 In order to accomplish this I had to learn how to interface with the existing InControl components. The amount of time taken to do this was vastly underestimated as I had no comprehension of the code complexity of a commercially developed software platform. To complete the work successfully I broke the task into several subtasks; \todo{Should this go in the approach? Probably}
 \begin{itemize}
@@ -423,8 +426,39 @@ In order to accomplish this I had to learn how to interface with the existing In
 \end{itemize}
 The main problem encountered while trying to initially use SMART was configuration. As previously described \todo{Previously describe it!}, most developers have slightly different ways of doing things. I was unaware of a running instance of the Retail API server because the developer I asked never worked on it, and their work flow usually involved running any needed components locally. An instance of the Retail API Server was setup on my local machine. Terra automated this process to a large extent but some configuration information still had to be specified manually. Once this was done some time was spent using SMART. 
 
+\subsubsection{Maintenance}
+As SMART is a testing tool I began to research software testing and read some of the surrounding literature. I quickly realized that while there is a lot of information and discussion about how to test software, what to look for and the strengths of a particular method over another, there is very little on how to implement the tests themselves. The Standard for Software Component Testing, produced by the British Computer Society does not describe how to achieve the required attributes of any test process \cite{BCS paper, 1.5.6}. This seemed odd at first, but after further reading I understood such a description is impossible. The essence of a software entity is a construct of interlocking concepts. The difficulty in software development is the specification, design, and testing of this conceptual construct, not the construction nor its verification. \cite{No Silver Bullet, second section i guess} Every piece of software has a different set of requirements and thus a different design. There is no true standard for developing software so there is no true standard for testing it, just a collection of additional concepts that may be employed. 
+\begin{quote}
+In a broader view, we may start to question the utmost purpose of testing. Why do we need more effective testing methods anyway, since finding defects and removing them does not necessarily lead to better quality. An analogy of the problem is like the car manufacturing process. In the craftsmanship epoch, we make cars and hack away the problems and defects. But such methods were washed away by the tide of pipelined manufacturing and good quality engineering process, which makes the car defect-free in the manufacturing phase. This indicates that engineering the design process (such as clean-room software engineering) to make the product have less defects may be more effective than engineering the testing process. Testing is used solely for quality monitoring and management, or, "design for testability". This is the leap for software from craftsmanship to engineering.
+\end{quote} \cite{Software testing Carnegie Mellon University}
+
+The testing done within InControl is done to ensure platform reliability. This is carried out through black box testing using techniques such as Equivalence Partitioning and Boundary Value Analysis. As the specification of the inputs used in these techniques is essentially arbitrary, SMART must allow for arbitrary input. In practice, SMART is able to construct structurally correct InControl XML requests containing arbitrary data elements. SMART does preform some checks before sending the requests. I decided to leave practical checks, such as not allowing the user to input a string when a number is expected, but removed any controls I saw as blocking possible test cases. The argument can be made that any checking done by a testing tool is blocking a valid test, but there are practical considerations to make. SMART has a small group of user, people who spend many hours per week using it. Some checks done within SMART exist to make the users life easier. Further more, some of the basic checks are simply out of scope for testing. It is well understood that entering a string where a number is expected may happen, and there are well established mechanisms already implemented to handle such cases. Conversely, there are scenarios that need to be tested. A card might be registered on the system with an expiry before the date of registration. The expected behavior here is ambiguous and depends on the design of the system, so it makes for a valid test case. This was the balance I tried to achieve while working on SMART.
+
+\todo{REFLECT ON THIS}
+
+\subsection{Description}
+
+SMART began as a very small Java GUI application to allow controls to be placed on card for testing. It has since grown into quite a substantial testing tool, consisting of over thirty thousand lines of code. Its high level function is very simple, to allow a user to easily create valid XML messages and send them to the retail API server. It has grown to be quite complex because of the varied nature of the requests it constructs. The UI contains most of the code, about twenty five thousand lines. It could well be argued there are many opportunists in the design to shrink this number down, as there is a lot of duplication, but it gives a clear indication on where the focus lies.
+
+The code follows an MVC type of model. This is reflected in the projects package structure \todo{Diagram of package structure}. 
+The model is supplied by external libraries. These libraries contain the request objects and their supporting data objects. All of these libraries are generated by the OIL compiler \pageref{OIL}. The OIL specifications for these libraries are contained within their respective components, e.g. Pulse is the library used to communicate with the Retail API Server and the OIL definition file is part of the Pulse project. The Pulse library is marked as a SMART dependency within the build system \pageref{Terra}. OIL is an interface definition language. The model, in it's entirety, is generated automatically. This automated process, a small simple specification transformed into many thousand source lines of code, helps to eliminate errors from the model almost entirely. Model objects are generally quite simplistic in nature but are often large, particularly when the model is considered as a whole. If they were written manually there would be many opportunities for error. The use of an IDL language also ensures consistency of the model design throughout the platform \cite{http://csis.pace.edu/~marchese/CS865/Papers/interface-definition-language.pdf}
+The controller, as expected contains the logic to translate the request and responses issued to and from the server into objects that can be represented to the user. This is also where it begins to become pretty clear that SMARTs design does not conform to an MVC structure very strictly. 
+
+
+
 \todo{Explain code structure + diagram. MVC etc}
 \cite{Something on MVC}
+
+\todo{Detail exact functions, dont forget sending raw XML to other components}
+
+
+\subsection{Work done}
+
+\subsection{Testing}
+
+
+
+
 
 Because Cronos was just another generic server component it was assumed that interfacing SMART with it would be relatively straightforward. The communication code for the Retail API Server had been used in SMART for years. To isolate the Cronos specific code, several sub packages were created within SMARTs MVC structure. \cite{Something about reusablity through modularity}
 
@@ -433,6 +467,7 @@ Because Cronos was just another generic server component it was assumed that int
 SMART is window into platform, lots of errors not my fault
 
 \subsection{OIL}
+\label{OIL}
 Orbiscom Interface Language is an in house Interface Definition Language. It is used to specify how various components communicate with each other. It can be used to specify basic data objects, request definitions and their behavior. I used OIL extensively throughout the internship. There was some existing documentation that was helpful, but the bulk to the knowledge I acquired was from asking questions and reading the OIL grammar file. The OIL grammar file is a standard Backus–Naur Form grammar and was quite easy to read because BNF grammars were covered extensively in the Discrete Mathematics and Compiler Design courses taken in second and third year respectively. There were some difficulties surrounding the implementation of the OIL compiler. Functionality described in the grammar was not implemented in the compiler. The most prominent being the inability to set default values for request parameters. \todo{Draw more attention to the fact I found this?}
 OIL is a fully fledged language with its own compiler. The compiler generates program code \todo{How is not just a code generator?} that can then be compiled. At the moment, Java and Flex \todo{Correct?} can be generated using OIL.
 OIL is used throughout the InControl Platform. Virtualy every component uses it in some respect. Even the components that do not use OIL directly, e.g. do not call the OIL generated code, use OIL indirectly as all of the XML messages are generated by OIL classes.

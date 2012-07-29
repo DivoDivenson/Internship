@@ -1,6 +1,6 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1342370977495" ID="ID_503289433" MODIFIED="1342375858783" STYLE="bubble" TEXT="Technial Report">
+<node CREATED="1342370977495" ID="ID_503289433" MODIFIED="1343578781163" STYLE="bubble" TEXT="Technial Report">
 <node COLOR="#111111" CREATED="1342371473988" ID="ID_1607575527" MODIFIED="1342375916380" POSITION="right" TEXT="Introduction">
 <edge COLOR="#111111" WIDTH="thin"/>
 <icon BUILTIN="full-1"/>
@@ -152,8 +152,11 @@
 <node CREATED="1342377032086" ID="ID_251441861" MODIFIED="1342377058153" TEXT="Window into platform, lots of missclassified errors"/>
 <node CREATED="1342980151664" ID="ID_1521734254" MODIFIED="1342980163727" TEXT="BCS does not give standards for tools"/>
 </node>
-<node COLOR="#111111" CREATED="1342371892396" ID="ID_1857923824" MODIFIED="1342375858801" TEXT="Describe what was done BUGS">
+<node COLOR="#111111" CREATED="1342371892396" ID="ID_1857923824" MODIFIED="1343594604222" TEXT="Describe what was done BUGS">
 <edge COLOR="#111111" WIDTH="thin"/>
+<node CREATED="1343579742866" ID="ID_883916321" MODIFIED="1343579746065" TEXT="JIRA"/>
+<node CREATED="1343594604223" ID="ID_1268088021" MODIFIED="1343594616072" TEXT="Seperate sub-packages for cronos"/>
+<node CREATED="1343594927113" ID="ID_411740670" MODIFIED="1343594937784" TEXT="Cronos stuff does more of a proper MVC"/>
 </node>
 <node COLOR="#111111" CREATED="1342371903895" ID="ID_1388699857" MODIFIED="1342375858802" TEXT="How were bugs tested / found">
 <edge COLOR="#111111" WIDTH="thin"/>
