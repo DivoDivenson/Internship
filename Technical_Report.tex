@@ -493,11 +493,12 @@ These requests are then stored inside one of several hashmaps, one for each type
 The requests now in memory were useless if their members could not be accessed. The first method used to achieve this was reflection.Reflection allows a Java program to introspect upon itself at runtime. A list of method names can be extracted from an object and called. All of this is done at runtime, with no compile time knowledge of the objects structure needed.\cite{http://java.sun.com/developer/technicalArticles/ALT/Reflection/}
 This approach worked but the code produced was obtuse. Java is a statically typed language and was not designed to support this kind of behavior. After querying some developers and some reading it was decided that reflection should be used sparingly. Different languages have different strengths and encourage development in certain ways. Departure from these conventions, while at times necessary, can produce code that is very difficult to read. Maintenance is widely considered to be the largest cost in software development \todo{CITATION NEEDED}. If a piece of code is quick to develop but very hard to understand then it is often regarded as a bad piece of code. \todo{There is not citation, coding is based off heuristics etc}
 For this reason it was decided a different solution to the problem was needed. Thankfully the InControl framework, specifically OIL, was designed with this exact scenario in mind. As stated (p. \pageref{OILIntro}) OIL generated all of the requests objects and their associated data types. The resulting objects are substantially more complicated than a collection of simple data types and their accessors. An OilBean, an abstract class extended by every OIL created object, contains a hashmap of members objects. These members can be accessed via unique accessors or directly via the hashmap. This completely eliminated the need for reflection. The OIL generated classes could be introspected at runtime simply by accessing this hashmap. The map also contained metadata for each member. The metadata object contains information such as member type, any constraints, the container (i.e. If it was a list of attributes) as well as several other bits of information. This allowed the OIL objects to accessed in a static manner, and resulted in code that was substantially easier to understand and write.
-The hashmap of members was also used to generate the user interface at runtime. Member type could also be enforced thanks to the supplied metadata.
+The hashmap of members was also used to generate the user interface at runtime. 
 
 GENERATED UI NOT GREAT BUT MUCH BETTER THAN HARDCODING EVERYTHING TOO FUCK
 
-\todo{Screenshots of smarts auto-generated UI}
+
+\includegraphics[width=\textwidth]{smart_generated_ui.png}
 
 
 
