@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.2.16)  9 AUG 2012 17:52
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.2.16)  9 AUG 2012 18:24
 entering extended mode
  %&-line parsing enabled.
 **./Technical_Report.tex
@@ -909,7 +909,12 @@ Overfull \hbox (43.05746pt too wide) in paragraph at lines 544--544
 [][] 
  []
 
-[38] <ipc_velocity.png, id=141, 542.025pt x 313.17pt>
+[38]
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 556--556
+[][] 
+ []
+
+<ipc_velocity.png, id=141, 542.025pt x 313.17pt>
 File: ipc_velocity.png Graphic file (type png)
  <use ipc_velocity.png>
 [39]
@@ -920,28 +925,22 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.555 ...ng}{IPC Velocity control user interface.}
+l.557 ...ng}{IPC Velocity control user interface.}
                                                   
+? ^^[[A
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, E to edit your file,
+1 or ... or 9 to ignore the next 1 to 9 tokens of input,
+H for help, X to quit.
 ? 
 
-LaTeX Warning: Citation `Something about reusablity through modularity' on page
- 40 undefined on input line 563.
-
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no “ in font cmr10!
-
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 568--568
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 559--559
 [][] 
  []
 
 
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 569--569
-[][] 
- []
-
-
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 569--569
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 563--563
 [][] 
  []
 
@@ -950,108 +949,142 @@ Overfull \hbox (43.05746pt too wide) in paragraph at lines 569--569
 LaTeX Warning: Marginpar on page 41 moved.
 
 
-LaTeX Warning: Marginpar on page 41 moved.
-
-
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 573--573
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 569--569
 [][] 
  []
 
 
-Overfull \hbox (38.82678pt too wide) in paragraph at lines 573--575
+LaTeX Warning: Citation `Something about reusablity through modularity' on page
+ 41 undefined on input line 575.
+
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no “ in font cmr10!
+
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 580--580
+[][] 
+ []
+
+
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 581--581
+[][] 
+ []
+
+
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 581--581
+[][] 
+ []
+
+[41]
+
+LaTeX Warning: Marginpar on page 42 moved.
+
+
+LaTeX Warning: Marginpar on page 42 moved.
+
+
+LaTeX Warning: Marginpar on page 42 moved.
+
+
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 585--585
+[][] 
+ []
+
+
+Overfull \hbox (38.82678pt too wide) in paragraph at lines 585--587
 \OT1/cmr/m/n/10.95 valid. Stored pro-ce-dures are saved to \OT1/cmr/m/it/10.95 
 re-lease\OT1/cmr/m/n/10.95 /database/procedures/src/o[]\OT1/cmr/m/it/10.95 modu
 le\OT1/cmr/m/n/10.95 .pls,
  []
 
-[41]
-Overfull \hbox (151.63321pt too wide) in paragraph at lines 594--594
+[42]
+Overfull \hbox (151.63321pt too wide) in paragraph at lines 606--606
 []            \OT1/cmtt/m/n/10.95 SELECT issuer_name, authentication_type, auth
 orisation_type, session_timeout,[] 
  []
 
 
-Overfull \hbox (266.60696pt too wide) in paragraph at lines 594--594
+Overfull \hbox (266.60696pt too wide) in paragraph at lines 606--606
 []            \OT1/cmtt/m/n/10.95 authenticate_pan_password, allow_change_email
 _addr, allow_set_user_name, create_date, update_date[] 
  []
 
-[42]
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 630--630
+[43]
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 642--642
 [][] 
  []
 
-[43]
-Overfull \hbox (13.6647pt too wide) in paragraph at lines 649--649
+[44]
+Overfull \hbox (13.6647pt too wide) in paragraph at lines 661--661
 []                \OT1/cmtt/m/n/10.95 Number AuthenticationType <= authenticati
 on_type;[] 
  []
 
 
-Overfull \hbox (2.16733pt too wide) in paragraph at lines 649--649
+Overfull \hbox (2.16733pt too wide) in paragraph at lines 661--661
 []                \OT1/cmtt/m/n/10.95 String AuthorisationType <= authorisation
 _type;[] 
  []
 
 
-Overfull \hbox (76.90027pt too wide) in paragraph at lines 649--649
+Overfull \hbox (76.90027pt too wide) in paragraph at lines 661--661
 []                \OT1/cmtt/m/n/10.95 String AuthenticatePanPassword <= authent
 icate_pan_password;[] 
  []
 
 
-Overfull \hbox (48.15683pt too wide) in paragraph at lines 649--649
+Overfull \hbox (48.15683pt too wide) in paragraph at lines 661--661
 []                \OT1/cmtt/m/n/10.95 String AllowChangeEmailAddr <= allow_chan
 ge_email_addr;[] 
  []
 
 
-Overfull \hbox (2.16733pt too wide) in paragraph at lines 649--649
+Overfull \hbox (2.16733pt too wide) in paragraph at lines 661--661
 []                \OT1/cmtt/m/n/10.95 String AllowSetUserName <= allow_set_user
 _name;[] 
  []
 
 
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 655--655
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 667--667
 [][] 
  []
 
 
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 655--655
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 667--667
 [][] 
  []
 
-[44]
 
 LaTeX Warning: Marginpar on page 45 moved.
 
-
-Overfull \hbox (220.61746pt too wide) in paragraph at lines 704--704
+[45]
+Overfull \hbox (220.61746pt too wide) in paragraph at lines 716--716
 []\OT1/cmtt/m/n/10.95 public void process(MessageContext ctx, GetIssuerListRequ
 est request, GetIssuerListResponse response)[] 
  []
 
-[45]
-Overfull \hbox (128.63846pt too wide) in paragraph at lines 704--704
+
+Overfull \hbox (128.63846pt too wide) in paragraph at lines 716--716
 []\OT1/cmtt/m/n/10.95 Connection conn = ctx.getIssuerDatabaseConnection(Applica
 tionHandler.APPLICATION_DB);[] 
  []
 
+[46]
 
-LaTeX Warning: Citation `Stored procedure for dummys' on page 46 undefined on i
-nput line 708.
-
-
-LaTeX Warning: Citation `http://wiki.orbiscom.com/index.php/OIL' on page 46 und
-efined on input line 709.
+LaTeX Warning: Citation `Stored procedure for dummys' on page 47 undefined on i
+nput line 720.
 
 
-Overfull \hbox (4.17409pt too wide) in paragraph at lines 712--713
+LaTeX Warning: Citation `http://wiki.orbiscom.com/index.php/OIL' on page 47 und
+efined on input line 721.
+
+
+Overfull \hbox (4.17409pt too wide) in paragraph at lines 724--725
 \OT1/cmr/m/n/10.95 Objectives. De-scribe Web Ad-min Con-sole. De-scribe what wa
 s done (BUGS!).
  []
 
-[46] [47] (./Technical_Report.aux)
+[47] (./Technical_Report.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1060,10 +1093,10 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 7706 strings out of 495061
- 137252 string characters out of 1182621
- 195084 words of memory out of 3000000
- 10733 multiletter control sequences out of 15000+50000
+ 7718 strings out of 495061
+ 137600 string characters out of 1182621
+ 195486 words of memory out of 3000000
+ 10745 multiletter control sequences out of 15000+50000
  9790 words of font info for 35 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  47i,9n,49p,1857b,611s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1075,7 +1108,7 @@ lic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
 /cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.p
 fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sh
 are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Technical_Report.pdf (48 pages, 375859 bytes).
+Output written on Technical_Report.pdf (48 pages, 379161 bytes).
 PDF statistics:
  202 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

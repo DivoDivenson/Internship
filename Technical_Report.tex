@@ -540,7 +540,7 @@ The final factor is the nature of QAs test cases. A certain chunk of Retail API 
 A brief summary of the work done is included in the appendices \todo{SVN LOG}
 
 \subsubsection{New functionality}
-After it was established I had the capacity to maintain SMART I was tasked with updating it to allow testing of new features in the Retail API to be release in quarter three. This was done on a very tight schedule, the first release was to be made to QA three days after the task had been assigned. This release was important to InControl. It had been decided to use InControl to combat fraud, within the German market at first. This was one if the biggest releases ever for InControl in terms of new issuers being on-boarded. The aim was to utilize the existing InControl rules, along with it's well developed support services to cut down on cross boarder fraud. The release window was tight in order to compete with similar a service being offered by another large credit card company.  There were a number of items that had to be completed in SMART;
+After it was established I had the capacity to maintain SMART I was tasked with updating it to allow testing of new features in the Retail API to be released in quarter three. This was done on a very tight schedule, the first release was to be made to QA three days after the task had been assigned. This release was important to InControl. It had been decided to use InControl to combat fraud, within the German market at first. This was one if the biggest releases ever for InControl in terms of new issuers being on-boarded. The aim was to utilize the existing InControl rules, along with it's well developed support services to cut down on cross boarder fraud. The release window was tight in order to compete with similar a service being offered by another large credit card company. Although SMART is by no means core to an InControl release, it does help speed up testing and ultimately the release cycle. There were a number of items that had to be completed in SMART;
 \todo{Make sure ALS and IPC rules are explained, pageref them}
 \begin{itemize}
 \item The addition of a new product, "Fraud Control", to be enabled on a card.
@@ -550,11 +550,23 @@ After it was established I had the capacity to maintain SMART I was tasked with 
 \item The addition of a new Multi De control with the IPC controls
 \end{itemize}
 These tasks varied substantially in complexity and together serves as a good illustration in the variance of work carried out on SMART. This was also the first time the existing SMART code had to be modified since my work began on it. Up until this point the work done was in relative isolation to the rest of SMART. Not only did these changes have to be implemented, the structure of SMART and how it operated had to be understand in some detail. Additionally, these changes were not yet completed within the Retail API, so once a feature was implemented there was not always a way to verify correct operation.
+
 The first task was a simple addition to the toplevel configuration file.
-A velocity control allows a spend limit to be applied to a card, either cumulative over a time period or a maximum allowed spend.
+
+A velocity control allows a spend limit to be applied to a card, either cumulative over a time period or a maximum allowed spend. This control was already implemented in the ALS controls section, so it was merely a matter of finding it and copying it across to the IPC section and changing the request sent out. In practice this functionality was not so trivial to copy as both the UI and the API needed several changes. This change was not tested as the corresponding call had yet been implemented in the Retail API server. This was my first exposure to seat of your pants coding. \todo{That will probably have to come out}
 \image{ipc_velocity.png}{IPC Velocity control user interface.}
 
-\subsection{Testing}
+IPC rules are applied to ranges of credit cards, specifically the bin range \todo{page ref}. An IPC rule set is assigned a name. This name is used to retrieve rules from the database for a range of cards. The new release mandated that the card number could be used to retrieve the associated IPC rule set. SMART was modified so they key used to retrieve the rules, the profile name or card number, could be specified by the user. The appropriate request was then called. No modification in how the rules were displayed was needed, save for not allowing rules to be updated when retrieved with a card number. These changes were relatively minor but still required a moderate amount of modification to the code.
+
+InControl has a control to limit card usage based on country. It was decided to group countries into regions and add it as a control. The existing Country control code was used. All that needed to be changed was the data assigned into the control, a list of regions as opposed to a list of countries, and the underlying request sent to the server. This control was to be added to both IPC and ALS rules. Due to SMARTs code structure, this meant a large amount of code had to be directly copied. This effectively duplicated the amount of time needed to test the change.
+
+The addition of the Multi De control was done in a similar way to the Region control. There was a preexisting De control \todo{What is a DE control}. Happily it had been implemented so the user could create multiple De controls withing the one interface. These were then assigned to the rule set as distinct controls. All that had to be done was take these distinct controls and assign their values into one Multi De control.
+
+These five tasks are representative of the changes I made to SMART with respect to the Retail API server functionality.  
+
+\subsubsection{Bug fixes and testing}
+
+After the fraud control work was completed I was assigned as product owner of SMART and charged with general maintenance. The InControl development team use a software package called "JIRA" to track bugs within the Dublin office. A typical JIRA report contains the effected components and release, the steps to reproduce the bug, the bug status, i.e. Fixed, In progress etc, the person who reported the bug and the person assigned to fix it. \todo{Mention that this somewhat exceeded the expectations of what I could do} 
 
 
 
