@@ -10,6 +10,12 @@
 \usepackage{setspace}
 \usetikzlibrary{trees}
 
+\newcommand
+{\image}[2]{\vspace{10 mm} \includegraphics[width=\textwidth]{#1}
+\begin{center} \caption{#2} \end{center}
+\vspace{10 mm}
+}
+
 % Command for inserting a todo item
 %http://midtiby.blogspot.ie/2007/09/todo-notes-in-latex.html
 \newcommand{\todo}[1]{%
@@ -453,10 +459,12 @@ Because SMART is used heavily by the QA team to interact with the Retail API ser
 \todo{Detail exact functions, dont forget sending raw XML to other components}
 
 
-\subsection{Work done}
-After reading some of SMARTs code, testing it's functionality and reading relevant InControl documentation work began the new features.
+
  
-\subsubsection{Cronos}
+\subsection{Cronos}
+After reading some of SMARTs code, testing it's functionality and reading relevant InControl documentation work began the new features. SMART had only interacted with the Retail API server. It was to be extended to interact with Cronos, another server within the InControl platform.
+
+\subsubsection{Initial work}
 The first goal set out was to get SMART to communicate with Cronos by sending a simple request. Cronos sub-packages in the API and View packages where created. A simple request object was created and sent in a requester object to the Cronos server and the response printed to the terminal. These first few steps took quite a while. There was some documentation but this initial work was based mainly off the existing code in SMART. The existing code in SMART seemed needlessly complicated and it was quickly assumed there was a better way of achieving the same result. The existing code in SMART for sending a request executes as follows:
 \begin{itemize}
 \item Each individual request has a unique trigger somewhere in the view, usually in the form of a button.
@@ -468,13 +476,15 @@ The first goal set out was to get SMART to communicate with Cronos by sending a 
 \item The model object populated by the response data is sent back to the view where the relevant data is displayed. In many instances, a single simple type is passed back up to the view instead.
 \end{itemize}
 I was unaware of the hierarchal structure of the requests at first but immediately questioned the need to manually deconstruct the model to XML. After talking one of the original system architects a far simpler approach was devised.
+\subsubsection{Generic approach}
 \begin{itemize}
 \item Trigger each request from the view. The trigger should populate a model to send. \label{cronos_generic_api}
 \item This model is passed into the API and sent to the server. Each request to be sent has a distinct representation, all of which extend a request interface. These request objects are contained within a requester object, which can also be used to send the requests.
 \item The request responses, which all implement the response interface, are passed back to the view where they are cast the relevant response and displayed appropriately.
 \end{itemize}
 This method when implemented saved a large amount of time. The controller was significantly smaller than the existing one used to communicate with the Retail API server, about 200 lines of code compared to 4000. It also required far fewer supporting objects. While the Cronos controller may not have had some of the more advanced features featured in the Retail API controller, the vast majority of the code cut out was strictly boiler plate.
-There was still the issue of having to manually create the request object in the view and populate it with data supplied by the user. This issue is a more complex one. The manner in which the user interacts with the data is quite important. However, as the initial task was to simply display lists of information it was decided that a table could be used to represent display the data. It was decided, although not know at the time, that there must be a way of doing this generically. The idea that every requests object must be created and populated manually was not one worth perusing because of the sheer amount of time it would take. There was also the problem that very little could be learned by writing large amounts of boiler plate code. The option to simply generate the code was also considered but such an approached would not solve the problem as the end result would still be a large amount of boiler plate code. Creating the requests dynamically proved to be difficult. I was not aware of any method that would allow be to create objects dynamically, i.e. to create and instance of an object and populate it without any knowledge of the object at compile time. The functionality desired was outlined and a solution was simple presumed to be possible. 
+\subsubsection{Dynamic approach}
+There was still the issue of having to manually create the request object in the view and populate it with data supplied by the user.This issue is a more complex one. The manner in which the user interacts with the data is quite important. However, as the initial task was to simply display lists of information it was decided that a table could be used to represent display the data. It was decided, although not know at the time, that there must be a way of doing this generically. The idea that every requests object must be created and populated manually was not one worth perusing because of the sheer amount of time it would take. There was also the problem that very little could be learned by writing large amounts of boiler plate code. The option to simply generate the code was also considered but such an approached would not solve the problem as the end result would still be a large amount of boiler plate code. Creating the requests dynamically proved to be difficult. I was not aware of any method that would allow be to create objects dynamically, i.e. to create and instance of an object and populate it without any knowledge of the object at compile time. The functionality desired was outlined and a solution was simple presumed to be possible. 
 After the work was done several developers pointed out that this was a somewhat unusual way to approach a problem. In order to properly design a piece of software some idea of how to implement it is required. The approach I took was one I see being encouraged during my time at university. The mentality of experimentation is actively encouraged. Admittedly, during course-work assignments there is always significantly more background information supplied. \todo{Reflect, may also be far too gushy}
 The desired functionality was as follows:
 \begin{itemize}
@@ -492,20 +502,57 @@ Request request = (Request) Class.forName(requestClass).newInstance();
 These requests are then stored inside one of several hashmaps, one for each type of requests, i.e. get, set, update, indexed by their human readable name.
 The requests now in memory were useless if their members could not be accessed. The first method used to achieve this was reflection.Reflection allows a Java program to introspect upon itself at runtime. A list of method names can be extracted from an object and called. All of this is done at runtime, with no compile time knowledge of the objects structure needed.\cite{http://java.sun.com/developer/technicalArticles/ALT/Reflection/}
 This approach worked but the code produced was obtuse. Java is a statically typed language and was not designed to support this kind of behavior. After querying some developers and some reading it was decided that reflection should be used sparingly. Different languages have different strengths and encourage development in certain ways. Departure from these conventions, while at times necessary, can produce code that is very difficult to read. Maintenance is widely considered to be the largest cost in software development \todo{CITATION NEEDED}. If a piece of code is quick to develop but very hard to understand then it is often regarded as a bad piece of code. \todo{There is not citation, coding is based off heuristics etc}
-For this reason it was decided a different solution to the problem was needed. Thankfully the InControl framework, specifically OIL, was designed with this exact scenario in mind. As stated (p. \pageref{OILIntro}) OIL generated all of the requests objects and their associated data types. The resulting objects are substantially more complicated than a collection of simple data types and their accessors. An OilBean, an abstract class extended by every OIL created object, contains a hashmap of members objects. These members can be accessed via unique accessors or directly via the hashmap. This completely eliminated the need for reflection. The OIL generated classes could be introspected at runtime simply by accessing this hashmap. The map also contained metadata for each member. The metadata object contains information such as member type, any constraints, the container (i.e. If it was a list of attributes) as well as several other bits of information. This allowed the OIL objects to accessed in a static manner, and resulted in code that was substantially easier to understand and write.
-The hashmap of members was also used to generate the user interface at runtime. 
+For this reason it was decided a different solution to the problem was needed. Thankfully the InControl framework, specifically OIL, was designed with this exact scenario in mind. As stated (p. \pageref{OILIntro}) OIL generated all of the requests objects and their associated data types. The resulting objects are substantially more complicated than a collection of simple data types and their accessors. An OilBean, an abstract class extended by every OIL created object, contains a hashmap of members objects. These members can be accessed via unique accessors or directly via the hashmap. This completely eliminated the need for reflection. The OIL generated classes could be introspected at runtime simply by accessing this hashmap. The map also contained metadata for each member. The metadata object contains information such as member type, any constraints, the container (i.e. If the member is a list of attributes) as well as several other bits of information. This allowed the OIL objects to accessed in a static manner, and resulted in code that was substantially easier to understand and write.
+The hashmap of members was also used to generate the user interface at runtime. The requests were partitioned by functionality so separate interfaces could be used to display them. Get, (sql select) requests return large amounts of information. There were two main considerations taken into account when displaying this information. The user should be able to view all of the information quickly, and have the ability to define filters to find the information they want. A table was used to allow the user to view the information quickly. The table is generated dynamically from the response data. Certain request responses contain values that can be used to index further requests. Each request can have a number of related requests specified in it's configuration.
 
-GENERATED UI NOT GREAT BUT MUCH BETTER THAN HARDCODING EVERYTHING TOO FUCK
+\begin{verbatim}
+<Request Name="Bin Ranges" Class="GetBinRangeList" >
+    <Related Name="Vcn Bin Range"/>
+</Request>
+\end{verbatim}
+
+This manifests to the user in the form of a right click menu. If a request has one or more related requests, the user can right click on any of the table items and choose from the related requests. The members of the selected row of response data are matched against the parameters to the selected requests. The matching is done by member name, i.e. If a response contains the member "CardId" it can be used to index a GetCardById request. When a match is found, the request is sent using the values from the selected row. This allows a user to quickly drill down through the data. Prior knowledge of what requests are related is needed when writing the configuration file. No checking is done at run time. If a request is specified as related and the parents response does not contain any related members and error is thrown.
+
+\image{smart_get_requests.png}{Table view of request response data and related requests.}
 
 
-\includegraphics[width=\textwidth]{smart_generated_ui.png}
+Response data can also be filtered. Custom filters can be defined on any column in the table. The user specifies a string to pattern match on. A basic match, analogous to an sql like filter, is then performed on all of the entries in that column. Any number of filters can be applied to any number of columns. These filters are then joined using an "and" operation, allowing the user to precisely locate a piece of information. Again, all of this is done at runtime based on the response data.
+
+\image{filters.png}{Filter creation.}
+
+Add and set requests (sql insert and update respectively) require a different user interface. The primary concern here is allowing the user to enter a number of parameters quickly. The parameters for a given request are used to populate a panel. This is done in a relatively simple manner. A grid is created and the attributes are inserted into the grid. An attribute consists of a label for the name and a component used to input data. The input components change based on the value of the attribute. The possibilities are a text-field restricted to a string or a number, or a combo-box for binary attributes. OIL allows default data to be specified when defining a request. This default data is hard-coded into the generated objects. If default data is present, the relevant UI elements are created with this default data already inserted. This saves the user from having to re-enter the data, but it can still be changed if desired.
+A slight concession was made when handling binary attributes. OIL does not have a binary type, only string and number. Binary attributes are simply strings that can only be "Y" or "N". If an attribute had a "Y" and "N" as default data, it was presumed to be a binary attribute and displayed as a combo-box. 
+Strict correctness is at times compromised to create a slightly better user experience. Automatically generating the user interface resulted a substantially less code, about two thousand lines compared to twenty thousand lines. However, unlike the API classes where most of the functionality was retained, the existing user interface contains a lot of unique functionality. The auto generated UI sacrifices much of this functionality in favor of a more generic approach. While this did save a lot of time writing the API, such an approach is harder to justify for a UI. Coding each UI individually, while liable to creating a large amount of redundant code as in SMART, leads to greater level of customization overall. 
+
+
+\image{smart_generated_ui.png}{UI for an AddIssuerScheme request}
 
 
 
 \todo{Reflect on using oil they way it was intended without instruction}
 
-\subsubsection{Maintenance}
+\subsection{Maintenance}
 
+After the work integrating Cronos was completed focus shifted to maintaining and updating SMART. SMART is used heavily by members of the Quality Assurance team within InControl, as well as several off-site teams. Due to this relatively intense usage bug reports are fairly frequent, some two hundred and twenty plus since work on SMART began in late 2010, the vast majority of which are closed. 
+There are a few important factors that contribute to the amount of bugs in SMART. The primary reason is shifting requirements. SMART began as a very small application to allow the creation of card controls. Over time it has evolved to leverage the majority of the functionality provided by the Retail API server. With each new release of the Retail API server comes new features. These updates must be reflected in SMART. Sometimes these new features are implemented in SMART after they are implemented in the Retail API, when QA is ready to begin testing. This was not always the case, but there were many times when I was made aware of new features within the Retail API because they broke some of SMARTS functionality.
+Another contributing factor is the nature of SMARTs usage. It is QAs main "window" into the Retail API server \todo{Too much?}, so many bugs are mis-classified as SMART issues when they are in fact problems withing the Retail API server.
+The final factor is the nature of QAs test cases. A certain chunk of Retail API functionality may or may not be tested to the same degree in each release. Typically, bugs in SMART are found when a certain piece of functionality is exercised extensively in-line with a particular test-case.
+A brief summary of the work done is included in the appendices \todo{SVN LOG}
+
+\subsubsection{New functionality}
+After it was established I had the capacity to maintain SMART I was tasked with updating it to allow testing of new features in the Retail API to be release in quarter three. This was done on a very tight schedule, the first release was to be made to QA three days after the task had been assigned. This release was important to InControl. It had been decided to use InControl to combat fraud, within the German market at first. This was one if the biggest releases ever for InControl in terms of new issuers being on-boarded. The aim was to utilize the existing InControl rules, along with it's well developed support services to cut down on cross boarder fraud. The release window was tight in order to compete with similar a service being offered by another large credit card company.  There were a number of items that had to be completed in SMART;
+\todo{Make sure ALS and IPC rules are explained, pageref them}
+\begin{itemize}
+\item The addition of a new product, "Fraud Control", to be enabled on a card.
+\item The addition of a velocity control within the "Issuer Portfolio Controls".
+\item Retrieval of rules associated with a card based of an ID.
+\item The addition of a new Region control within both the IPC and ALS controls.
+\item The addition of a new Multi De control with the IPC controls
+\end{itemize}
+These tasks varied substantially in complexity and together serves as a good illustration in the variance of work carried out on SMART. This was also the first time the existing SMART code had to be modified since my work began on it. Up until this point the work done was in relative isolation to the rest of SMART. Not only did these changes have to be implemented, the structure of SMART and how it operated had to be understand in some detail. Additionally, these changes were not yet completed within the Retail API, so once a feature was implemented there was not always a way to verify correct operation.
+The first task was a simple addition to the toplevel configuration file.
+A velocity control allows a spend limit to be applied to a card, either cumulative over a time period or a maximum allowed spend.
+\image{ipc_velocity.png}{IPC Velocity control user interface.}
 
 \subsection{Testing}
 
@@ -515,9 +562,6 @@ GENERATED UI NOT GREAT BUT MUCH BETTER THAN HARDCODING EVERYTHING TOO FUCK
 
 Because Cronos was just another generic server component it was assumed that interfacing SMART with it would be relatively straightforward. The communication code for the Retail API Server had been used in SMART for years. To isolate the Cronos specific code, several sub packages were created within SMARTs MVC structure. \cite{Something about reusablity through modularity}
 
-
-\subsection{Maintenance}
-SMART is window into platform, lots of errors not my fault
 
 \subsection{OIL}
 \label{OIL}
