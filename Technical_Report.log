@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.2.16)  9 AUG 2012 18:24
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.2.16)  10 AUG 2012 10:57
 entering extended mode
  %&-line parsing enabled.
 **./Technical_Report.tex
@@ -939,152 +939,209 @@ Overfull \hbox (43.05746pt too wide) in paragraph at lines 559--559
 [][] 
  []
 
-
+[40 <./ipc_velocity.png (PNG copy)>]
 Overfull \hbox (43.05746pt too wide) in paragraph at lines 563--563
 [][] 
  []
-
-[40 <./ipc_velocity.png (PNG copy)>]
-
-LaTeX Warning: Marginpar on page 41 moved.
 
 
 Overfull \hbox (43.05746pt too wide) in paragraph at lines 569--569
 [][] 
  []
 
-
-LaTeX Warning: Citation `Something about reusablity through modularity' on page
- 41 undefined on input line 575.
-
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no “ in font cmr10!
-
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 580--580
-[][] 
- []
-
-
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 581--581
-[][] 
- []
-
-
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 581--581
+<jira.jpg, id=148, 572.89032pt x 580.41844pt>
+File: jira.jpg Graphic file (type jpg)
+ <use jira.jpg>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 571--571
 [][] 
  []
 
 [41]
 
-LaTeX Warning: Marginpar on page 42 moved.
+! LaTeX Error: \caption outside float.
 
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.571 \image{jira.jpg}{A JIRA ticket.}
+                                      
+? 
 
-LaTeX Warning: Marginpar on page 42 moved.
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 574--574
+[][] 
+ []
 
-
-LaTeX Warning: Marginpar on page 42 moved.
-
-
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 585--585
+[42 <./jira.jpg>] [43]
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 590--590
 [][] 
  []
 
 
-Overfull \hbox (38.82678pt too wide) in paragraph at lines 585--587
+Overfull \hbox (6.65225pt too wide) in paragraph at lines 591--591
+[]\OT1/cmr/m/n/10.95 ENVIRONMENTS  
+ []
+
+
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 591--591
+[][] 
+ []
+
+
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 591--591
+[][] 
+ []
+
+<smart_chart.png, id=159, 652.4375pt x 1028.84375pt>
+File: smart_chart.png Graphic file (type png)
+ <use smart_chart.png>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 593--593
+[][] 
+ []
+
+[44]
+
+! LaTeX Error: \caption outside float.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.593 ...ications issued by the InControl system.}
+                                                  
+? 
+
+LaTeX Warning: Citation `Something about reusablity through modularity' on page
+ 45 undefined on input line 595.
+
+[45 <./smart_chart.png (PNG copy)>]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no “ in font cmr10!
+
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 600--600
+[][] 
+ []
+
+
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 601--601
+[][] 
+ []
+
+
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 601--601
+[][] 
+ []
+
+
+LaTeX Warning: Marginpar on page 46 moved.
+
+
+LaTeX Warning: Marginpar on page 46 moved.
+
+
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 605--605
+[][] 
+ []
+
+
+Overfull \hbox (38.82678pt too wide) in paragraph at lines 605--607
 \OT1/cmr/m/n/10.95 valid. Stored pro-ce-dures are saved to \OT1/cmr/m/it/10.95 
 re-lease\OT1/cmr/m/n/10.95 /database/procedures/src/o[]\OT1/cmr/m/it/10.95 modu
 le\OT1/cmr/m/n/10.95 .pls,
  []
 
-[42]
-Overfull \hbox (151.63321pt too wide) in paragraph at lines 606--606
+[46]
+
+LaTeX Warning: Marginpar on page 47 moved.
+
+
+Overfull \hbox (151.63321pt too wide) in paragraph at lines 626--626
 []            \OT1/cmtt/m/n/10.95 SELECT issuer_name, authentication_type, auth
 orisation_type, session_timeout,[] 
  []
 
 
-Overfull \hbox (266.60696pt too wide) in paragraph at lines 606--606
+Overfull \hbox (266.60696pt too wide) in paragraph at lines 626--626
 []            \OT1/cmtt/m/n/10.95 authenticate_pan_password, allow_change_email
 _addr, allow_set_user_name, create_date, update_date[] 
  []
 
-[43]
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 642--642
+[47] [48]
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 662--662
 [][] 
  []
 
-[44]
-Overfull \hbox (13.6647pt too wide) in paragraph at lines 661--661
+
+Overfull \hbox (13.6647pt too wide) in paragraph at lines 681--681
 []                \OT1/cmtt/m/n/10.95 Number AuthenticationType <= authenticati
 on_type;[] 
  []
 
 
-Overfull \hbox (2.16733pt too wide) in paragraph at lines 661--661
+Overfull \hbox (2.16733pt too wide) in paragraph at lines 681--681
 []                \OT1/cmtt/m/n/10.95 String AuthorisationType <= authorisation
 _type;[] 
  []
 
 
-Overfull \hbox (76.90027pt too wide) in paragraph at lines 661--661
+Overfull \hbox (76.90027pt too wide) in paragraph at lines 681--681
 []                \OT1/cmtt/m/n/10.95 String AuthenticatePanPassword <= authent
 icate_pan_password;[] 
  []
 
 
-Overfull \hbox (48.15683pt too wide) in paragraph at lines 661--661
+Overfull \hbox (48.15683pt too wide) in paragraph at lines 681--681
 []                \OT1/cmtt/m/n/10.95 String AllowChangeEmailAddr <= allow_chan
 ge_email_addr;[] 
  []
 
 
-Overfull \hbox (2.16733pt too wide) in paragraph at lines 661--661
+Overfull \hbox (2.16733pt too wide) in paragraph at lines 681--681
 []                \OT1/cmtt/m/n/10.95 String AllowSetUserName <= allow_set_user
 _name;[] 
  []
 
-
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 667--667
+[49]
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 687--687
 [][] 
  []
 
 
-Overfull \hbox (43.05746pt too wide) in paragraph at lines 667--667
+Overfull \hbox (43.05746pt too wide) in paragraph at lines 687--687
 [][] 
  []
 
 
-LaTeX Warning: Marginpar on page 45 moved.
+LaTeX Warning: Marginpar on page 50 moved.
 
-[45]
-Overfull \hbox (220.61746pt too wide) in paragraph at lines 716--716
+[50]
+Overfull \hbox (220.61746pt too wide) in paragraph at lines 736--736
 []\OT1/cmtt/m/n/10.95 public void process(MessageContext ctx, GetIssuerListRequ
 est request, GetIssuerListResponse response)[] 
  []
 
 
-Overfull \hbox (128.63846pt too wide) in paragraph at lines 716--716
+Overfull \hbox (128.63846pt too wide) in paragraph at lines 736--736
 []\OT1/cmtt/m/n/10.95 Connection conn = ctx.getIssuerDatabaseConnection(Applica
 tionHandler.APPLICATION_DB);[] 
  []
 
-[46]
 
-LaTeX Warning: Citation `Stored procedure for dummys' on page 47 undefined on i
-nput line 720.
-
-
-LaTeX Warning: Citation `http://wiki.orbiscom.com/index.php/OIL' on page 47 und
-efined on input line 721.
+LaTeX Warning: Citation `Stored procedure for dummys' on page 51 undefined on i
+nput line 740.
 
 
-Overfull \hbox (4.17409pt too wide) in paragraph at lines 724--725
+LaTeX Warning: Citation `http://wiki.orbiscom.com/index.php/OIL' on page 51 und
+efined on input line 741.
+
+
+Overfull \hbox (4.17409pt too wide) in paragraph at lines 744--745
 \OT1/cmr/m/n/10.95 Objectives. De-scribe Web Ad-min Con-sole. De-scribe what wa
 s done (BUGS!).
  []
 
-[47] (./Technical_Report.aux)
+[51] [52] (./Technical_Report.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1093,10 +1150,10 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 7718 strings out of 495061
- 137600 string characters out of 1182621
- 195486 words of memory out of 3000000
- 10745 multiletter control sequences out of 15000+50000
+ 7741 strings out of 495061
+ 138105 string characters out of 1182621
+ 195650 words of memory out of 3000000
+ 10765 multiletter control sequences out of 15000+50000
  9790 words of font info for 35 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  47i,9n,49p,1857b,611s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1108,9 +1165,9 @@ lic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
 /cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.p
 fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sh
 are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Technical_Report.pdf (48 pages, 379161 bytes).
+Output written on Technical_Report.pdf (53 pages, 544835 bytes).
 PDF statistics:
- 202 PDF objects out of 1000 (max. 8388607)
+ 220 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 43 words of extra memory for PDF output out of 10000 (max. 10000000)
 

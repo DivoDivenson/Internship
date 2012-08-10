@@ -566,13 +566,33 @@ These five tasks are representative of the changes I made to SMART with respect 
 
 \subsubsection{Bug fixes and testing}
 
-After the fraud control work was completed I was assigned as product owner of SMART and charged with general maintenance. The InControl development team use a software package called "JIRA" to track bugs within the Dublin office. A typical JIRA report contains the effected components and release, the steps to reproduce the bug, the bug status, i.e. Fixed, In progress etc, the person who reported the bug and the person assigned to fix it. \todo{Mention that this somewhat exceeded the expectations of what I could do} 
+After the fraud control work was completed I was assigned as product owner of SMART and charged with general maintenance. The InControl development team use a software package called "JIRA" to track bugs within the Dublin office. A typical JIRA report contains the issue or "ticket" number, effected components and release, the steps to reproduce the bug, the bug status, i.e. Fixed, In progress etc, the person who reported the bug and the person assigned to fix it. \todo{Mention that this somewhat exceeded the expectations of what I could do} 
 
+\image{jira.jpg}{A JIRA ticket.}
 
+When the maintenance work began SMART had a few outstanding issues. Everyone in QA was more than happy to answer questions and supply feedback as it had been some time since someone had done regular maintenance on SMART.
+The typical work flow for a given bug was: \todo{Replace ";" wtih ":" in most places}
+\begin{itemize}
+\item Follow the steps to reproduce and determine the nature of the error.
+\item If the issue was determined as a genuine SMART issue, i.e. Not a local configuration issue, log it as fix required. If it was determined to be an issue with the Retail API server no action was taken in JIRA until the problem was found.
+\item Locate where the error was happening in SMART and fix it. If the error was the server it was usually due to one of three reasons.
+\begin{itemize}
+\item The server was released with an incorrect configuration file.
+\item Incomplete server code was checked in. This was my fault for not building SMART against full server releases, usually.
+\item A genuine bug in the server. This was the hardest and most interesting situation to deal with. The Retail API server consists of around twenty thousand lines of Java code and a further ten thousand lines of code in the stored procedures. The generated code contains of one hundred and twenty thousand, although it can be considered almost entirely error free. Tracking an issue through the server was quite time consuming. First, the call from SMART had to be found and verified to be functioning correctly. The request handler in the server and it's related classes then had to be checked, as well as the server configuration. Many requests go through one or more preprocessors before reaching the handler so these also had to be checked. Finally the stored procedure was checked. In the few Retail API issues this is where the majority of problems came from. SQL code can be tricky to debug and errors can result from very subtle changes. Additionally, a typical stored procedure will make calls to other stored procedures and perform operations on a number of tables.
 
+If the bug was confirmed to be an issue with the Retail API server the standard process was to verify it with one of the full time developers and have them log the fix. Only on a few occasions did I commit a fix to the server, and these were very trivial bugs. I was not strictly involved in the Retail API server. It is one of the core InControl products, so the rigor surrounding it is of a far, far greater standard than SMART.
+\end{itemize}
+\item Once the bug was fixed it was re-tested. This usually amounted to going through the steps to reproduce the issue and verifying the resulting behavior was the expected behavior, not the behavior reported in the issue.
+\end{itemize}
+During the months spent maintaining SMART I worked with nearly every member of the QA team to some extent. SMART is a tool they use daily so they were happy to help me in fixing issues as quickly as possible.
 
+\subsubsection{TOM} \todo{Rename this section}
+Along with the maintenance work I received several feature requests from a developer charged with InControl implementations, i.e. Managing the platform in the various environments ( p. \todo{ENVIRONMENTS}). He wanted to use SMART as window into InControl to view overall system health. This resulted in implementing several new requests within the Cronos server, which is ultimately released with a production system. These requests were largely different forms of statistics for different events. Some of these requests were later charted graphically in SMART to give a very quick overview of system health. SMART is not authorized for use within the higher environments \todo{Make sure these are explained} but these charts are still valuable for testing.
 
-Because Cronos was just another generic server component it was assumed that interfacing SMART with it would be relatively straightforward. The communication code for the Retail API Server had been used in SMART for years. To isolate the Cronos specific code, several sub packages were created within SMARTs MVC structure. \cite{Something about reusablity through modularity}
+\image{smart_chart.png}{A chart showing a history of notifications issued by the InControl system.}
+ 
+\cite{Something about reusablity through modularity}
 
 
 \subsection{OIL}
