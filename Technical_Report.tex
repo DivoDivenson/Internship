@@ -746,19 +746,41 @@ The second project worked on during the internship was an Issuer Administration 
 \subsection{Overview}
 Adding a new issuer to the InControl platform is a complicated process. The database administrator manually inserts the new issuer each time. The majority of the data inserted is static but each new issuer still requires a large amount of custom data. Traditionally the setup is done by modifying an sql script. The issuer specific information is included along with the static data and ran against the relevant databases. This is a time consuming process for the database administrator. There are a number of common steps needed to setup a basic issuer and several optional steps, the use of which is dictated by the issuer and the products the wish to use. As InControl continues to grow more and more new issuers are being brought onto the InControl platform. Manually inserting each new issuer is no longer practical so a faster solution is needed.
 
-It was decided that issuer setup and maintenance should be done through a web application. The static data could be hidden from the user with only the core, issuer specific, information presented for the user to supply. This application would use the Cronos server to insert the data. Cronos contains calls to setup, configure and maintain an issuer. This is done using 60 separate requests, some of which are very substantial. The steps to setup an issuer were already done which simplified the project immensely. 
+ 
 
 \subsection{Objectives}
 
-The objective of the project
+The objective of the project was to create a web application to allow issuer setup and maintenance. The application was to be used internally within Mastercard, starting in the lower environments and gradually progressing to use in a production setting. The main objective of the project was to allow issuers to be setup quickly and easy, giving the database administrators more to work on areas other than tedious updates.
+
+Initially it was decided to integrate the new application with the existing Client Support Services web application. CSS is an application released to customers to enable them to support end users, i.e. Card holders. This is a large application, about 180,000 lines of code. Some time was spent investigating the best way to integrate the new application with the existing CSS. Ultimately however, the requirements were changed. A new, standalone application was to be created. This was decided for several reasons. CSS is a product released to issuers to support their users. The issuer setup application was to be used internally at Mastercard, their is no overlap in the user base at all so it makes little sense to integrate the two. The time needed to create a new set of separate functionality with the CSS was also a factor.
+
+It was then decided to create a new application from scratch. There were two phases to this, a prototype to act as a proof of concept and help get the project approved, and a full project to be used. I was to work with another intern on the prototype and eventually the full application. The application was to be built using the Spring Framework using JSP to render the web interface.
+
+The prototype needed to demonstrate core functionality. A series of steps were to be supplied to the user to allow them to input the information need to create a new issuer. They could then review their work in some way. The full project was to expand on this with the inclusion of user rolls, environments and scope to expand the functionality. 
 
 \subsection{Description}
+\todo{Needed?}
 
-\subsection{Work Done}
+The static data could be hidden from the user with only the core, issuer specific, information presented for the user to supply. This application would use the Cronos server to insert the data. Cronos contains calls to setup, configure and maintain an issuer. This is done using 60 separate requests, some of which are very substantial. The steps to setup an issuer were already done which simplified the project immensely.
 
 
 
-Initially it was decided to build the new functionality into the existing Client Support Services web application. This is a large application, about 180,000 lines of code. It provides a web interface for customers and their support teams to interface with the InControl platform and manage various aspects of the system. It is employed in call centers and is not an end user , i.e. card holder, product.
+
+\subsection{Client Support Service}
+
+Initially the CSS web application was to be extended to include issuer setup functionality. It is split into a client and server, with the server making subsequent calls to the various other servers that make up the InControl platform. The client and server make up about 180,000 lines without counting the servers used to processes the requests and their underlying stored procedures. As such, CSS is quite a substantial project, and where to integrate a completely separate set of functionality was not obvious.
+CSS is implemented in Java and user Java Server Faces. A few weeks were spent, in addition to working on SMART, researching and experimenting with JSF and CSS. Ultimately little was achieved technically.  \todo{More? Find notes on JSF}
+
+\subsection{Prototype}
+
+The prototype web application was written using the spring framework and the existing Cronos requests. The prototype was to implement one specific use case, the creation of a new issuer for the IPC fraud control product.
+Spring was chosen because several of the developers within InControl were familiar with it, it is approved for use within Mastercard and is one the most popular inversion of control containers for Java.
+This project was very different from working on SMART. It gave me exposure to the full software development life-cycle in a scaled down manner. The functional specification above was finalized and a collection of documents needed to achieve this were gathered. At the core of this was the existing issuer database setup script and Cronos API requests, as well as some customer documentation used to explain the meaning for specific values, allowing them to be grouped logically in the application.
+Using the script and the Cronos source code, a series of 10 steps were drawn up. The first 6 were concerned with creating the basic issuer, with the remaining used to add a bin range and add the fraud control product.
+
+\subsubsection{Spring}
+
+
 \section{Conclusion}
 Technical Conclusion. Goals. BCS goals.
 \section{References}
