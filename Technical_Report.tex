@@ -741,7 +741,22 @@ The handler must then be added to the servers handler configuration file as show
 \cite{http://wiki.orbiscom.com/index.php/OIL}
 
 \section{Web Admin Console}
-The second project I worked on during the internship was an Issuer Administration web console. The requirement was to build a web application to allow a member of development, customer implementation support etc, to configure a new user, or issuer, in the InControl platform.
+The second project worked on during the internship was an Issuer Administration web console. The requirement was to build a web application to allow a member of development, customer implementation support etc, to configure a new issuer on the InControl platform.
+
+\subsection{Overview}
+Adding a new issuer to the InControl platform is a complicated process. The database administrator manually inserts the new issuer each time. The majority of the data inserted is static but each new issuer still requires a large amount of custom data. Traditionally the setup is done by modifying an sql script. The issuer specific information is included along with the static data and ran against the relevant databases. This is a time consuming process for the database administrator. There are a number of common steps needed to setup a basic issuer and several optional steps, the use of which is dictated by the issuer and the products the wish to use. As InControl continues to grow more and more new issuers are being brought onto the InControl platform. Manually inserting each new issuer is no longer practical so a faster solution is needed.
+
+It was decided that issuer setup and maintenance should be done through a web application. The static data could be hidden from the user with only the core, issuer specific, information presented for the user to supply. This application would use the Cronos server to insert the data. Cronos contains calls to setup, configure and maintain an issuer. This is done using 60 separate requests, some of which are very substantial. The steps to setup an issuer were already done which simplified the project immensely. 
+
+\subsection{Objectives}
+
+The objective of the project
+
+\subsection{Description}
+
+\subsection{Work Done}
+
+
 
 Initially it was decided to build the new functionality into the existing Client Support Services web application. This is a large application, about 180,000 lines of code. It provides a web interface for customers and their support teams to interface with the InControl platform and manage various aspects of the system. It is employed in call centers and is not an end user , i.e. card holder, product.
 \section{Conclusion}
