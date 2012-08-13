@@ -4,35 +4,35 @@
 \contentsline {subsection}{\numberline {1.3}Approach (State of the art)}{4}
 \contentsline {subsection}{\numberline {1.4}Overview of contents}{5}
 \contentsline {section}{\numberline {2}Internship in Context}{5}
-\contentsline {subsection}{\numberline {2.1}The Four Party Model}{5}
+\contentsline {subsection}{\numberline {2.1}The Four Party Model}{6}
 \contentsline {subsubsection}{\numberline {2.1.1}Authorization}{6}
 \contentsline {subsubsection}{\numberline {2.1.2}Clearing}{6}
-\contentsline {subsubsection}{\numberline {2.1.3}Settlement}{6}
+\contentsline {subsubsection}{\numberline {2.1.3}Settlement}{7}
 \contentsline {subsection}{\numberline {2.2}InControl}{7}
 \contentsline {subsection}{\numberline {2.3}Software development life-cycle}{9}
 \contentsline {subsubsection}{\numberline {2.3.1}Terra}{9}
 \contentsline {section}{\numberline {3}Existing System}{9}
 \contentsline {subsection}{\numberline {3.1}Components Overview}{9}
 \contentsline {subsubsection}{\numberline {3.1.1}Client applications}{9}
-\contentsline {subsubsection}{\numberline {3.1.2}Web Server Environment}{9}
+\contentsline {subsubsection}{\numberline {3.1.2}Web Server Environment}{10}
 \contentsline {subsubsection}{\numberline {3.1.3}InControl Servers}{10}
 \contentsline {subsubsection}{\numberline {3.1.4}InControl Database}{11}
 \contentsline {subsubsection}{\numberline {3.1.5}Customer Service System}{11}
 \contentsline {subsubsection}{\numberline {3.1.6}APIs}{11}
-\contentsline {subsubsection}{\numberline {3.1.7}Administration Programs}{11}
+\contentsline {subsubsection}{\numberline {3.1.7}Administration Programs}{12}
 \contentsline {subsection}{\numberline {3.2}Web Server Environment}{12}
 \contentsline {subsubsection}{\numberline {3.2.1}Content Hosting}{12}
 \contentsline {subsubsection}{\numberline {3.2.2}InControl Servlets}{12}
 \contentsline {subsection}{\numberline {3.3}InControl Server}{12}
-\contentsline {subsubsection}{\numberline {3.3.1}Generic Server Framework}{12}
-\contentsline {subsubsection}{\numberline {3.3.2}Configuration}{18}
+\contentsline {subsubsection}{\numberline {3.3.1}Generic Server Framework}{13}
+\contentsline {subsubsection}{\numberline {3.3.2}Configuration}{19}
 \contentsline {subsubsection}{\numberline {3.3.3}Communications security}{20}
 \contentsline {subsection}{\numberline {3.4}Session \& Authentication Service}{20}
-\contentsline {subsubsection}{\numberline {3.4.1}InControl Internal Authentication}{20}
+\contentsline {subsubsection}{\numberline {3.4.1}InControl Internal Authentication}{21}
 \contentsline {subsubsection}{\numberline {3.4.2}External Authentication}{21}
 \contentsline {subsubsection}{\numberline {3.4.3}Session Management}{21}
-\contentsline {subsection}{\numberline {3.5}Client Support Services}{21}
-\contentsline {subsection}{\numberline {3.6}Online Registration \& Maintenance Service}{21}
+\contentsline {subsection}{\numberline {3.5}Client Support Services}{22}
+\contentsline {subsection}{\numberline {3.6}Online Registration \& Maintenance Service}{22}
 \contentsline {subsubsection}{\numberline {3.6.1}Functionality}{22}
 \contentsline {subsubsection}{\numberline {3.6.2}Message Formats}{22}
 \contentsline {subsection}{\numberline {3.7}Batch Registration and Maintenance Service}{23}
@@ -41,14 +41,14 @@
 \contentsline {subsection}{\numberline {3.10}Virtual Card Settlement}{23}
 \contentsline {subsection}{\numberline {3.11}Virtual Card Authorization}{23}
 \contentsline {section}{\numberline {4}SMART}{23}
-\contentsline {subsection}{\numberline {4.1}Overview}{23}
+\contentsline {subsection}{\numberline {4.1}Overview}{24}
 \contentsline {subsection}{\numberline {4.2}Objectives}{24}
-\contentsline {subsubsection}{\numberline {4.2.1}Cronos}{24}
-\contentsline {subsubsection}{\numberline {4.2.2}Maintenance}{25}
+\contentsline {subsubsection}{\numberline {4.2.1}Cronos}{25}
+\contentsline {subsubsection}{\numberline {4.2.2}Maintenance}{26}
 \contentsline {subsection}{\numberline {4.3}Description}{27}
-\contentsline {subsection}{\numberline {4.4}Cronos}{28}
-\contentsline {subsubsection}{\numberline {4.4.1}Initial work}{28}
-\contentsline {subsubsection}{\numberline {4.4.2}Generic approach}{29}
+\contentsline {subsection}{\numberline {4.4}Cronos}{29}
+\contentsline {subsubsection}{\numberline {4.4.1}Initial work}{29}
+\contentsline {subsubsection}{\numberline {4.4.2}Generic approach}{30}
 \contentsline {subsubsection}{\numberline {4.4.3}Dynamic approach}{30}
 \contentsline {subsection}{\numberline {4.5}Maintenance}{38}
 \contentsline {subsubsection}{\numberline {4.5.1}New functionality}{38}
@@ -65,6 +65,7 @@
 \contentsline {subsection}{\numberline {5.4}Client Support Service}{53}
 \contentsline {subsection}{\numberline {5.5}Prototype}{54}
 \contentsline {subsubsection}{\numberline {5.5.1}Spring}{54}
-\contentsline {section}{\numberline {6}Conclusion}{54}
-\contentsline {section}{\numberline {7}References}{54}
-\contentsline {section}{\numberline {8}Appendices}{54}
+\contentsline {subsubsection}{\numberline {5.5.2}Design and Implementation}{55}
+\contentsline {section}{\numberline {6}Conclusion}{58}
+\contentsline {section}{\numberline {7}References}{58}
+\contentsline {section}{\numberline {8}Appendices}{58}
