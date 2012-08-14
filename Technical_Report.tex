@@ -875,7 +875,15 @@ Post requests are handed in a similar method. The user has, using the view, popu
 
 The model objects are passed from the service layer into the DAO layer in the same manner as displayed above. The DAO implementation is resolved at runtime. The members of the model objects are then used to populate Cronos requests. The DAO implementation is quite long and tedious. It simple populates various Cronos request objects and sends them to the Cronos server. The order of these requests turned out to be quite important. Certain steps in the issuer setup must be taken in a certain order. This sequence was inferred from the DBAs scripts. Cronos calls with appropriate functionality were then found and sent in the proper sequence. 
 
-There was also a small bug in Apollo. Apollo allows multiple requests to be sent at once, wrapped inside a "requestor". If any one of these requests fails, none of the requests in the requestor are committed. In theory each requestor should have its own scope, so each request is exposed to the changes made in previous requests. This was not the case, so requestors had to be broken up.
+There was also a small bug in Apollo. Apollo allows multiple requests to be sent at once, wrapped inside a "requestor". If any one of these requests fails, none of the requests in the requestor are committed. In theory each requestor should have its own scope, so each request is exposed to the changes made in previous requests. This was not the case, so requestors had to be broken up to allow requests to be committed properly.
+
+After the setup steps had been completed the user was forwarded to a screen to allow them to review their work. This was a simple listing of issuers in the system. The bin ranges associated with an issuer could then be viewed. This was a small feature simply to show that the application could also be used to view system information.
+
+\subsubsection{Completion}
+
+After the prototype had been completed it was shown as part of a pitch to secure funding for a fully developed version. 
+
+Once the prototype
 
 
 
