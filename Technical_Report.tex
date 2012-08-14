@@ -590,6 +590,10 @@ During the months spent maintaining SMART I worked with nearly every member of t
 \subsubsection{TOM} \todo{Rename this section}
 Along with the maintenance work I received several feature requests from a developer charged with InControl implementations, i.e. Managing the platform in the various environments ( p. \todo{ENVIRONMENTS}). He wanted to use SMART as window into InControl to view overall system health. This resulted in implementing several new requests within the Cronos server, which is ultimately released with a production system. These requests were largely different forms of statistics for different events. Some of these requests were later charted graphically in SMART to give a very quick overview of system health. SMART is not authorized for use within the higher environments \todo{Make sure these are explained} but these charts are still valuable for testing.
 
+\todo{Spent a good bit of time on this stuff, needs more discussion}
+
+\todo{Customer XML also}
+
 \image{smart_chart.png}{A chart showing a history of notifications issued by the InControl system.}
  
 \cite{Something about reusablity through modularity}
@@ -802,7 +806,7 @@ The web application was to an MVC structure. The Spring framework has its own MV
 \todo{http://viralpatel.net/blogs/spring3-mvc-hibernate-maven-tutorial-eclipse-example/}
 
 \begin{itemize}
-\item Model: Basic plain old Java objects. Spring supports object relational mapping using technologies like hibernate. If this is used, the model objects are declared as "Entity". The class name must map to the underlying table in the database and it's members must map to the columns. All member access is done through appropriate accessor methods.
+\item Model: Plain old Java objects. Spring supports object relational mapping using technologies like hibernate. If this is used, the model objects are declared as "Entity". The class name must map to the underlying table in the database and it's members must map to the columns. All member access is done through appropriate accessor methods.
 OIL was to be used for database access in this project, as the bulk of the logic was contained within the stored procedures. The OIL generated classes supplied the model objects. OIL generated objects are not traditional Java objects (p. \pageref{metadata}) but were full inter-operable with Spring. Although the members of an OIL class are contained within a map, they can still be accessed using specific accessor methods.
 There were also some custom model object specific to the application. Many of the parameters in a typical Cronos request had sensible default values so it did not make sense to present these to the user. Thus, the model objects the user populated in the views were logical groupings of parameters used in several requests, i.e. The issuer name and email address are set in separate requests but it makes sense to have the user supply the information on the same screen. A model object was created to encapsulate this screen and it's various members were then used to populate several requests to Cronos.
 \item DAO: The data access layer interacts with the application data. In the majority of cases this is an sql database but it can be any sort of data source. The DAO in this application sent requests to the Cronos server, which in turn interacted with the database. This became the most substantial component of the application as the bulk of the business logic had already been implemented in stored procedures. It was decided to continue to use Cronos to access these stored procedures for several reason. Cronos utilizes the Apollo framework which is very well understood within InControl. It was decided that given the collective amount of experience with Apollo, it would be far quicker to build the application using it. Whether it did or not is debatable, but if the product was to be developed fully it would be very hard to justify not using Apollo.
@@ -810,6 +814,70 @@ There were also some custom model object specific to the application. Many of th
 \item Controller: As above, the controller is responsible for parsing input and delegating the appropriate action. It passes this sanitized data to the service layer which then makes calls into the DAO. The flow of the various steps needed to setup an issuer was defined in the controllers, as these classes are responsible for displaying the various views in addition pulling data from them.
 \item View: As per traditional MVC, the view is responsible for allowing the user to interact with the model. Spring supports a number of different technologies to create the view. Java Server Pages were used, they are the goto technology used to create dynamic pages with Java and are very well supported by Spring. JSP, along with Java Server Faces, is also employed by the majority of the web applications developed within InControl.
 \end{itemize}
+
+The Spring web application is then hosted inside a Java servlet container, Apache Tomcat was used in this instance.
+
+The controllers and DAO implementation took the majority of implementation time. Each page in the application has its own controller. Some of these controllers are quite small but it made sense to segment them by page. 
+
+\begin{verbatim}
+@Controller
+@SessionAttributes
+@RequestMapping("bin_setup")
+public class BinRangeController
+{
+
+    private static final IssuerConsoleLogger LOGGER = IssuerConsoleLogger.getInstance(BinRangeController.class);
+
+    @Autowired
+    private IssuerService issuerService;
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String showPage(Map model, HttpSession session)
+    {
+        LOGGER.debug("<<< /bin_setup.htm GET >>> called");
+
+        model.put("binrange", new InitialBinRange());
+        return "bin_setup";
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public String processForm(@Valid InitialBinRange binrange, BindingResult result, HttpSession session)
+    {
+        LOGGER.debug("<<< /bin_setup.htm POST >>> called");
+
+        Issuer issuer = (Issuer) session.getAttribute("issuer");
+        issuerService.setupIssuer(issuer, binrange);
+        return "redirect:issuer_list.htm";
+    }
+}
+
+
+\end{verbatim}
+
+The above code snippet gives an example of a variety of Spring functionality. 
+
+@Controller: Spring does not enforce the MVC model structurally, i.e y package name. Classes are configured to be part of the various layers. This can be done in an XML file, or in this example with an annotation. 
+
+@SessionAttributes: The lifetime of an object can also be configured. In this example the object expires after the user disconnects. Object lifetime can be set anywhere from a single page display to the entire application lifetime.
+
+@RequestMapping: Requests can be mapped to classes or individual methods. This class is configured to process "issuer_details" requests. The request type is specified in the request line of the HTTP request.
+
+The logger is an example of Aspect Oriented Programming. Aspect Oriented Programming complements Object Oriented programming by allowing the separation of cross cutting concerns. Logging is the classic example of a cross cutting concern because the logging strategy effects every part of the system. By encapsulating logging as an aspect when can make changes to it's behavior without having to impact the rest of the system.
+\cite{https://www.cs.washington.edu/education/courses/503/08wi/aop-ecoop-1997.pdf}
+
+@Autowired: This annotation tells Spring to inject an object at run time. In this application, IssuerService is an interface. The implementing class is loaded automatically and injected by the IoC container. As stated above, this is a very powerful technique but can make the code a little confusing. It is not immediately obvious what implementing class is being used. Here there is only one implementing class so the choice is easy. If there are multiple implementations the one to be used must be specified. This indirection can make projects harder to read and debug.
+
+Different methods are invoked depending of the type of incoming request. Before the page can be shown to the user, the model must be populated for the view to interact with. A new InitialBinRange object is inserted into the model and "bin-setup" is returned. This particular Spring application is configured to display the page with the same name as the string returned by the controller. The model and user session need only be declared as parameters and Spring automatically injects them.
+
+Post requests are handed in a similar method. The user has, using the view, populated the model object supplied by the Get request. This object is supplied with the post request. As this is the last step it must be committed to the database. The model object populated in a previous view are extracted from the session and passed down to the service layer. 
+
+@Valid: The @Valid annotation in the processForm method declares that the object passed in should first be validated. This cam be done by writing a custom validation object or by simply annotating the various members of the model object with constraints.
+
+The model objects are passed from the service layer into the DAO layer in the same manner as displayed above. The DAO implementation is resolved at runtime. The members of the model objects are then used to populate Cronos requests. The DAO implementation is quite long and tedious. It simple populates various Cronos request objects and sends them to the Cronos server. The order of these requests turned out to be quite important. Certain steps in the issuer setup must be taken in a certain order. This sequence was inferred from the DBAs scripts. Cronos calls with appropriate functionality were then found and sent in the proper sequence. 
+
+There was also a small bug in Apollo. Apollo allows multiple requests to be sent at once, wrapped inside a "requestor". If any one of these requests fails, none of the requests in the requestor are committed. In theory each requestor should have its own scope, so each request is exposed to the changes made in previous requests. This was not the case, so requestors had to be broken up.
+
+
 
 \section{Conclusion}
 Technical Conclusion. Goals. BCS goals.
