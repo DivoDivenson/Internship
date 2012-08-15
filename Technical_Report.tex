@@ -862,6 +862,7 @@ The above code snippet gives an example of a variety of Spring functionality.
 
 @RequestMapping: Requests can be mapped to classes or individual methods. This class is configured to process "issuer_details" requests. The request type is specified in the request line of the HTTP request.
 
+\label{aspects}
 The logger is an example of Aspect Oriented Programming. Aspect Oriented Programming complements Object Oriented programming by allowing the separation of cross cutting concerns. Logging is the classic example of a cross cutting concern because the logging strategy effects every part of the system. By encapsulating logging as an aspect when can make changes to it's behavior without having to impact the rest of the system.
 \cite{https://www.cs.washington.edu/education/courses/503/08wi/aop-ecoop-1997.pdf}
 
@@ -881,11 +882,88 @@ After the setup steps had been completed the user was forwarded to a screen to a
 
 \subsubsection{Completion}
 
-After the prototype had been completed it was shown as part of a pitch to secure funding for a fully developed version. 
+After the prototype had been completed it was shown as part of a pitch to secure funding for a fully developed version. An easy way to set up new issuer on the InControl Platform was something the team had wanted for a number of years. An independent report recently conducted by Computer Science Corporation had highlighted the need for automation of the process. The idea behind the prototype was to show the business leaders in charge of InControl what such an application might look like and that it would not require a significant development effort. The project was approved and given funding for the first quarter of 2013. 
 
-Once the prototype
+\subsection{Further development}
 
+After the project had been approved work began on a more robust version. Unfortunately, a formal specification was not drawn up during the remainder of the internship. I was to target a single use case but build the application to allow for extension. Additional set up use cases, information retrieval and user roles and levels of access were to be added in later.
 
+These requirements were very broad and difficult to account for. After researching user roles and access privileges in Spring I was satisfied that they could be integrated as an aspect (p. \pageref{aspect}) later in development. This left me to concentrate on building the application to allow for later extension. In order for the application to be used and supported in the future it had to be as maintenance free as possible. Changes to the issuer setup process should not require code refactoring. After working with SMART it was understood that such an approach was feasible. The principle of dependency injection employees a similar idea to the dynamic loading of requests in SMART, although it is \textbf{substantially} more complicated.
+
+\subsubsection{Parser}
+The desire was to build a dynamic model that could be configured with XML. The sequence of steps would be specified in an XML file, populated with data where appropriate. A similar project had recently been completed within InControl, the Cronos Batch Utility. This was an extension of the Cronos server that allowed mass registration of issuers. The sequence of requests were specified in an XML file and the data to populate them was contained in flat files. The batch process "digests" the data in these flat files and sends them to the server. However, the Cronos Batch Utility differed in two key areas to the intended functionality of the Issuer Setup application.
+\begin{itemize}
+\item The Cronos Batch Utility populated the XML with data from the flat files and sent the resulting XML directly. Request objects were not created.
+\item The XML messages were not sent over a network, rather they were passed directly to the handlers. This meant the Cronos server had to be running on the machine, not remotely. While the Apollo framework does support sending XML directly, there is substantially more effort involved as opposed to just sending request objects via a requestor. 
+\end{itemize}
+The Issuer Setup web application had to be able to send requests remotely, so a different approach was required. The templates from the Cronos Batch Utility were used as base, the idea being that these would be maintained and thus the setup process used in the web application would be maintained. Some slight changes were made. Each setup process was contained within a "wizard", and each "wizard" contained a series of "steps". The requests were contained within these "steps". The requests were separated logically into steps, the idea being that the interface could be generated off the XML at a later date. A summarized version of the resulting XML is shown below:
+\begin{verbatim}
+<Wizards>
+
+    <ComplexTypes>
+        <Type Name="Property" Path="com.orbiscom.atlas.oil"/>
+    </ComplexTypes>
+
+    <Wizard Name="Add Issuer">
+
+            <Step Name="Add Issuer">
+            <AddIssuerRequest IssuerId="{IssuerId}" IssuerName="{IssuerName}" />
+
+            <SetIssuerPropertyRequest IssuerId="{IssuerId}">
+                <Property Name="SecurityManager" Value="{Cipher}" />
+            </SetIssuerPropertyRequest>
+        </Step>
+		
+        <Step Name="Add groups">
+            <AddPhoenixIssuerGroupRequest GroupTag="{GroupName}" />
+            <AddPhoenixIssuerGroupIssuerIdRequest IssuerId="{IssuerId}" GroupId="0" />	
+        </Step>
+	
+    </Wizard>
+
+</Wizards>
+\end{verbatim}
+
+A parser was than constructed to generate OIL request objects. The resulting parser was relatively complicated, taking several factors into account. It is more complex than the requests creator implemented in SMART, the biggest differences are outlined below.
+
+OIL requests can contain complex and simple types. The parser must be made aware of any complex types so the corresponding classes can be instantiated. After this is done the requests are parsed. First the request name is parsed and the corresponding request object is created using the same approach as SMART \todo{Pageref this}. The request objects attributes are then compared against the attributes specified in the XML. If they match, the XML attribute is parsed and stored in the request object. There are a number of possible event relating to this.
+
+The attributes are not matched by member name, rather the class name set in the attributes meta-data map is compared to the attribute name in the XML. This is because lists of attributes are pluralized by the OIL compiler, i.e. A list of "Porperty" objects is given the key "Properties" in the OIL object member map. Whether or not a member is in fact a list of members is determined again from the meta-data map by examining the container attribute of the meta-data. A code snippet generated by the OIL compiler is shown below, demonstrating the difference between a single attribute and a list of attributes.
+
+\begin{verbatim}
+cMetaData.put("IssuerId", tmpMetaData = new MetaData("IssuerId", String.class, null, null, null, null));
+cMetaData.put("Properties", tmpMetaData = new MetaData("Properties", Property.class, List.class, null, null, null));
+\end{verbatim}
+
+After the nature of the attribute is determined it is populated. There are two possibilities; if a value is specified, as with "GroupId" above, the value is parsed and stored inside the OIL object. If the value specified is of the form "{" <ident> "}" the identifier is stored as a constraint within the OIL object. This is so values can be used to populate multiple requests after the user has specified them once. In the above example, IssuerId is used in multiple requests. It does not make sense to have the user supply IssuerId repeatedly. When they supply it for the first request, the value is indexed by the key "IssuerId". This value can then be inserted into the remain attributes indexed by "IssuerId". This functionality was not completed, the finished web application will have to contain logic to use the same values across multiple requests, but the identifiers are in place within the model. \todo{Replace with KeyFieldName if time allows} This type of functionality was built into OIL when it was originally deigned. The meta-data for every OIL object contains a field for such an identifier.
+
+The result is a relatively elaborate data structure containing a number of request objects:
+
+\begin{verbatim}
+Add Issuer
+	Add Issuer
+		{_BeanType=AddIssuerRequest, IssuerId=null, IssuerName=null}
+		{_BeanType=SetIssuerPropertyRequest, IssuerId=null, Property={_BeanType=Property, Name=SecurityManager, Value=null}}
+	Add groups
+		{_BeanType=AddPhoenixIssuerGroupRequest, GroupTag=null}
+		{_BeanType=AddPhoenixIssuerGroupIssuerIdRequest, IssuerId=null, GroupId=0}
+\end{verbatim}
+
+The data structure is:
+
+\begin{verbatim}
+LinkedHashMap <String, 
+    LinkedHashMap <String, ArrayList
+        <Request>
+    >
+>
+\end{verbatim}
+
+Linked hashmaps are used so the ordering of steps is preserved. The first hashmap contains all the different setup "wizards". Each wizard is in turn a hashmap containing a series of "steps". Each step contains an array list of requests.
+\subsubsection{Error Handling}
+
+Writing the XML file is quite an error prone process. There is no tolerance for errors naming objects as these names are used to create objects. Exception handling within the parser had to be robust and return specific errors to allow mistakes to be easily diagnosed. After some reading up on best practices I am confident that the parser is relatively robust.
+\cite{http://www.wikijava.org/wiki/10_best_practices_with_Exceptions Is it appropriate to link a wiki?}
 
 \section{Conclusion}
 Technical Conclusion. Goals. BCS goals.
