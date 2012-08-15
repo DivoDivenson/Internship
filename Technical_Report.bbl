@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{mcInterchange}
 M.~Worldwide, {\em Benefits of Open Payment Systems and the Role of
@@ -16,5 +16,47 @@ S.~I.~G. in~Software~Testing, ``Standard for software component testing,''
 \bibitem{NoBullet}
 J.~Frederick P.~Brooks, ``No silver bullet,'' {\em Computer}, vol.~20, no.~4,
   pp.~10 -- 19, 1987.
+
+\bibitem{cMellonTest}
+J.~Pan, ``Software testing,'' in {\em 18-849b Dependable Embedded Systems},
+  Carnegie Mellon University, 1999.
+
+\bibitem{IDL}
+A.~D. McKinnon, {\em Interface Definition Language}.
+\newblock Washington State University, 2007.
+
+\bibitem{GOF}
+E.~Gamma, R.~Helm, R.~Johnson, and J.~Vlissides, {\em Design Patterns: Elements
+  of Reusable Object-Oriented Software}, p.~15.
+\newblock Addison-Wesley, 1994.
+
+\bibitem{forName}
+T.~Neward, {\em Understanding Class.forName}.
+\newblock
+  \url{http://www.theserverside.com/news/1365412/Understanding-ClassforName-Ja%
+va}.
+
+\bibitem{Reflection}
+G.~McCluskey, {\em Using Java Reflection}, 1998.
+\newblock
+  \url{http://java.sun.com/developer/technicalArticles/ALT/Reflection/}.
+
+\bibitem{OIL}
+{\em OIL}.
+
+\bibitem{Spring}
+M.~Konda, {\em Just Spring}.
+\newblock O'Reilly, 2011.
+
+\bibitem{SpringMVC}
+V.~Patel, {\em Create Spring 3 MVC}.
+\newblock
+  http://viralpatel.net/blogs/spring3-mvc-hibernate-maven-tutorial-eclipse-exa%
+mple/.
+
+\bibitem{AOP}
+{\em Aspect-Oriented Programming}, Springer-Verlag, 1997.
+\newblock
+  https://www.cs.washington.edu/education/courses/503/08wi/aop-ecoop-1997.pdf.
 
 \end{thebibliography}
