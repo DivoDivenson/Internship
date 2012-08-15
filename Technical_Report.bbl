@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+
+\bibitem{mcInterchange}
+M.~Worldwide, {\em Benefits of Open Payment Systems and the Role of
+  Interchange}.
+\newblock Purchase, NY: Mastercard Worldwide, 2008.
+\newblock
+  \url{http://www.mastercard.com/us/company/en/docs/BENEFITS%20OF%20ELECTRONI%
+C%20PAYMENTS%20-%20US%20EDITION.pdf}.
+
+\bibitem{BCStesting}
+S.~I.~G. in~Software~Testing, ``Standard for software component testing,''
+  tech. rep., British Computer Society, 2001.
+\newblock \url {www.testingstandards.co.uk}.
+
+\bibitem{NoBullet}
+J.~Frederick P.~Brooks, ``No silver bullet,'' {\em Computer}, vol.~20, no.~4,
+  pp.~10 -- 19, 1987.
+
+\end{thebibliography}
