@@ -136,7 +136,23 @@ MasterCard operates BankNet, a global telecommunications network linking all Mas
  
 The waterfall design methodology arguably fits well with the requirements surrounding MasterCard’s core network. Other services, such as InControl are not subject to the same requirements but are none the less hampered \todo{Should probably remove} by the employment of waterfall. During my time at MasterCard a switch an agile design process was beginning to get underway within InControl.\cite{I had a source here but it seems it was lost} 
  
-\subsection{Software development life-cycle} 
+\subsection{Software development life-cycle}
+
+An InControl release goes through several phases before it is shipped. Throughout this process a large amount of attention is payed to quality control. The release cycle resembles a standard waterfall type model, however, development and in particular the testing phase are divided into several sub-phases.
+
+Before any work is done a customer or product owner must first request some new functionality. This takes the form of a high-level requirements document which is sent to a Business Analyst within MasterCard.
+
+The Business Analyst can then approve or discard the feature request. If it is approved, they translate it into business requirements and functional requirements.
+
+At this stage, the development team are engaged. A design specification is created, based off of the functional requirements. This specification is sent back to the Business Analyst for approval. This process may be repeated several times until the BA is satisfied that the design specification accurately reflects the functional requirements.
+
+After the design is approved, the Quality Assurance team are engaged. The QA team begin to create system tests based of the design specification. An additional team, the Testing Center of Excellence or TCOE, create integration tests. The integration tests are to verify that the system will interact correctly with BankNet.
+
+The release then undergoes development, testing and eventual release. The process so far is not strictly waterfall. There are mechanisms for feedback and in practice a a certain amount of iteration to achieve the desired result before moving onto the next phase. Development and testing within InControl is largely an iterative process. Development and QA work together closely to ensure no bugs are introduced. Typically during this phase several releases will be made to QA. After the functionality has been completed and QA are satisfied with its quality it begins a process of progression through several environments.
+
+The first stage is NAME. This is where the integration tests are done. The release then moves to user acceptance testing. After this has been completed the release is made available to customers to make sure it is what they wanted. After all of this has been completed the release is ready to be shipped. During any one of these stages a problem may be found with the implementation or even specification of the release. It could be argued that the development process employed by InControl has some agile elements. The process is somewhat iterative, with time set aside to allow for changes to be made mid-cycle.
+
+\todo{verify that last paragraph}
  
 \subsubsection{Terra} 
 \label{Terra} 
