@@ -8,6 +8,9 @@ M.~Worldwide, {\em Benefits of Open Payment Systems and the Role of
   \url{http://www.mastercard.com/us/company/en/docs/BENEFITS%20OF%20ELECTRONI%
 C%20PAYMENTS%20-%20US%20EDITION.pdf}.
 
+\bibitem{ISO8583}
+
+
 \bibitem{BCStesting}
 S.~I.~G. in~Software~Testing, ``Standard for software component testing,''
   tech. rep., British Computer Society, 2001.
@@ -20,6 +23,7 @@ J.~Frederick P.~Brooks, ``No silver bullet,'' {\em Computer}, vol.~20, no.~4,
 \bibitem{cMellonTest}
 J.~Pan, ``Software testing,'' in {\em 18-849b Dependable Embedded Systems},
   Carnegie Mellon University, 1999.
+\newblock \url{http://www.ece.cmu.edu/~koopman/des_s99/sw_testing/}.
 
 \bibitem{IDL}
 A.~D. McKinnon, {\em Interface Definition Language}.
@@ -58,5 +62,11 @@ mple/.
 {\em Aspect-Oriented Programming}, Springer-Verlag, 1997.
 \newblock
   https://www.cs.washington.edu/education/courses/503/08wi/aop-ecoop-1997.pdf.
+
+\bibitem{SLOC}
+D.~A. Wheeler, {\em SLOCCount}.
+
+\bibitem{Orbiscom_Arch}
+{\em Orbiscom Payments Platform Technical Architecture}, 2002.
 
 \end{thebibliography}
