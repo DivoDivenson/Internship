@@ -42,7 +42,7 @@
 <edge COLOR="#111111" WIDTH="thin"/>
 </node>
 </node>
-<node COLOR="#111111" CREATED="1342371655155" ID="ID_668206131" MODIFIED="1345206253071" POSITION="left" TEXT="Internship in context">
+<node COLOR="#111111" CREATED="1342371655155" ID="ID_668206131" MODIFIED="1344596077714" POSITION="left" TEXT="Internship in context">
 <edge COLOR="#111111" WIDTH="thin"/>
 <icon BUILTIN="full-2"/>
 <node COLOR="#111111" CREATED="1342371676367" ID="ID_558722749" MODIFIED="1342375858789" TEXT="SDL goes here">
@@ -69,6 +69,7 @@
 </html></richcontent>
 </node>
 </node>
+<node CREATED="1345128457958" ID="ID_621375224" MODIFIED="1345128520860" TEXT="Release through various env. Use guide Elain gave"/>
 </node>
 <node COLOR="#111111" CREATED="1342371684244" ID="ID_1566301415" MODIFIED="1342375858790">
 <richcontent TYPE="NODE"><html>
@@ -111,72 +112,6 @@
 </node>
 <node CREATED="1342373670865" ID="ID_1340853366" MODIFIED="1342375858798" TEXT="Define issuer!"/>
 <node CREATED="1342373964873" ID="ID_701083034" MODIFIED="1342375858798" TEXT="Binranges and all the lingo"/>
-</node>
-<node CREATED="1345206254568" ID="ID_389010201" MODIFIED="1345206257510" TEXT="InControl">
-<node CREATED="1345209528029" ID="ID_337684361" MODIFIED="1345209541717" TEXT="Personalized, real time card controls"/>
-<node CREATED="1345209546742" ID="ID_1388542890" MODIFIED="1345209567205" TEXT="Allows consumers to set limits to monitor their spending"/>
-<node CREATED="1345209569748" ID="ID_1174546217" MODIFIED="1345209657798" TEXT="Allows issuers to provide a service to allow consumers to better&#xa;manage their finances, helping them gain back some of the &#xa;trust lost in the 2008 financial crisis.&#xa;Pg 10. MAKE SURE TO CITE :)"/>
-<node CREATED="1345209660541" ID="ID_1846441606" MODIFIED="1345209722224">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul>
-      <li>
-        Merchant category
-      </li>
-      <li>
-        Transaction velocity
-      </li>
-      <li>
-        Budget amounts
-      </li>
-      <li>
-        Per txn limit
-      </li>
-      <li>
-        Curfew
-      </li>
-      <li>
-        Type (ATM , POS, On-line etc)
-      </li>
-      <li>
-        Geographic
-      </li>
-    </ul>
-  </body>
-</html>
-</richcontent>
-</node>
-<node CREATED="1345209737977" ID="ID_458675457" MODIFIED="1345210824558">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul>
-      <li>
-        Cardholder alerts &amp; Controls; Allows consumers to establish personalized spending profiles on their accounts, and allows for real-time notification of spending activity.
-      </li>
-      <li>
-        Issuer Portfolio Control; Prevent cross border fraud in europe
-      </li>
-      <li>
-        Small business controller; Allows small business owners to confidently delegate spending to employees.
-      </li>
-      <li>
-        Purchase control; For large corporations. The service offers unique limited-use account numbers and authorization controls to improve reconciliation for card payments and enhance visibility into spending activity.
-      </li>
-      <li>
-        Family Solutons: Allows parents to give family members access to credit
-      </li>
-    </ul>
-  </body>
-</html>
-</richcontent>
-</node>
-<node CREATED="1345209986134" ID="ID_1289803171" MODIFIED="1345209988559" TEXT="The inControl platform offers a Customer Service System (CSS) that can be leveraged  by the issuer in their customer service center. The web-based tool enables issuers&#x2019; staff to  support cardholder queries with respect to Cardholder Alerts &amp; Controls settings, and  issuer&#x2019;s staff may also view audit history of the system&#x2019;s user activity."/>
 </node>
 </node>
 <node COLOR="#111111" CREATED="1342371801725" ID="ID_1879027955" MODIFIED="1344596078417" POSITION="right" TEXT="Exisiting system">
