@@ -1,13 +1,13 @@
 \contentsline {section}{\numberline {1}Introduction}{3}
 \contentsline {subsection}{\numberline {1.1}Motivation}{3}
-\contentsline {subsection}{\numberline {1.2}Goals}{3}
+\contentsline {subsection}{\numberline {1.2}Goals}{4}
 \contentsline {subsection}{\numberline {1.3}Approach (State of the art)}{4}
 \contentsline {subsection}{\numberline {1.4}Overview of contents}{5}
 \contentsline {section}{\numberline {2}Internship in Context}{5}
 \contentsline {subsection}{\numberline {2.1}The Four Party Model}{6}
 \contentsline {subsubsection}{\numberline {2.1.1}Authorization}{6}
-\contentsline {subsubsection}{\numberline {2.1.2}Clearing}{6}
-\contentsline {subsubsection}{\numberline {2.1.3}Settlement}{6}
+\contentsline {subsubsection}{\numberline {2.1.2}Clearing}{7}
+\contentsline {subsubsection}{\numberline {2.1.3}Settlement}{7}
 \contentsline {subsection}{\numberline {2.2}InControl}{7}
 \contentsline {subsection}{\numberline {2.3}Software development life-cycle}{10}
 \contentsline {subsubsection}{\numberline {2.3.1}Terra}{11}
