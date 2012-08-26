@@ -73,19 +73,20 @@
  
 \section{Introduction} 
  
-\subsection{Motivation} 
-What is the internship; motivation and description 
+\subsection{Motivation and description} 
  
 As part of my undergraduate studies I have elected to participate in the internship program run by the School of Computer Science and Statistics in Trinity College Dublin. The main motivation for this is the personal belief that education is made meaningful by application; that the context of a professional working environment would help to cement the knowledge gained in university. It should also draw attention to area of weakness that need to be improved upon.
 
 Additionally, a professional working environment has a substantially different focus to that of a university. While both depend on the individual to self-educate to achieve a certain goal, the motivation for this, how they go about it, and what goals are set differ substantially. My hope was that an internship would remove the play-pen walls and make me accountable for what I achieved or failed to achieve. University has a focus on collaboration, but in the majority of cases assessment is carried out on and individual basis. When working on a team, an individuals effort directly impacts the work done by others and as such there is greater accountability for ones actions. I have experienced all of this during a previous, shorter internship and seen the benefit in my attitude towards work and study as well as my overall personal development. 
  
-Description here 
- 
-\todo{Rewrite that awful paragraph above}  
+The internship was undertake at MasterCard Worldwide from February to August 2012. I interned as a member of the InControl team. InControl is one of MasterCard value added services. Although MasterCard has had an office in Ireland since 2009 InControl started development back in 1999. The product was originally developed by Orbiscom Limited, a small Irish company. InControl was Orbiscoms core product and many of the original staff are now employees of MasterCard. The acquisition of Orbiscom by MasterCard resulted in, among other things, a somewhat unusual working environment. The attitude of a small team trying to make their product a success does not appear to have diminished substantially after the acquisition by one of the worlds biggest financial services companies. Every individual on team is responsible for some aspect of InControl and debates concerning functionality and implementation are often heated. Although this was not really know at the beginning of the internship I was definitely given a sense that the developers loved what they did during my interview. This was quickly confirmed after witnessing one of the aforementioned debates. 
+
+This is the working environment I had hoped for. My original motivations for undertaking the internship and what I hoped to gain from it could of perhaps benefited from some more strenuous consideration, but I knew I wanted to learn from professionals. Developing my technical skills has been my highest priority for a number of years and my primary motivation for participating in the internship program. During my time at university I was tutored by many dedicated individuals. The individuals at MasterCard Ireland have a similar zeal about their work. 
  
 \subsection{Goals} 
  
+My primary goal was to learn new technical skills. I also wanted the experience of working within a professional environment to help my own personal development. I was also concerned with identifying areas of weakness. The focus of a university course is completely different to commercial company. I anticipated I would have to learn new skills on the job but I wanted to try and identify what areas university had prepared me for and what had been neglected. 
+
 Upon arriving at MasterCard I was introduced to some of the team and my mentor, Peter Groarke. We immediately set to work and a brief road map was laid out. No formal goals were decided but Peter and the others walked me through a series of steps: 
 \begin{itemize} 
 \item Set up a working development environment. 
@@ -94,21 +95,20 @@ Upon arriving at MasterCard I was introduced to some of the team and my mentor, 
 \end{itemize} 
 The main objective was to put me to work as soon as possible. This was my own personal objective and, happily, seemed to be in line with the objective of my mentor. As far as I am aware, there was no overall plan for the entire internship at the beginning. An assessment of my skill level was needed before that could be considered. 
  
-The first task assigned to me was to interface SMART with Cronos. SMART, Something MasterCard Authorization Rules Tool \todo{Get acronym} is an in-house system testing tool used to send mock requests to the Retail API server. Cronos is another server used for retrieving certain system information. My own personal goal was to learn new and interesting programming concepts and technologies. \todo{Loads more detail} 
+The first task assigned to me was to interface SMART with Cronos. SMART, MasterCard Authorization Rules Tool, is an in-house system testing tool used to send mock requests to the Retail API server. Cronos is another server used for retrieving certain system information. My own personal goal was to learn new and interesting programming concepts and technologies. 
  
-\subsection{Approach (State of the art)} 
+\subsection{Approach} 
 Slightly reflective, what was my approach to the internship. Set goals with mentor, spent time learning system, learning new skills, development. Repeat steps 2 to 4. In reality is more development and learn as I go. 
- 
-As stated, my initial goal was to start contributing as quickly as possible. This meant checking working code into subversion. The first step was to setup a working development environment. 
 
-The majority of the first week was spent trying to install and configure a working GNU/Linux environment. The vast majority of the development work done in InControl targets Unix platforms. Linux is also my personal preference of operating system. The InControl department maintains a script used to automatically configure a new development environment. The idea was to simply setup a working Linux install and run the script. The first distribution I tried was one I had used for years. However, the updated version was considerably unstable when I attempted to deploy it. It took three days for me to identify the problem as the distribution, not the in-house environment setup script. I switched distribution and had a working environment within hours. The next step was to become somewhat familiar with the InControl Platform. This consisted of reading any documentation I could get my hands on, experimenting with the system itself and looking through the system database, the core of the InControl platform. 
 
-InControl have a substantial but somewhat poorly indexed wiki which become my main source of documentation, other than the developers. Aside from the InControl platform I also tried to understand how credit card transactions were routed and processed. This was necessary to give the InControl platform context. 
+How I approach my work was developed largely during my time at Trinity and I am pleased it translated to a professional environment so easily, although I am sure this is no accident. Typically a balance between self education and asking questions is sought. This was the approach I took during my time at MasterCard. In university this meant studying the material in detail, often to the point of irrelevance. If the problem could then be solved then no further action was needed. If not I ask questions and draw on the experience of both academic staff and fellow students. I must first obtain what I feel to be a sufficient level of knowledge before I am comfortable enough to engage others. For me there is such a thing as a stupid question; one that results from little or no prior effort to understand the problem. This can come across as a reluctance to ask for help. Indeed this was commented on several times during my time at MasterCard.
 
-A large portion of my first few weeks was spent learning how  \todo{Complete}
+A balance between working in isolation and engaging with others can be hard to achieve. I hoped to refine this during my time at MasterCard and I feel I did.
+
  
-\subsection{Overview of contents} 
- 
+\subsection{Overview of contents}
+
+This report describes the work done during my time at MasterCard. Two separate projects are examined in great detail. The InControl Platform is also examined at length in Appendix A as all of the work was done with respect to one or more parts of it.
  
 \section{Internship in Context} 
 
@@ -773,12 +773,22 @@ Linked hash-maps are used so the ordering of steps is preserved. The first hash-
 \subsubsection{Error Handling} 
  
 Writing the XML file is quite an error prone process. There is no tolerance for errors naming objects as these names are used to create objects. Exception handling within the parser had to be robust and return specific errors to allow mistakes to be easily diagnosed. After some reading up on best practices I am confident that the parser is relatively robust. 
-\cite{http://www.wikijava.org/wiki/10_best_practices_with_Exceptions Is it appropriate to link a wiki?} 
+
  
 \section{Conclusion} 
 Technical Conclusion. Goals. BCS goals. 
  
- 
+Over the course of the internship I was given more freedom in how I went about my work and given more responsibility surrounding my work. I feel this document reflects that. The seven months saw a continuous development in technical and personal skill. I was pleasantly surprised with how well university had equipped me with the skills needed to work in commercial software development. I did not draw upon everything I had learned at university, nor did I expect too. Areas of weakness were also highlighted. 
+
+The goals of the internship evolved as it progressed. I was given more responsibility than I, or my employer, anticipated so most of the time was spent working on learning around what directly effected my work. In some cases this aligned with my original goals, such as learning about the existing system. This was necessary to effectively complete my work. Other goals, such as understanding the reasons behind various technologies were less relevant and turned out to be less substantial then I first anticipated. The reason for using a particular piece of software was generally because it is regarded as the industry standard for the specific application or because it was written in-house.
+
+I am quite happy with the new technical skills I acquired. I was exposed to variation of technologies and had to employee different methods to understand them. My work allowed me to apply the skills accumulated during my years at university. Often I might have questioned why I was learning about a particular topic. Applying this knowledge was very satisfying.
+
+The nature of my work also lent itself to some creative solutions. The dynamic request creation in SMART was not necessary to solve the problem outlined but it was a more interesting solution and saved a significant amount of work when new features were later added. It was also the first time my work directly effected the productivity of other people. I was fortunate to have the majority of the stakeholders within the same office and as such was able to work with them quite easily. They were also able to provide feedback concerning my solutions. This new context allowed for greater refinement of those solutions.
+
+I also feel I have demonstrated a good understanding of the concepts and principles surrounding computer science. I have also began to learn about several new concepts such as Inversion of Control and Aspect Oriented Programming. University has cemented many of the core concepts of Computer Science for me. Refinement of these concepts is of course an ongoing process but the internship has made me even more aware of the breadth of the field.
+
+The internship provided me with many opportunities to create solutions to problems, not just implement them. The blending of requirements, deadlines, context, possible trade-offs and other influential factors can sometimes be difficult but always rewarding in some way.
  
 \section{Appendix A: Existing System} 
  
