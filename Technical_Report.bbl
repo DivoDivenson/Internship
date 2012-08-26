@@ -9,7 +9,8 @@ M.~Worldwide, {\em Benefits of Open Payment Systems and the Role of
 C%20PAYMENTS%20-%20US%20EDITION.pdf}.
 
 \bibitem{ISO8583}
-
+International Organization for Standardization, {\em Financial transaction card
+  originated messages}, 2003.
 
 \bibitem{BCStesting}
 S.~I.~G. in~Software~Testing, ``Standard for software component testing,''
@@ -36,17 +37,33 @@ E.~Gamma, R.~Helm, R.~Johnson, and J.~Vlissides, {\em Design Patterns: Elements
 
 \bibitem{forName}
 T.~Neward, {\em Understanding Class.forName}.
+\newblock DevelopMentor.
 \newblock
   \url{http://www.theserverside.com/news/1365412/Understanding-ClassforName-Ja%
 va}.
 
 \bibitem{Reflection}
-G.~McCluskey, {\em Using Java Reflection}, 1998.
+G.~McCluskey, {\em Using Java Reflection}.
+\newblock Oracle Corporation, 1998.
 \newblock
   \url{http://java.sun.com/developer/technicalArticles/ALT/Reflection/}.
 
+\bibitem{cocomo}
+B.~Boehm, B.~Clark, E.~Horowitz, C.~Westland, R.~Madachy, and R.~Selby, ``Cost
+  models for future software life cycle processes: Cocomo 2.0,'' {\em Annals of
+  Software Engineering}, vol.~1, pp.~57--94, 1995.
+
+\bibitem{software_maintenance}
+H.~Sneed, ``Estimating the costs of software maintenance tasks,'' in {\em
+  Software Maintenance, 1995. Proceedings., International Conference on},
+  pp.~168 --181, oct 1995.
+
+\bibitem{CORBA}
+Object Management Group, Inc., {\em The Common Object Request Broker:
+  Architecture and Specification}, 1999.
+
 \bibitem{OIL}
-{\em OIL}.
+Orbiscom Ireland, {\em Orbiscom Interface Language}.
 
 \bibitem{Spring}
 M.~Konda, {\em Just Spring}.
@@ -59,14 +76,20 @@ V.~Patel, {\em Create Spring 3 MVC}.
 mple/.
 
 \bibitem{AOP}
-{\em Aspect-Oriented Programming}, Springer-Verlag, 1997.
+European Conference on Object-Oriented Programming, {\em Aspect-Oriented
+  Programming}, Springer-Verlag, 1997.
 \newblock
   https://www.cs.washington.edu/education/courses/503/08wi/aop-ecoop-1997.pdf.
 
 \bibitem{SLOC}
 D.~A. Wheeler, {\em SLOCCount}.
 
+\bibitem{effective_java}
+J.~Bloch, {\em Effective Java programming language guide}, ch.~Chapter 8.
+  Exceptions.
+\newblock Mountain View, CA, USA: Sun Microsystems, Inc., 2001.
+
 \bibitem{Orbiscom_Arch}
-{\em Orbiscom Payments Platform Technical Architecture}, 2002.
+Orbisom Ltd., {\em Orbiscom Payments Platform Technical Architecture}, 2002.
 
 \end{thebibliography}
