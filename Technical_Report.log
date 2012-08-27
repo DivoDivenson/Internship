@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.10.23)  26 AUG 2012 21:29
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.10.23)  27 AUG 2012 17:04
 entering extended mode
  %&-line parsing enabled.
 **./Technical_Report.tex
@@ -387,13 +387,14 @@ Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
 
-[6] <4party.png, id=33, 854.19125pt x 248.93pt> [7]
+[6] <4party.png, id=34, 854.19125pt x 248.93pt>
 File: 4party.png Graphic file (type png)
  <use 4party.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 125--125
+Overfull \hbox (17.0pt too wide) in paragraph at lines 123--123
 [][] 
  []
 
+[7]
 
 ! LaTeX Error: \caption outside float.
 
@@ -401,7 +402,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.125 \image{4party.png}{The four party model.}
+l.123 \image{4party.png}{The four party model.}
                                                
 ? 
 Missing character: There is no â in font cmr10!
@@ -632,67 +633,59 @@ le\OT1/cmr/m/n/10.95 .pls,
  []
 
 
-Overfull \hbox (53.90552pt too wide) in paragraph at lines 433--433
+Overfull \hbox (53.90552pt too wide) in paragraph at lines 434--434
 []            \OT1/cmtt/m/n/10.95 SELECT issuer_name, authentication_type, auth
 orisation_type,[] 
  []
 
-
-Overfull \hbox (99.89502pt too wide) in paragraph at lines 433--433
-[]            \OT1/cmtt/m/n/10.95 session_timeout, authenticate_pan_password, a
-llow_change_email_addr,[] 
- []
-
-[41] [42]
-Overfull \hbox (13.6647pt too wide) in paragraph at lines 488--488
+[41] [42] [43]
+Overfull \hbox (13.6647pt too wide) in paragraph at lines 490--490
 []                \OT1/cmtt/m/n/10.95 Number AuthenticationType <= authenticati
 on_type;[] 
  []
 
 
-Overfull \hbox (2.16733pt too wide) in paragraph at lines 488--488
+Overfull \hbox (2.16733pt too wide) in paragraph at lines 490--490
 []                \OT1/cmtt/m/n/10.95 String AuthorisationType <= authorisation
 _type;[] 
  []
 
 
-Overfull \hbox (76.90027pt too wide) in paragraph at lines 488--488
+Overfull \hbox (76.90027pt too wide) in paragraph at lines 490--490
 []                \OT1/cmtt/m/n/10.95 String AuthenticatePanPassword <= authent
 icate_pan_password;[] 
  []
 
-[43]
-Overfull \hbox (48.15683pt too wide) in paragraph at lines 488--488
+
+Overfull \hbox (48.15683pt too wide) in paragraph at lines 490--490
 []                \OT1/cmtt/m/n/10.95 String AllowChangeEmailAddr <= allow_chan
 ge_email_addr;[] 
  []
 
 
-Overfull \hbox (2.16733pt too wide) in paragraph at lines 488--488
+Overfull \hbox (2.16733pt too wide) in paragraph at lines 490--490
 []                \OT1/cmtt/m/n/10.95 String AllowSetUserName <= allow_set_user
 _name;[] 
  []
 
 [44]
-Overfull \hbox (59.6542pt too wide) in paragraph at lines 545--545
+Overfull \hbox (59.6542pt too wide) in paragraph at lines 548--548
 []    \OT1/cmtt/m/n/10.95 public void process(MessageContext ctx, GetIssuerList
 Request request,[] 
  []
 
+[45] [46] [47] [48] [49]
 
-Overfull \hbox (117.14108pt too wide) in paragraph at lines 545--545
-[]                \OT1/cmtt/m/n/10.95 ctx.getIssuerDatabaseConnection(Applicati
-onHandler.APPLICATION_DB);[] 
- []
+LaTeX Warning: Citation `GOF_Strategy' on page 50 undefined on input line 606.
 
-[45] [46] [47] [48] [49] <spring_mvc.png, id=185, 397.485pt x 341.275pt>
+<spring_mvc.png, id=185, 397.485pt x 341.275pt>
 File: spring_mvc.png Graphic file (type png)
-
-<use spring_mvc.png>
-Overfull \hbox (17.0pt too wide) in paragraph at lines 604--604
+ <use spring_mvc.png>
+Overfull \hbox (17.0pt too wide) in paragraph at lines 608--608
 [][] 
  []
 
+[50]
 
 ! LaTeX Error: \caption outside float.
 
@@ -700,56 +693,58 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.604 ...ew of Spring MVC design \cite{SpringMVC}}
+l.608 ...ew of Spring MVC design \cite{SpringMVC}}
                                                   
 ? 
-[50 <./spring_mvc.png (PNG copy)>] [51]
-Overfull \hbox (19.41339pt too wide) in paragraph at lines 658--658
+[51 <./spring_mvc.png (PNG copy)>] [52]
+Overfull \hbox (19.41339pt too wide) in paragraph at lines 662--662
 []        \OT1/cmtt/m/n/10.95 IssuerConsoleLogger.getInstance(BinRangeControlle
 r.class);[] 
  []
 
-[52]
-Overfull \hbox (7.91602pt too wide) in paragraph at lines 658--658
+[53]
+Overfull \hbox (7.91602pt too wide) in paragraph at lines 662--662
 []        \OT1/cmtt/m/n/10.95 Issuer issuer = (Issuer) session.getAttribute("is
 suer");[] 
  []
 
-[53]
+[54]
 ! Undefined control sequence.
-l.672 \textif
+l.676 \textif
              {@Autowired}: This annotation tells Spring to inject an object ...
 
 ? 
 ! Undefined control sequence.
-l.678 \textif
+l.682 \textif
              {@Valid}: The @Valid annotation in the processForm method decla...
 
 ? 
-[54] [55] [56]
-Overfull \hbox (30.91077pt too wide) in paragraph at lines 732--732
+[55] [56] [57]
+Overfull \hbox (30.91077pt too wide) in paragraph at lines 736--736
 []                \OT1/cmtt/m/n/10.95 <Property Name="SecurityManager" Value="{
 Cipher}" />[] 
  []
 
 
-Overfull \hbox (25.16208pt too wide) in paragraph at lines 732--732
+Overfull \hbox (25.16208pt too wide) in paragraph at lines 736--736
 []            \OT1/cmtt/m/n/10.95 <AddPhoenixIssuerGroupRequest GroupTag="{Grou
 pName}" />[] 
  []
 
-[57]
-Overfull \hbox (7.91602pt too wide) in paragraph at lines 745--745
+[58]
+Overfull \hbox (7.91602pt too wide) in paragraph at lines 749--749
 []\OT1/cmtt/m/n/10.95 cMetaData.put("IssuerId", tmpMetaData = new MetaData("Iss
 uerId",[] 
  []
 
 
-Overfull \hbox (30.91077pt too wide) in paragraph at lines 745--745
+Overfull \hbox (30.91077pt too wide) in paragraph at lines 749--749
 []\OT1/cmtt/m/n/10.95 cMetaData.put("Properties", tmpMetaData = new MetaData("P
 roperties",[] 
  []
 
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 751.
 
 ! LaTeX Error: \verb illegal in command argument.
 
@@ -757,172 +752,178 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.747 ...is of the form \textit{\verb|{ <ident> }}
+l.751 ... of the form \textit{ \{ \verb| <ident> }
+                                                   \} } the identifier is st...
+
+? 
+! Too many }'s.
+l.751 ...he form \textit{ \{ \verb| <ident> } \} }
                                                    the identifier is stored ...
 
 ? 
-[58]
-Overfull \hbox (30.91077pt too wide) in paragraph at lines 760--760
+
+Overfull \hbox (30.91077pt too wide) in paragraph at lines 764--764
 []        \OT1/cmtt/m/n/10.95 {_BeanType=AddIssuerRequest, IssuerId=null, Issue
 rName=null}[] 
  []
 
 
-Overfull \hbox (76.90027pt too wide) in paragraph at lines 760--760
+Overfull \hbox (76.90027pt too wide) in paragraph at lines 764--764
 []            \OT1/cmtt/m/n/10.95 Property={_BeanType=Property, Name=SecurityMa
 nager, Value=null}}[] 
  []
 
-
-Overfull \hbox (2.16733pt too wide) in paragraph at lines 760--760
+[59]
+Overfull \hbox (2.16733pt too wide) in paragraph at lines 764--764
 []        \OT1/cmtt/m/n/10.95 {_BeanType=AddPhoenixIssuerGroupRequest, GroupTag
 =null}[] 
  []
 
 
-Overfull \hbox (111.3924pt too wide) in paragraph at lines 760--760
+Overfull \hbox (111.3924pt too wide) in paragraph at lines 764--764
 []        \OT1/cmtt/m/n/10.95 {_BeanType=AddPhoenixIssuerGroupIssuerIdRequest, 
 IssuerId=null, GroupId=0}[] 
  []
 
-[59] [60]
+[60]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
- [61] [62] [63] [64] [65]
-Overfull \hbox (41.03976pt too wide) in paragraph at lines 869--869
+ [61] [62] [63] [64] [65] [66]
+Overfull \hbox (41.03976pt too wide) in paragraph at lines 872--872
  []        \OT1/cmtt/m/n/10.95 Class="com.orbiscom.apollo.net.TCPServerConnecto
 rFactory"[] 
  []
 
 
-Overfull \hbox (0.79895pt too wide) in paragraph at lines 925--925
+Overfull \hbox (0.79895pt too wide) in paragraph at lines 928--928
  []\OT1/cmtt/m/n/10.95 Class="com.orbiscom.apollo.net.HTTPProtocolHandlerFactor
 y"[] 
  []
 
-[66]
-Overfull \hbox (6.54764pt too wide) in paragraph at lines 925--925
+[67]
+Overfull \hbox (6.54764pt too wide) in paragraph at lines 928--928
  []\OT1/cmtt/m/n/10.95 <Variable Name="DataExtract.Source" Value="RetailXMLAPI"
  />[] 
  []
 
-[67]
-Overfull \hbox (0.79895pt too wide) in paragraph at lines 925--925
+[68]
+Overfull \hbox (0.79895pt too wide) in paragraph at lines 928--928
  []            \OT1/cmtt/m/n/10.95 Class="com.orbiscom.atlas.util.SchemaServlet
 ">[] 
  []
 
 
-Overfull \hbox (35.29108pt too wide) in paragraph at lines 968--968
+Overfull \hbox (35.29108pt too wide) in paragraph at lines 971--971
  []            \OT1/cmtt/m/n/10.95 Class="com.orbiscom.pulse.oil.GetVCNListXMLH
 andler">[] 
  []
 
 
-Overfull \hbox (52.53714pt too wide) in paragraph at lines 968--968
+Overfull \hbox (52.53714pt too wide) in paragraph at lines 971--971
  []                \OT1/cmtt/m/n/10.95 <Attribute Name="Pan" Constraint="PanCon
 straint" />[] 
  []
 
-[68]
-Overfull \hbox (23.7937pt too wide) in paragraph at lines 968--968
+
+Overfull \hbox (23.7937pt too wide) in paragraph at lines 971--971
  []                    \OT1/cmtt/m/n/10.95 oil.obo.CheckThirdPartyAccessProcess
 or" />[] 
  []
 
-
-Overfull \hbox (52.53714pt too wide) in paragraph at lines 968--968
+[69]
+Overfull \hbox (52.53714pt too wide) in paragraph at lines 971--971
  []            \OT1/cmtt/m/n/10.95 Class="com.orbiscom.atlas.mastercard.audit.A
 uditLogger"[] 
  []
 
 
-Overfull \hbox (69.7832pt too wide) in paragraph at lines 968--968
+Overfull \hbox (69.7832pt too wide) in paragraph at lines 971--971
  []                \OT1/cmtt/m/n/10.95 EventType="com.mastercard.common.jal.eve
 nts.EventType.[] 
  []
 
 
-Overfull \hbox (52.53714pt too wide) in paragraph at lines 968--968
+Overfull \hbox (52.53714pt too wide) in paragraph at lines 971--971
  []            \OT1/cmtt/m/n/10.95 Class="com.orbiscom.atlas.mastercard.audit.A
 uditLogger"[] 
  []
 
 
-Overfull \hbox (69.7832pt too wide) in paragraph at lines 968--968
+Overfull \hbox (69.7832pt too wide) in paragraph at lines 971--971
  []                \OT1/cmtt/m/n/10.95 EventType="com.mastercard.common.jal.eve
 nts.EventType.[] 
  []
 
 
-Overfull \hbox (18.04501pt too wide) in paragraph at lines 968--968
+Overfull \hbox (18.04501pt too wide) in paragraph at lines 971--971
  []            \OT1/cmtt/m/n/10.95 AuditMessage="A request to Get VCN List fail
 ed" >[] 
  []
 
-[69] [70] [71] [72]
+[70] [71] [72]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
+ [73]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
- [73] [74]
-Overfull \hbox (13.6647pt too wide) in paragraph at lines 1066--1066
+ [74] [75]
+Overfull \hbox (13.6647pt too wide) in paragraph at lines 1069--1069
 []    \OT1/cmtt/m/n/10.95 <Range CardType="83" CpnType="DF" EndRange="123456999
 9999999"[] 
  []
 
 
-Overfull \hbox (30.91077pt too wide) in paragraph at lines 1066--1066
+Overfull \hbox (30.91077pt too wide) in paragraph at lines 1069--1069
 []        \OT1/cmtt/m/n/10.95 LanguageId="1" Prefix="123456" StartRange="123456
 0000000000"[] 
  []
 
-[75] [76]
-Overfull \hbox (36.65945pt too wide) in paragraph at lines 1111--1111
+[76] [77]
+Overfull \hbox (36.65945pt too wide) in paragraph at lines 1114--1114
 []\OT1/cmtt/m/n/10.95 <xsd:complexType mixed="true" name="GetVCNServiceStatusRe
 sponseType">[] 
  []
 
 
-Overfull \hbox (36.65945pt too wide) in paragraph at lines 1111--1111
+Overfull \hbox (36.65945pt too wide) in paragraph at lines 1114--1114
 []    \OT1/cmtt/m/n/10.95 <xsd:attribute name="Enabled" type="xsd:boolean" use=
 "optional"/>[] 
  []
 
 
-Overfull \hbox (42.40814pt too wide) in paragraph at lines 1111--1111
+Overfull \hbox (42.40814pt too wide) in paragraph at lines 1114--1114
 []    \OT1/cmtt/m/n/10.95 <xsd:attribute name="RequestId" type="xsd:string" use
 ="optional"/>[] 
  []
 
 
-Overfull \hbox (48.15683pt too wide) in paragraph at lines 1111--1111
+Overfull \hbox (48.15683pt too wide) in paragraph at lines 1114--1114
 []    \OT1/cmtt/m/n/10.95 <xsd:attribute name="Pan" type="PanConstraintType" us
 e="optional"/>[] 
  []
 
 
-Overfull \hbox (25.16208pt too wide) in paragraph at lines 1111--1111
+Overfull \hbox (25.16208pt too wide) in paragraph at lines 1114--1114
 []    \OT1/cmtt/m/n/10.95 <xsd:attribute name="CpnId" type="xsd:decimal" use="o
 ptional"/>[] 
  []
 
-[77]
-Overfull \hbox (1.37073pt too wide) in paragraph at lines 1137--1138
+[78]
+Overfull \hbox (1.37073pt too wide) in paragraph at lines 1140--1141
 \OT1/cmr/m/n/10.95 Request spec-i-fi-ca-tion is done us-ing the Oil ob-jects. A
 n Oil-Bean is a hashmap;
  []
 
-[78] [79]
-Overfull \hbox (42.40814pt too wide) in paragraph at lines 1189--1189
+[79] [80]
+Overfull \hbox (42.40814pt too wide) in paragraph at lines 1192--1192
 []\OT1/cmtt/m/n/10.95 Request request = (Request) Class.forName(requestClass).n
 ewInstance();[] 
  []
 
-[80] (./Technical_Report.bbl
+(./Technical_Report.bbl [81]
 Underfull \hbox (badness 3000) in paragraph at lines 4--10
 |   []   |   []\OT1/cmr/m/n/10.95 .  Pur-chase, NY: Mas-ter-card World-wide, 20
 08.
@@ -940,7 +941,7 @@ Underfull \hbox (badness 2707) in paragraph at lines 25--28
 ]
  []
 
-[81]
+
 Underfull \hbox (badness 10000) in paragraph at lines 39--44
 []\OT1/cmr/m/n/10.95 T. Neward, |   []   |   [].  De-vel-op-Men-
  []
@@ -951,7 +952,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--44
 com / news / 1365412 /
  []
 
-
+[82]
 Underfull \hbox (badness 10000) in paragraph at lines 79--83
 []\OT1/cmr/m/n/10.95 European Con-fer-ence on Object-Oriented Pro-gram-ming,
  []
@@ -967,16 +968,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 79--83
 -
  []
 
-[82]) [83] (./Technical_Report.aux)
+) [83] (./Technical_Report.aux)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 9608 strings out of 495061
- 182716 string characters out of 1182620
- 221034 words of memory out of 3000000
- 12595 multiletter control sequences out of 15000+50000
+ 9601 strings out of 495061
+ 182461 string characters out of 1182620
+ 219723 words of memory out of 3000000
+ 12588 multiletter control sequences out of 15000+50000
  9790 words of font info for 35 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  56i,10n,55p,1616b,927s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -988,7 +989,7 @@ lic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
 /cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.p
 fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sh
 are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Technical_Report.pdf (84 pages, 933722 bytes).
+Output written on Technical_Report.pdf (84 pages, 936031 bytes).
 PDF statistics:
  325 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
