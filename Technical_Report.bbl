@@ -29,11 +29,14 @@ J.~Pan, ``Software testing,'' in {\em 18-849b Dependable Embedded Systems},
 \bibitem{IDL}
 A.~D. McKinnon, {\em Interface Definition Language}.
 \newblock Washington State University, 2007.
+\newblock
+  \url{http://csis.pace.edu/~marchese/CS865/Papers/interface-definition-langua%
+ge.pdf}.
 
 \bibitem{GOF}
 E.~Gamma, R.~Helm, R.~Johnson, and J.~Vlissides, {\em Design Patterns: Elements
   of Reusable Object-Oriented Software}, p.~15.
-\newblock Addison-Wesley, 1994.
+\newblock Addison-Wesley Longman Publishing Co., Inc., 1994.
 
 \bibitem{forName}
 T.~Neward, {\em Understanding Class.forName}.
@@ -69,6 +72,11 @@ Orbiscom Ireland, {\em Orbiscom Interface Language}.
 M.~Konda, {\em Just Spring}.
 \newblock O'Reilly, 2011.
 
+\bibitem{GOF_Strategy}
+E.~Gamma, R.~Helm, R.~Johnson, and J.~Vlissides, {\em Design Patterns: Elements
+  of Reusable Object-Oriented Software}, ch.~Strategy.
+\newblock Addison-Wesley Longman Publishing Co., Inc., 1994.
+
 \bibitem{SpringMVC}
 V.~Patel, {\em Create Spring 3 MVC}.
 \newblock
@@ -80,6 +88,11 @@ European Conference on Object-Oriented Programming, {\em Aspect-Oriented
   Programming}, Springer-Verlag, 1997.
 \newblock
   https://www.cs.washington.edu/education/courses/503/08wi/aop-ecoop-1997.pdf.
+
+\bibitem{RobustJava}
+S.~Stelting, {\em Robust Java: Exception Handling, Testing, and Debugging},
+  ch.~2. Exception Handling Techniques and Practices.
+\newblock Prentice Hall Ptr, 2004.
 
 \bibitem{SLOC}
 D.~A. Wheeler, {\em SLOCCount}.
