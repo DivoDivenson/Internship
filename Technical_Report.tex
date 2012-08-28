@@ -69,7 +69,7 @@
 
 \tableofcontents
 
-
+\newpage
  
 \section{Introduction} 
  
@@ -95,7 +95,14 @@ Upon arriving at MasterCard I was introduced to some of the team and my mentor, 
 \end{itemize} 
 The main objective was to put me to work as soon as possible. This was my own personal objective and, happily, seemed to be in line with the objective of my mentor. As far as I am aware, there was no overall plan for the entire internship at the beginning. An assessment of my skill level was needed before additional work could be planned. 
  
-The first task assigned to me was to interface SMART with Cronos. SMART, MasterCard Authorization Rules Tool, is an in-house system testing tool used to send mock requests to the Retail API server. Cronos is another server used for retrieving certain system information. My own personal goal was to learn new and interesting programming concepts and technologies while completing this work. 
+The first task assigned to me was to interface SMART with Cronos. SMART, MasterCard Authorization Rules Tool, is an in-house system testing tool used to send mock requests to the Retail API server. Cronos is another server used for retrieving certain system information.
+	
+When this work had been completed I was given ownership of SMART. This meant I was responsible for maintaining and updating it. The fact I was able to do this without instruction surpassed my employers original expectations. I worked in this role for the majority of the internship with little instruction. The work done during this time is examined in section 3.
+
+My final task was the creation of a web application. The Issuer Admin Web Console was a new project to be used internally at MasterCard. I was given almost complete freedom to design and build this project, largely because of the standard of work carried out on SMART.
+
+My own personal goal was to learn new and interesting programming concepts and technologies while completing this work.
+
  
 \subsection{Approach} 
 
@@ -106,9 +113,31 @@ A balance between working in isolation and engaging with others can be hard to a
  
 \subsection{Overview of contents}
 
-This report describes the work done during my time at MasterCard. Two separate projects are examined in great detail. The InControl Platform is also examined at length in Appendix A as all of the work was done with respect to one or more parts of it.
+This report describes the work done during my time at MasterCard. Section 2 gives a brief introduction to MasterCard and explains how certain aspects of the organizations structure affect the working environment. It also explains the InControl Platform as a service, its history and its place within MasterCard. Finally the software development life-cycle of InControl is examined, along with some the tools used to support it.
+
+Section 3 covers the first application worked on. This is broken into two sections, Cronos integration and maintenance. The majority of the internship was spent working on this application so it is examined in detail. Two other projects are covered in this section, Cronos and Orbiscom Interface Language, as they are core to the work done on SMART.
+
+Section 4 covers the Issuer Web Admin Console, the second project worked on. When work began on this project SMART was still the focus of my work. Gradually the work on SMART slowed to allow this new project to be developed full time. During this project, some of the ideas developed during the first project were revisited.
+
+The conclusion presents a summary of what was learned during each project, both technical and non-technical.
+
+Appendix A covers the existing InControl Platform. Some understanding of the existing platform is necessary to fully understand the work done in sections 3 and 4. These sections reference the appendix where appropriate. The InControl Platform was also investigated in part because of my own curiosity.
+
+Appendix B covers some of the decisions made while designing the Issuer Admin Web Console. 
+
+\newpage
  
-\section{Internship in Context} 
+\section{Internship in Context}
+
+This section gives a brief introduction to MasterCard and InControl. The software development life-cycle of the InControl Platform is also examined.
+
+The history of InControl and its present state are shown. Following this is a brief introduction to MasterCards core business, the routing of card payments, some of the problems posed and how InControl is a part of the solution to these problems.
+
+The services offered by the InControl Platform are then explained at length. These services and the underlying functionality that provides them are important to give the remaining sections context.
+
+Lastly, the software development life-cycle of the InControl platform is documented. A small section on some of the tools used to support InControl development is also provided. These tools were used almost everyday and are referenced in later sections.
+
+\subsection{Overview} 
 
 Orbiscom Ireland, acquired by MasterCard in 2009, developed a product called InControl. The acquisition allowed MasterCard to incorporate InControl into their Value Added Services, a range of products that tie in closely with their core business, the processing of electronic payments. Until 2010 MasterCard Ireland was still primarily concerned with the development of InControl. A division of MasterCard Labs was setup within MasterCard Ireland in 2011. As MasterCard continues to grow, more and more departments are being given a presence within Ireland. This report documents the activities and projects undertaken while working for InControl. Since their acquisition Orbiscom have become completely integrated into MasterCard and have ceased operating as Orbiscom entirely. InControl has been split into two different products. InControl Direct exists to support Orbiscoms original customers as is managed and maintained entirely within the InControl department. The second product, InControl is an adapted version of the original product. Where InControl Direct is deployed to and hosted by banks, InControl is hosted on BankNet, MasterCard’s global payments network. In order to explain the services offered by the InControl platform, it is useful to explain how the credit card payment process works. 
  
@@ -156,7 +185,7 @@ BankNet is the core of MasterCard’s business. One of the most important aspect
  
 The waterfall design methodology arguably fits well with the requirements surrounding MasterCard’s core network. Although the network is continuously evolving, each new update is developed using waterfall. Other services, such as InControl are not subject to the same requirements but are none the less subject to the employment of waterfall. During my time at MasterCard a switch an agile design process was beginning to get underway within MasterCard. 
  
-\subsection{Software development life-cycle}
+\subsection{Software development life-cycle and supporting tools}
 
 An InControl release goes through several phases before it is shipped. Throughout this process a large amount of attention is payed to quality control. Each iteration of the release cycle resembles a standard waterfall type model. However, unlike traditional waterfall, development and in particular the testing phase are divided into several sub-phases.
 
@@ -177,7 +206,7 @@ The first environment is used to conduct the integration tests. The release then
 As a member of the development team I became quite familiar with the practices employed. The InControl development team have a very open approach, which sometimes goes against the attitude adopted within the rest of MasterCard. Each member of the team is given freedom to go about their work in whatever way they deem to be the best approach. Everyone has root access to everyone else's machine. Development roles are defined, but not in any database. Any developer can modify and deploy any component. In practice this creates a very flexible working environment. No one is going to modify a component and release it without consulting with the team. The lack of restrictions exists so working on separate components, if required, is as fluid as possible. 
 
  
-\subsubsection{Terra} 
+\subsubsection{Software development management tool; "Terra"} 
 \label{Terra} 
 
 Terra is the build system used to manage projects within InControl. It is a web application developed in-house with a number of features. For the sake of brevity only the core project management features will be discussed; building, deploying and administering a project.
@@ -195,8 +224,12 @@ Releases are managed by Andrew, an new web application also developed in house. 
 Terra is also very useful when someone wishes to begin working on a project. After the project is checked out from the subversion repository it only takes a few simple Ant commands to fetch all of its dependencies and configure the project. All of these dependencies are downloaded from Terra.
  
 
+\newpage
+
 \section{SMART} 
-The MasterCard Authorization Rules Tool (MART was taken) is an in-house platform testing tool used to send mock data to the Retail API Server. 
+The MasterCard Authorization Rules Tool, internally named SMART, is a platform testing tool used to send mock data to the Retail API Server. SMART is introduced and its function within InControl is explained. A brief overview of the objectives is then presented followed by a more detailed description of SMART.
+
+The first objective is broken down into three sections. This mirrors how the work was done. The second objective is again broken down into three sections. These cover the three main types of maintenance carried out on SMART, whereas in the first objective the work done in each section is a refinement of the previous section.
  
 \subsection{Overview} 
  
@@ -206,7 +239,7 @@ The bulk of platform testing preformed within InControl is done manually. SMART 
 \subsection{Objectives} 
 SMART is used by InControl developers, the InControl Quality Assurance department and several other offshore departments involved in the development and testing of InControl. The vast majority of work performed during the internship involved the development and maintenance of SMART. The work done can be split into two categories, integration of SMART with Cronos and maintenance. 
 
-SMART was my first task, so the initial goals were reasonably broad and changed as the work progressed. The first task, to integrate SMART with Cronos had two objectives. First, to produce some sort of meaningful contribution, and second to allow evaluation of my abilities so future tasks could be planned with respect to them. After this task was completed I was given official ownership of SMART and tasked with maintaining and updating it.  
+Extending SMART to interact with the Cronos server was my first task, so the initial goals were reasonably broad and changed as the work progressed. The first task, to integrate SMART with Cronos had two objectives. First, to produce some sort of meaningful contribution, and second to allow evaluation of my abilities so future tasks could be planned with respect to them. After this task was completed I was given official ownership of SMART and tasked with maintaining and updating it.  
  
  
 \subsubsection{Cronos} 
@@ -270,7 +303,9 @@ I was unaware of the hierarchal structure of the requests at first but immediate
 \end{itemize} 
 This method when implemented saved a large amount of time. The controller was significantly smaller than the existing one used to communicate with the Retail API server, about 200 lines of code compared to 4000. It also required far fewer supporting objects. While the Cronos controller may not have had some of the more advanced features featured in the Retail API controller, the vast majority of the code cut out was strictly boiler plate. 
 \subsubsection{Dynamic approach} \label{dynamic_smart}
-There was still the issue of having to manually create the request object in the view and populate it with data supplied by the user. This issue is a more complex one. The manner in which the user interacts with the data is quite important. However, as the initial task was to simply display lists of information a table could be used to display the data. It was decided, although not know at the time, that there must be a way of doing this generically. The idea that every requests object must be created and populated manually was not one worth perusing because of the sheer amount of time it would take. There was also the problem that very little could be learned by writing large amounts of boiler plate code. The option to simply generate the code was also considered but such an approached would not solve the problem as the end result would still be a large amount of boiler plate code. Creating the requests dynamically proved to be difficult. I was not aware of any method that would allow be to create objects dynamically, i.e. to create an instance of an object and populate it without any knowledge of the object at compile time. The functionality desired was outlined and a solution was simply presumed to be possible.  
+There was still the issue of having to manually create the request object in the view and populate it with data supplied by the user. The goal was to have this done at runtime. This would mean that every aspect of Cronos interaction could be done generically. When this was completed there wasn't a single reference to a concrete request, nor a single hard-wired UI component. Everything was done at run-time.
+
+This issue is a more complex one. The manner in which the user interacts with the data is quite important. However, as the initial task was to simply display lists of information a table could be used to display the data. It was decided, although not know at the time, that there must be a way of doing this generically. The idea that every requests object must be created and populated manually was not one worth perusing because of the sheer amount of time it would take. There was also the problem that very little could be learned by writing large amounts of boiler plate code. The option to simply generate the code was also considered but such an approached would not solve the problem as the end result would still be a large amount of boiler plate code. Creating the requests dynamically proved to be difficult. I was not aware of any method that would allow be to create objects dynamically, i.e. to create an instance of an object and populate it without any knowledge of the object at compile time. The functionality desired was outlined and a solution was simply presumed to be possible.  
 
 After the work was done several developers pointed out that this was a somewhat unusual way to approach a problem. In order to properly design a piece of software some idea of how to implement it is required. The approach I took was one I see being encouraged during my time at university. The mentality of experimentation is actively encouraged. The emphasis in a working environment is lies strongly with code robustness and readability, not obtuse code overly dense in functionality. 
 The desired functionality was as follows: 
@@ -385,7 +420,7 @@ If the bug was confirmed to be an issue with the Retail API server the standard 
 \end{itemize} 
 During the months spent maintaining SMART I worked with nearly every member of the QA team to some extent. SMART is a tool they use daily so they were happy to help me in fixing issues as quickly as possible. 
  
-\subsubsection{Tom} 
+\subsubsection{Change requests from InControl developer} 
 Along with the maintenance work I received several feature requests from a developer charged with InControl implementations, i.e. Managing the platform in the various environments (p. \pageref{release_environments}). He wanted to use SMART as window into InControl to view overall system health. This resulted in implementing several new requests within the Cronos server, which is ultimately released with a production system. The majority of these requests were used to collect information surrounding different system events, such as the amount of notifications sent in a given time period. Some of these requests were later charted graphically in SMART to give a very quick overview of system health. 
 
 Most of the new features required new requests in the Cronos server. The steps needed to add a new OIL request are outlined on page \pageref{OIL}. The knowledge needed to add a new request took a while to accumulate. The process was added to the internal documentation for future use. After a request was completed it was often revised to add some new piece of functionality overlooked in the initial design. After the requests had been added to Cronos it was trivial to add it into SMART thanks to the approach taken when extending SMARTs functionality (p. \pageref{dynamic_smart}). There were some cases when a new UI was required, such as the charts used to visualize different system metrics. These were done using standard static code.
@@ -397,9 +432,9 @@ The majority of the work done consisted of adding new requests to SMART and Cron
 
 \image{smart_chart.png}{A chart showing a history of notifications issued by the InControl system.}  
  
-\subsection{OIL} 
+\subsection{Orbiscom Interface Language} 
 \label{OIL} 
-Orbiscom Interface Language is an in house Interface Definition Language. It is used to specify how various components communicate with each other. It can be used to specify basic data objects, request definitions and their behavior. OIL was used extensively throughout the internship. There was some existing documentation but the bulk of the knowledge acquired was from asking questions, reading the OIL grammar file and reading the generated code. The OIL grammar file is a standard Backus–Naur Form grammar and was quite easy to read because BNF grammars were covered extensively in the Discrete Mathematics and Compiler Design courses taken in second and third year of university. There were some difficulties surrounding the implementation of the OIL compiler. Functionality described in the grammar was not always implemented in the compiler, although there was usually a work around. The most prominent example being the inability to set default values for request parameters. To get around this the request parameters were wrapped within a type. Default values for type members had been implemented in the compiler.
+Orbiscom Interface Language is an in house Interface Definition Language. It is used to specify how various components communicate with each other. It is used to specify a common communication architecture and should not be confused with Ontology Interchange Language, which is used to describe ontologies and reason about the relations of concepts within these ontologies. It can be used to specify basic data objects, request definitions and their behavior. OIL was used extensively throughout the internship. There was some existing documentation but the bulk of the knowledge acquired was from asking questions, reading the OIL grammar file and reading the generated code. The OIL grammar file is a standard Backus–Naur Form grammar and was quite easy to read because BNF grammars were covered extensively in the Discrete Mathematics and Compiler Design courses taken in second and third year of university. There were some difficulties surrounding the implementation of the OIL compiler. Functionality described in the grammar was not always implemented in the compiler, although there was usually a work around. The most prominent example being the inability to set default values for request parameters. To get around this the request parameters were wrapped within a type. Default values for type members had been implemented in the compiler.
 
 OIL conforms roughly to the Common Object Request Broker Architecture, CORBA, standard \cite{CORBA}. It provides a mechanism for normalizing method-call between applications residing in the same address space or remote address space, i.e. Over a network, but does not provide all of the functionality described in the CORBA specification. The CORBA specification is quite lengthy, over 700 pages. A complete analysis of OIL with respect to this specification is outside the scope of this paper, but OIL does provide some important features. Annotations can be used to mark attributes as mandatory, or only applicable in specific versions of the platform. Default data can be specified and constraints added to requests. OIL also has a collection of supporting utilities. These are used to simplify database interaction, exception handling and other tedious tasks. 
 The OIL compiler generates program code that can then be used. At the moment, Java and Flex can be generated using OIL. OIL attempts to generate as much of the logic needed to service a request as possible.
@@ -551,8 +586,16 @@ The handler must then be added to the servers handler configuration file as show
  
 \cite{OIL} 
  
+\newpage
+
 \section{Web Admin Console} 
-The second project worked on during the internship was an Issuer Administration web console. The requirement was to build a web application to allow a member of development, customer implementation support etc., to configure a new issuer on the InControl platform. 
+The second project worked on during the internship was the Issuer Administration Web Console. The requirement was to build a web application to allow a member of development, customer implementation support etc., to configure a new issuer on the InControl platform.
+
+This project had two phases. A prototype was first developed to act as a proof of concept. This was partly because there was insufficient time to develop the application fully and partly to coincide with a meeting to secure funding for various new projects within InControl. After the prototype had been completed work began on the full application. Formal requirements were never drawn up for the full application. The goal was to make a start and try and make further development easier.
+
+The work done in this section was conducted along with another intern. I was responsible for developing the backend of the application while the other intern was responsible for developing the UI.
+
+
  
 \subsection{Overview} 
 Adding a new issuer to the InControl platform is a complicated process. Currently, the database administrator manually inserts the new issuer each time. The majority of the data inserted is static but each new issuer still requires a large amount of custom data. Traditionally the setup is done by modifying an sql script. The issuer specific information is included along with the static data and ran against the relevant databases. This is a time consuming process for the database administrator. There are a number of common steps needed to setup a basic issuer and several optional steps, the use of which is dictated by the issuer and the products they wish to use. As InControl continues to grow more and more new issuers are being brought onto the InControl platform. Manually inserting each new issuer is no longer practical so a faster solution is needed. 
@@ -687,7 +730,7 @@ There was also a small bug in Apollo. Apollo allows multiple requests to be sent
  
 After the setup steps had been completed the user was forwarded to a screen to allow them to review their work. This was a simple listing of issuers in the system. The bin ranges associated with an issuer could then be viewed. This was a small feature simply to show that the application could also be used to view system information. 
  
-\subsubsection{Completion} 
+\subsubsection{Achievement of implementation and completion of prototype} 
  
 After the prototype had been completed it was shown as part of a pitch to secure funding for a fully developed version. An easy way to set up new issuer on the InControl Platform was something the team had wanted for a number of years. An independent report recently conducted by Computer Science Corporation had highlighted the need for automation of the process. The idea behind the prototype was to show the business leaders in charge of InControl what such an application might look like and that it would not require a significant development effort. The project was approved and given funding for the first quarter of 2013.  
  
@@ -697,6 +740,8 @@ After the project had been approved work began on a more robust version. Unfortu
  
 These requirements were very broad and difficult to account for. After researching user roles and access privileges in Spring I was satisfied that they could be integrated as an aspect (p. \pageref{aspects}) later in development. This left me to concentrate on building the application to allow for later extension. In order for the application to be used and supported in the future it had to be as maintenance free as possible. Changes to the issuer setup process should not require code refactoring. After working with SMART it was understood that such an approach was feasible. The principle of dependency injection employees a similar idea to the dynamic loading of requests in SMART, although it is \textbf{substantially} more complicated. 
 
+
+\subsubsection{Possible designs}
 A few different approaches were considered before a design was finalized. They are discussed in Appendix B: Issuer Control design on page \pageref{issuer_control}.
  
 \subsubsection{Parser} 
@@ -735,7 +780,7 @@ The Issuer Setup web application had to be able to send requests remotely, so a 
 </Wizards> 
 \end{verbatim} 
  
-A parser was than constructed to generate OIL request objects. The resulting parser was relatively complicated, taking several factors into account. It is more complex than the requests creator implemented in SMART, the biggest differences are outlined below. 
+A parser was than constructed to generate OIL request objects. It was first implemented within SMART for future use and then modified slightly to integrate with the Web Admin Console. The resulting parser was relatively complicated, taking several factors into account. It is more complex than the original request creator implemented in SMART, the biggest differences are outlined below. 
  
 OIL requests can contain complex and simple types. The parser must be made aware of any complex types so the corresponding classes can be instantiated. After this is done the requests are parsed. First the request name is parsed and the corresponding request object is created using the same approach as SMART (p. \pageref{smart_dynamic_create}). The request objects attributes are then compared against the attributes specified in the XML. If they match, the XML attribute is parsed and stored in the request object. There are a number of possible events relating to this. 
  
@@ -782,6 +827,7 @@ These requests objects are then passed to the controllers. The attributes that r
  
 Writing the XML file is quite an error prone process. There is no tolerance for errors naming objects as these names are used to create objects. Exception handling within the parser had to be robust and return specific errors to allow mistakes to be easily diagnosed. After some reading up on best practices I am confident that the parser is relatively robust. Any exception thrown indicates where the parser was in the file then it failed. As it made little sense to allow every possible exception to the user they are grouped logically, i.e. A number of problems can occur when parsing an XML file. These are wrapped in one exception which is then given a meaningful description. \cite{RobustJava}
 
+\newpage
  
 \section{Conclusion} 
  
@@ -791,13 +837,34 @@ The goals of the internship evolved as it progressed. I was given more responsib
 
 I am quite happy with the new technical skills I acquired. I was exposed to variation of technologies and had to employee different methods to understand them. My work allowed me to apply the skills accumulated during my years at university. Often I might have questioned why I was learning about a particular topic. Applying this knowledge was very satisfying.
 
-The nature of my work also lent itself to some creative solutions. The dynamic request creation in SMART was not necessary to solve the problem outlined but it was a more interesting solution and saved a significant amount of work when new features were later added. It was also the first time my work directly effected the productivity of other people. I was fortunate to have the majority of the stakeholders within the same office and as such was able to work with them quite easily. They were also able to provide feedback concerning my solutions. This new context allowed for greater refinement of those solutions.
+\subsection{SMART}
+
+The nature of my work on SMART lent itself to some creative solutions. The dynamic request creation was not necessary to solve the problem outlined but it was a more interesting solution and saved a significant amount of work when new features were later added. It was also the first time my work directly effected the productivity of other people. I was fortunate to have the majority of the stakeholders within the same office and as such was able to work with them quite easily. They were also able to provide feedback concerning my solutions. This new context allowed for greater refinement of those solutions. Working with such a large group of individuals certainly improved my teamwork skills.
+
+The maintenance work on SMART accounted for the majority of the internship. I carried out this work as if I were any other member of the team. The fact that I was able to integrate so thoroughly is one I am particularly proud of, and one my employers were particularly impressed by.
+
+During my work on SMART I was exposed to a large amount of the core InControl Platform. I enjoyed working on such a large project and having to understand different parts of it to work effectively. The chances of working on something completely from scratch at any point in my future career, be it in academia or industry, are very small, so the ability to understand and work with an existing system is an important one to develop. As the bulk of the InControl platform was developed in-house I can not carry over any knowledge of working with it directly to future projects, but the concepts and experience gained are more beneficial than any amount of hard technical detail.
+
+\subsection{Issuer Admin Web Console}
+
+The prototype and final version of the web application were approached very differently. The focus of the prototype was to demonstrate functionality. A good amount of time was spent learning both Spring and JSF. These two technologies are very widely used throughout industry so the knowledge gained can be directly used in future projects.
+
+The lack of requirements for the final version left the project very open ended but I feel I made good inroads into any future specification. It was also enjoyable to essentially revisit the initial work I had done on SMART with refined understanding and greater experience.
 
 I also feel I have demonstrated a good understanding of the concepts and principles surrounding computer science. I have begun to learn about several new concepts such as Inversion of Control and Aspect Oriented Programming. University has cemented many of the core concepts of Computer Science for me. Refinement of these concepts is of course an ongoing process but the internship has made me even more aware of the breadth of the field.
 
 The internship provided me with many opportunities to create solutions to problems, not just implement them. The blending of requirements, deadlines, context, possible trade-offs and other influential factors can sometimes be difficult but always rewarding in some way.
  
-\section{Appendix A: Existing System} 
+
+\newpage
+
+\bibliographystyle{ieeetr} 
+\bibliography{bibliography} 
+ 
+\newpage
+
+\appendix
+\section{Appendix: Existing System} 
  
 The InControl platform is very complex. It was not developed as a single service but rather as a generic server framework to host various payment services. The platform is component based and hosts a number of generic services and product specific services. The role of InControl has changed over time, with the emphasis now placed on the VCN and Rule services as MasterCard have no interest in hosting their competitors’ products. 
  
@@ -1076,7 +1143,7 @@ An example XML request is shown, populated with mock data.
 \subsection{Batch Registration and Maintenance Service} 
 The Batch Registration Service is responsible for creating multiple cardholders simultaneously. The data is provided in a fixed width file format. The service can be run while the rest of the platform is running with minimal impact on performance.
  
- 
+
 \subsection{Virtual Card Generation} 
 The Virtual Card Generation Service is a scheduled service responsible for maintaining the queues of generated card numbers. VCNs are generated according to the card scheme rules to which they belong. The VCN typically contain the following:
 \begin{itemize}
@@ -1091,8 +1158,11 @@ The authorization preforms a similar function. It pre-process incoming authoriza
  
 \cite{Orbiscom_Arch} 
 
+\newpage 
+
+
 \label{issuer_control}
-\section{Appendix B: Issuer Control, possible designs}
+\section{Appendix: Issuer Control; possible designs}
 The idea was build the system in a generic way such that the interface can be described in XML and built at runtime. This means that if (when) the Cronos API / issuer setup changes the code does not need to be modified. If the system had to be modified every-time something in Cronos changed or the steps involved in issuer setup changed it would quickly become unmaintained and unused.  A possible solution is outlines below but the basic functional requirements are as follows.
 \begin{itemize}
 \item Request specification; The request must be specified using some kind of markup that will allow the following information for each parameter \label{section:required metadata}
@@ -1105,7 +1175,6 @@ The idea was build the system in a generic way such that the interface can be de
 \item Request flow specification; The work flow for the wizard should consist of a number of steps, each containing requests.
 \item Submit requests; Again, need to be done generically. Easiest way is probably dynamic object invocation at runtime.
 \end{itemize}
-\section{Possible implementation}
 	\subsection{Request specification using XSD}
 	Specify requests in XML. The requests specification could be done by using the existing XSD for Cronos and annotating it with default values. Information such as type (already in Oil to some degree) and required / optional use is already contained within the schema and can be easily changed. Important to note that the requests are not built from the XSD, they are built with oil objects as normal, the XSDs are use to generate the UI and map the various fields to the correct parameters in the corresponding Oil object.
 	\begin{verbatim}
@@ -1196,7 +1265,7 @@ Request specification is done using the Oil objects. An OilBean is a hashmap; th
 	\end{verbatim}
 	Every Oil request extends the Request interface so they can be processed using polymorphism, instead of having handler methods for each request. Responses contain a simple success or failure that can be communicated to the user. The error codes returned by Cronos on failure are (usually) generic so there's not much point worrying them.
 
-\section{Class hierarchy}
+\subsection{Class hierarchy}
 
 \tikzstyle{every node}=[draw=black,thick,anchor=west]
 \tikzstyle{selected}=[draw=red,fill=red!30]
@@ -1225,7 +1294,4 @@ Request specification is done using the Oil objects. An OilBean is a hashmap; th
 
  
 
-\bibliographystyle{ieeetr} 
-\bibliography{bibliography} 
- 
 \end{document} 
